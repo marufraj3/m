@@ -745,6 +745,101 @@ button.active{
 }
     
    
+/* ================================================
+   Mobile Sticky Charge + Submit Bar
+   - Sudhu <= 991px (tablet + mobile)
+   - JS dekhay: jokhon asol Submit button screen e nai
+   - Theme e mobile bottom-nav thakle tar upore bose (auto detect)
+================================================ */
+:root{ --bd-sticky-pad: 0px; }
+
+.bd-sticky-bar{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: var(--bd-sticky-offset, 0px);
+  z-index: 1030;                 /* modal (1050+) o select2 dropdown er niche */
+  box-sizing: border-box;
+  background: #fff;
+  color: #141627;
+  border-top: 1px solid rgba(5,193,145,.35);
+  box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+  padding: 8px 12px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(110%);
+  visibility: hidden;
+  transition: transform .25s ease, visibility 0s linear .25s;
+  will-change: transform;
+}
+.bd-sticky-bar.is-visible{
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform .25s ease, visibility 0s;
+}
+@media (min-width: 992px){
+  .bd-sticky-bar{ display: none !important; }
+}
+
+.bd-sticky-bar__inner{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.bd-sticky-bar__charge{
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.bd-sticky-bar__label{
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  opacity: .7;
+}
+.bd-sticky-bar__value{
+  font-size: 17px;
+  font-weight: 700;
+  color: #05c191;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bd-sticky-bar__submit{
+  flex: 0 0 auto;
+  min-width: 42%;
+  max-width: 60%;
+  min-height: 44px;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bd-sticky-bar__submit:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Bar dekhale page er niche jayga rakha, jate content bar er pichone na lukay */
+body.bd-sticky-bar-on{
+  padding-bottom: var(--bd-sticky-pad);
+}
+
+/* Night mode */
+.dashboard.nightmode .bd-sticky-bar,
+[data-bs-theme="dark"] .bd-sticky-bar,
+.bd-sticky-bar.is-dark{
+  background: #0b0b0b;
+  color: #fff;
+  border-top-color: #333;
+  box-shadow: 0 -6px 20px rgba(0,0,0,.5);
+}
 </style>
 <!-- ==============================================
     BDCLICK24 - ULTIMATE PREMIUM POPUP SYSTEM (OPTIMIZED)
@@ -1601,6 +1696,261 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
   </div>
 </div>
+
+<!-- ================================================
+     MOBILE STICKY CHARGE + SUBMIT BAR
+     (JS eta body te niye jay; <=991px e, asol Submit
+      screen er baire gele dekhay)
+================================================ -->
+<div class="bd-sticky-bar" id="bdStickyOrderBar" aria-hidden="true">
+  <div class="bd-sticky-bar__inner">
+    <div class="bd-sticky-bar__charge">
+      <span class="bd-sticky-bar__label">{{ lang.Charge }}</span>
+      <span class="bd-sticky-bar__value" id="bdStickyCharge" aria-live="polite">—</span>
+    </div>
+    <button type="button" class="btn btn-primary bd-sticky-bar__submit" id="bdStickySubmit">{{ lang.Submit }}</button>
+  </div>
+</div>
+
+<script>
+/* ================================================
+   Mobile Sticky Charge + Submit Bar
+   - Sudhu <= 991px e kaj kore
+   - Asol Submit button viewport e na thakle bar dekhay
+   - Charge value + Submit text/disabled live mirror hoy
+   - Bar er Submit = asol Submit button click
+     (panel er validation / submit handler sob same thake)
+================================================ */
+(function () {
+  var bar = document.getElementById('bdStickyOrderBar');
+  if (!bar) return;
+
+  var barValue = document.getElementById('bdStickyCharge');
+  var barBtn   = document.getElementById('bdStickySubmit');
+  if (!barValue || !barBtn) return;
+
+  var mq = window.matchMedia ? window.matchMedia('(max-width: 991.98px)') : null;
+
+  var shown       = false;
+  var btnInView   = true;
+  var offset      = 0;      // theme er bottom-nav thakle tar height
+  var pollTimer   = null;
+  var io          = null;
+  var observedBtn = null;
+  var raf         = null;
+
+  function isMobile()   { return mq ? mq.matches : window.innerWidth < 992; }
+  function getForm()    { return document.querySelector('.component_button_forms'); }
+  function getRealBtn() { var f = getForm(); return f ? f.querySelector('button[type="submit"]') : null; }
+  function getCharge()  { return document.getElementById('charge'); }
+
+  // Bar ke body te niye jai -> kono parent er transform/overflow e "fixed" vange na
+  if (bar.parentNode !== document.body) document.body.appendChild(bar);
+
+  /* ---------- Mirror: Charge ---------- */
+  function syncCharge() {
+    var el = getCharge();
+    var v  = el ? String(el.value || '').trim() : '';
+    var t  = v || '—';
+    if (barValue.textContent !== t) barValue.textContent = t;
+  }
+
+  // #charge readonly input -> panel JS .val()/.value diye set kore (kono event fire hoy na)
+  // tai value setter hook kore live update kori
+  function hookCharge(el) {
+    if (!el || el.__bdStickyHooked) return;
+    el.__bdStickyHooked = true;
+    try {
+      var d = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+      if (d && d.get && d.set) {
+        Object.defineProperty(el, 'value', {
+          configurable: true,
+          get: function () { return d.get.call(this); },
+          set: function (v) { d.set.call(this, v); syncCharge(); }
+        });
+      }
+    } catch (e) {}
+    el.addEventListener('input', syncCharge);
+    el.addEventListener('change', syncCharge);
+  }
+
+  /* ---------- Mirror: Submit text + disabled ---------- */
+  function syncBtn() {
+    var b = getRealBtn();
+    if (!b) return;
+    var dis = !!b.disabled;
+    if (barBtn.disabled !== dis) barBtn.disabled = dis;
+    var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+    if (t && barBtn.textContent !== t) barBtn.textContent = t;
+  }
+
+  barBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var b = getRealBtn();
+    if (!b || b.disabled) return;
+    b.click();   // asol submit -> HTML5 validation + panel er handler ek e vabe cholbe
+  });
+
+  /* ---------- Theme er mobile bottom-nav thakle tar upore bosbe ---------- */
+  function detectOffset() {
+    var found = 0;
+    try {
+      if (document.elementsFromPoint) {
+        var list = document.elementsFromPoint(Math.floor(window.innerWidth / 2), window.innerHeight - 2);
+        for (var i = 0; i < list.length && !found; i++) {
+          var f = list[i];
+          if (f === bar || bar.contains(f)) continue;
+          while (f && f !== document.body && f !== document.documentElement) {
+            if (getComputedStyle(f).position === 'fixed') {
+              var r = f.getBoundingClientRect();
+              if (r.width  >= window.innerWidth  * 0.6 &&
+                  r.height <  window.innerHeight * 0.4 &&
+                  r.bottom >= window.innerHeight - 4) {
+                found = Math.round(window.innerHeight - r.top);
+              }
+              break;
+            }
+            f = f.parentElement;
+          }
+        }
+      }
+    } catch (e) {}
+    offset = found > 0 ? found : 0;
+    bar.style.setProperty('--bd-sticky-offset', offset + 'px');
+  }
+
+  /* ---------- Theme (night mode) sync: bar body te thake tai class diye ---------- */
+  function syncTheme() {
+    var dark = !!document.querySelector('.dashboard.nightmode, body.nightmode, .nightmode') ||
+               document.documentElement.getAttribute('data-bs-theme') === 'dark' ||
+               document.body.getAttribute('data-bs-theme') === 'dark';
+    bar.classList.toggle('is-dark', dark);
+  }
+
+  /* ---------- Show / hide ---------- */
+  function applyPadding() {
+    var pad = shown ? (bar.offsetHeight + offset) : 0;
+    document.documentElement.style.setProperty('--bd-sticky-pad', pad + 'px');
+  }
+
+  function update() {
+    var b = getRealBtn();
+    var formVisible = !!(b && b.offsetParent !== null);   // hidden tab / hidden form hole bar o hide
+    var show = isMobile() && formVisible && !btnInView;
+
+    if (show !== shown) {
+      shown = show;
+      if (show) { syncCharge(); syncBtn(); syncTheme(); detectOffset(); }
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      document.body.classList.toggle('bd-sticky-bar-on', show);
+
+      // Backup sync (sudhu bar dekhano obosthay)
+      if (show && !pollTimer) pollTimer = setInterval(function () { syncCharge(); syncBtn(); }, 400);
+      if (!show && pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+    }
+    applyPadding();
+  }
+
+  // Fallback (IntersectionObserver na thakle)
+  function checkByRect() {
+    var b = getRealBtn();
+    if (!b) return;
+    var r     = b.getBoundingClientRect();
+    var limit = window.innerHeight - Math.max(56, bar.offsetHeight + offset);
+    var vis   = Math.min(r.bottom, limit) - Math.max(r.top, 0);
+    btnInView = r.height > 0 && vis >= r.height * 0.5;
+    update();
+  }
+
+  function observeBtn() {
+    var b = getRealBtn();
+    if (io) { io.disconnect(); io = null; }
+    observedBtn = b;
+    if (!b || !('IntersectionObserver' in window)) return;
+
+    // Bar er height porimap niche theke bad dei -> button bar er pichone thakleo "not visible"
+    var m = Math.max(56, bar.offsetHeight + offset);
+    io = new IntersectionObserver(function (entries) {
+      var en = entries[entries.length - 1];
+      btnInView = en.isIntersecting && en.intersectionRatio >= 0.5;
+      update();
+    }, { root: null, threshold: [0, 0.5, 1], rootMargin: '0px 0px -' + m + 'px 0px' });
+    io.observe(b);
+  }
+
+  function refresh() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = null;
+      hookCharge(getCharge());
+      if (getRealBtn() !== observedBtn) observeBtn();
+      syncCharge();
+      syncBtn();
+      if (io) update(); else checkByRect();
+    });
+  }
+
+  /* ---------- Focused input jeno bar er pichone na lukay ---------- */
+  document.addEventListener('focusin', function (e) {
+    if (!shown) return;
+    var t = e.target, f = getForm();
+    if (!t || !f || !f.contains(t)) return;
+    if (!/^(INPUT|TEXTAREA|SELECT)$/i.test(t.tagName)) return;
+    setTimeout(function () {
+      try {
+        var r = t.getBoundingClientRect();
+        if (r.bottom > bar.getBoundingClientRect().top - 8) {
+          t.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      } catch (err) {}
+    }, 300);
+  });
+
+  /* ---------- Init ---------- */
+  function init() {
+    hookCharge(getCharge());
+    syncTheme();
+    detectOffset();
+    observeBtn();
+    if (io) update(); else { checkByRect(); document.addEventListener('scroll', checkByRect, true); }
+
+    // Panel form re-render korle (fields / button / charge) abar sync
+    var f = getForm();
+    if (f && window.MutationObserver) {
+      new MutationObserver(refresh).observe(f, {
+        childList: true, subtree: true,
+        attributes: true, attributeFilter: ['disabled', 'class', 'value', 'style']
+      });
+    }
+
+    // Night mode toggle dhorar jonno
+    if (window.MutationObserver) {
+      var themeObs = new MutationObserver(syncTheme);
+      var opts = { attributes: true, attributeFilter: ['class', 'data-bs-theme'] };
+      themeObs.observe(document.documentElement, opts);
+      themeObs.observe(document.body, opts);
+      var dash = document.querySelector('.dashboard');
+      if (dash && dash !== document.body) themeObs.observe(dash, opts);
+    }
+
+    var rt = null;
+    function onResize() {
+      clearTimeout(rt);
+      rt = setTimeout(function () { detectOffset(); observeBtn(); refresh(); }, 150);
+    }
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+    if (mq) { if (mq.addEventListener) mq.addEventListener('change', onResize); else if (mq.addListener) mq.addListener(onResize); }
+
+    // Footer er script (theme bottom-nav, panel JS) load howar por abar
+    window.addEventListener('load', function () { detectOffset(); observeBtn(); refresh(); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
 <script>
 (function () {
     const targetDesc = document.getElementById("service_descriptions");
