@@ -1,0 +1,1951 @@
+{% include 'header.twig' %}
+<style>
+ /* ================================
+   Select2 + UI Global Fixes (Assembled)
+================================ */
+
+#neworder_category,
+#neworder_services {
+    display: none !important;
+}
+   
+/* Badge inside selected option */
+.select2-results__option.select2-results__option--selected.select2-results__option--selectable .badge{
+  background-color: #000;
+}
+
+/* Active pill bg */
+.header_buttons .nav-pills .nav-item .nav-link.active{
+  background: #fff !important;
+}
+
+/* Hide old service description */
+#service_description{
+  display: none;
+}
+
+/* Custom search results dropdown show */
+#searchServicesResultsDropdown.show{
+  display: block !important;
+}
+
+/* Select2 option base */
+.select2-results__option{
+  border-bottom: 1px solid #05c19133;
+  font-size: 15px;
+  padding: 5px 0 5px 10px;
+  border-radius: 0 !important;
+}
+
+/* Select2 selected option */
+.select2-results__option.select2-results__option--selected.select2-results__option--selectable{
+  background-color: #05c191;
+  color: #fff;
+}
+
+/* Rendered text size */
+.select2-container .select2-selection--single .select2-selection__rendered{
+  font-size: 15px;
+}
+
+/* Selection box style */
+.select2-container .select2-selection--single{
+  background-color: #e5fff8 !important;
+  border: 1px solid #05c191 !important;
+}
+
+/* When open, match border + remove bottom radius */
+.select2-container--open .select2-selection{
+  border: 1px solid #05c191 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Dropdown (main container) */
+.select2-container--open .select2-dropdown{
+  border: 1px solid #05c191 !important;
+  z-index: 999999 !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+}
+
+/* Results list max-height + scroll */
+.select2-results__options{
+  max-height: 390px !important;
+  overflow-y: auto !important;
+}
+
+/* Dropdown search box */
+.select2-search--dropdown{
+   display: none !important;
+}
+
+/* Hover / highlighted: keep normal font */
+.select2-results__option--highlighted,
+.select2-results__option:hover{
+  font-weight: normal !important;
+  transition: none !important;
+}
+
+/* Hover bg */
+.select2-results__option[aria-selected]:hover{
+  background-color: #05c1912e !important;
+  cursor: pointer;
+}
+
+/* Highlight text color fix (selectable) */
+.select2-results__option.select2-results__option--highlighted.select2-results__option--selectable{
+  color: #141627 !important;
+}
+
+/* Highlight background (general) */
+.select2-results__option--highlighted{
+  background-color: #05c1912e !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Selected + highlighted */
+.select2-results__option--selected.select2-results__option--highlighted{
+  background-color: #05c191 !important;
+  color: #fff !important;
+}
+
+/* Scrollbar */
+.select2-results__options::-webkit-scrollbar{ width: 6px; }
+.select2-results__options::-webkit-scrollbar-track{ background: #f1f1f1; }
+.select2-results__options::-webkit-scrollbar-thumb{
+  background: #05c191;
+  border-radius: 3px;
+}
+
+/* Force dropdown always below (disable flip) */
+.select2-container--open .select2-dropdown--above{
+  top: 100% !important;
+  bottom: auto !important;
+}
+
+/* Generic badge */
+.badge{
+  min-width: 30px;
+  background: var(--primary-color);
+  color: var(--white);
+  border-radius: 20px;
+}
+
+/* Remove shadow from search results wrap */
+.body .form-group .search-results{
+  box-shadow: none !important;
+}
+
+/* Active button */
+button.active{
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--white) !important;
+}
+
+/* ================================
+   Platforms Grid
+================================ */
+.platforms{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px 20px;
+}
+
+@media only screen and (max-width: 550px){
+  .platforms{ grid-template-columns: repeat(6, 1fr); }
+}
+
+@media only screen and (max-width: 400px){
+  .platforms{ grid-template-columns: repeat(4, 1fr); }
+}
+
+.platforms-item{
+  box-sizing: border-box;
+  padding-bottom: 8px;
+}
+
+.platforms-item__with-icon{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.platforms-item__without-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.platforms-item__icon{
+  display: flex;
+  max-height: 72px;
+  height: calc(1em + 10px);
+  width: calc(1em + 10px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--platforms_icon_color);
+}
+
+.platforms-item__icon svg{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.platforms-item__title{
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--platforms_text_color);
+}
+
+.platforms-item button{
+  width: 100%;
+  min-height: 40px;
+  font-weight: 400;
+  font-style: normal;
+  padding: 8px 16px;
+  background: var(--platforms_background_color);
+  border-color: var(--platforms_border_color);
+  border-style: solid;
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.platforms-item button:hover{
+  background: var(--platforms_hover_background_color);
+  border-color: var(--platforms_hover_border_color);
+}
+
+.platforms-item button:hover .platforms-item__title{
+  color: var(--platforms_hover_text_color);
+}
+
+.platforms-item button:hover .platforms-item__icon{
+  color: var(--platforms_hover_icon_color);
+}
+
+.platforms-item button.active .platforms-item__title{
+  color: var(--platforms_active_text_color) !important;
+}
+
+.platforms-item button.active .platforms-item__icon{
+  color: var(--platforms_active_icon_color) !important;
+}
+
+/* Nightmode + Bootstrap dark mode */
+.dashboard.nightmode .platforms-item__with-icon,
+[data-bs-theme="dark"] .platforms-item__with-icon{
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #333 !important;
+}
+
+.dashboard.nightmode .platforms-item__with-icon:hover,
+[data-bs-theme="dark"] .platforms-item__with-icon:hover{
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+}
+
+.dashboard.nightmode .platforms-item__with-icon.active,
+[data-bs-theme="dark"] .platforms-item__with-icon.active{
+  background-color: #1a1a1a !important;
+  color: var(--text-primary) !important;
+}
+
+.dashboard.nightmode .platforms-item__title,
+[data-bs-theme="dark"] .platforms-item__title{
+  color: #fff !important;
+}
+
+.dashboard.nightmode .platforms-item__with-icon.active .platforms-item__title,
+[data-bs-theme="dark"] .platforms-item__with-icon.active .platforms-item__title{
+  color: var(--text-primary) !important;
+}
+
+.dashboard.nightmode .category_filter_wrap,
+[data-bs-theme="dark"] .category_filter_wrap{
+  background-color: #000 !important;
+}
+
+.dashboard.nightmode .card_v2,
+[data-bs-theme="dark"] .card_v2{
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.dashboard.nightmode .card_v2 .card-body,
+[data-bs-theme="dark"] .card_v2 .card-body{
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Mobile: icon-only */
+@media (max-width: 768px){
+  .platforms-item__with-icon{
+    justify-content: center;
+    gap: 0;
+  }
+  .platforms-item__title{
+    display: none;
+  }
+}
+
+/* ================================
+   Alert Close Button
+================================ */
+.alert .close{
+  background: rgba(0,0,0,0.06);
+  border: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  padding: 0;
+  font-size: 13px;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+/* ================================
+   Description Filter (Hide average time)
+================================ */
+/* Only original form average time hide */
+
+/* Make form items reorderable */
+.component_button_forms{
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flatten #neworder_fields children into the same flex stack */
+#neworder_fields{
+  display: contents;
+}
+
+/* Put Average Time just above Charge */
+#neworder_fields .form-group:has(#field-orderform-fields-average_time){
+  order: 90;
+}
+
+/* Charge after Average Time */
+#charge_div{
+  order: 91;
+}
+
+/* Keep submit at bottom */
+.component_button_forms button[type="submit"]{
+  order: 999;
+}
+
+#service_descriptions{
+  display: block !important;
+}
+
+/* Each line as separate block */
+.desc-line{
+  display: block !important;
+  width: 100% !important;
+  padding-bottom: 0 !important;
+  line-height: 1.5 !important;
+  font-size: 14px;
+  color: inherit;
+  word-wrap: break-word;
+}
+
+.desc-line:first-child{
+  margin-bottom: 0 !important;
+}
+
+/* We use DIV, so hide BR */
+#service_descriptions br{
+  display: none;
+}
+/* ================================
+   Select2 Night Mode (Category + Service)
+================================ */
+
+/* Selection box */
+.dashboard.nightmode .select2-container .select2-selection--single,
+[data-bs-theme="dark"] .select2-container .select2-selection--single{
+  background: #0b0b0b !important;
+  border: 1px solid #333 !important;
+}
+
+/* Selected text */
+.dashboard.nightmode .select2-container .select2-selection__rendered,
+[data-bs-theme="dark"] .select2-container .select2-selection__rendered{
+  color: #fff !important;
+}
+
+/* Dropdown */
+.dashboard.nightmode .select2-dropdown,
+[data-bs-theme="dark"] .select2-dropdown{
+  background: #0b0b0b !important;
+  border: 1px solid #333 !important;
+}
+
+/* Options */
+.dashboard.nightmode .select2-results__option,
+[data-bs-theme="dark"] .select2-results__option{
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* ✅ Hover + Keyboard Highlight */
+.dashboard.nightmode .select2-results__option--highlighted,
+.dashboard.nightmode .select2-results__option[aria-selected]:hover,
+[data-bs-theme="dark"] .select2-results__option--highlighted,
+[data-bs-theme="dark"] .select2-results__option[aria-selected]:hover{
+  background-color: #05c1912e !important;
+  color: #fff !important;
+}
+
+/* ✅ Selected item (clicked one) */
+.dashboard.nightmode .select2-results__option--selected,
+[data-bs-theme="dark"] .select2-results__option--selected{
+  background-color: #05c191 !important;
+  color: #fff !important;
+}
+
+/* Scrollbar */
+.dashboard.nightmode .select2-results__options::-webkit-scrollbar-track,
+[data-bs-theme="dark"] .select2-results__options::-webkit-scrollbar-track{
+  background: #111 !important;
+}
+
+.dashboard.nightmode .select2-results__options::-webkit-scrollbar-thumb,
+[data-bs-theme="dark"] .select2-results__options::-webkit-scrollbar-thumb{
+  background: #05c191 !important;
+}
+ 
+/* SAFE Z INDEX */
+#myModal{z-index:2000}
+.modal-backdrop{z-index:1990}
+
+/* BOX */
+#myModal .bdTgBox{
+  border-radius:18px;
+  overflow:hidden;
+  background:#111; /* fallback */
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+}
+
+/* HEADER */
+#myModal .bdTgHeader{
+  padding:18px 16px 12px;
+  position:relative;
+}
+
+/* LOGO */
+#myModal .bdTgLogo{
+  height:36px;
+}
+
+/* DIVIDER */
+#myModal .bdLogoLine{
+  width:60%;
+  height:1px;
+  background:rgba(255,255,255,.2);
+  margin:12px auto 0;
+}
+
+/* TEXT */
+#myModal .bdTgText{color:#fff}
+
+#myModal .bdTgTitle{
+  font-weight:700;
+  font-size:18px;
+}
+
+#myModal .bdTgSub{
+  font-size:13px;
+  opacity:.85;
+}
+
+/* IMAGE */
+#myModal .bdTgImageWrap{
+  border-radius:14px;
+  overflow:hidden;
+}
+
+#myModal .bdTgImage{
+  width:100%;
+  display:block;
+}
+
+/* BUTTON AREA */
+#myModal .bdTgFooter{
+  display:flex;
+  gap:12px;
+}
+
+#myModal .bdTgFooter .btn{
+  flex:1;
+  border-radius:14px;
+  padding:12px;
+  font-weight:600;
+  border:none;
+}
+
+/* CLOSE */
+#myModal .bdBtnClose{
+  background:#ef4444;
+  color:#fff;
+}
+
+/* JOIN BTN */
+#myModal .bdBtnJoin{
+  position:relative;
+  background:#229ED9;
+  color:#fff;
+  overflow:hidden;
+  transition:.25s;
+  box-shadow:
+  0 0 10px rgba(34,158,217,.6),
+  0 0 25px rgba(34,158,217,.4);
+}
+
+/* SHINE */
+#myModal .bdBtnJoin::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-75%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+  transform:skewX(-25deg);
+  animation:shineMove 2.8s infinite;
+}
+
+@keyframes shineMove{
+  0%{left:-75%}
+  100%{left:130%}
+}
+
+#myModal .bdBtnJoin:hover{
+  transform:translateY(-2px);
+}
+
+/* MOBILE */
+@media(max-width:575px){
+  #myModal .modal-dialog{margin:12px;}
+}
+ .ai-promo {
+
+  margin: 10px auto;
+  padding: 12px 18px;
+  background: linear-gradient(90deg, #06b085, #06b085);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  color: white;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.ai-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ai-icon {
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.ai-info {
+  flex-grow: 1;
+}
+
+.ai-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ai-info p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.ai-btn {
+  background: white;
+  color: #6366f1;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.ai-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+.ai-shine {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: ai-shine 2s infinite;
+}
+
+@keyframes ai-shine {
+  0% { left: -100%; }
+  40%, 100% { left: 100%; }
+}
+
+@media (max-width: 480px) {
+  .ai-info p { display: none; } /* মোবাইলে আরও শর্ট দেখাবে */
+  .ai-info h3 { font-size: 14px; }
+  .ai-promo { padding: 10px 15px; }
+}
+    
+   
+</style>
+<!-- ==============================================
+    BDCLICK24 - ULTIMATE PREMIUM POPUP SYSTEM (OPTIMIZED)
+=============================================== -->
+
+<!-- 1. HTML MODALS -->
+<div class="modal fade" id="bdUltimateNotice" tabindex="-1" aria-hidden="true" style="z-index: 9999999;">
+    <div class="modal-dialog modal-dialog-centered position-relative bd-modal-custom">
+        <div class="ui-glow-aura"></div>
+        <div class="modal-content bdc-ultimate-card">
+            <div class="ultimate-icon-wrap">
+                <div class="ultimate-icon-box">
+                    <svg class="anim-bell" width="28" height="28" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22Z" fill="#05c191"/>
+                        <path d="M18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z" fill="#05c191"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- ✅ ইউনিক ক্লাস ব্যবহার করা হয়েছে এবং text-center বাদ দেওয়া হয়েছে -->
+            <div class="modal-body bdc-ultimate-content-body">
+                <div class="premium-badge-wrapper mb-2">
+                    <div class="announcement-badge">
+                        <span class="live-dot"></span>
+                        <span id="dynBadge">SYSTEM UPDATE</span>
+                    </div>
+                </div>
+                <div class="announcement-text-content">
+                    <h2 class="main-msg-title" id="dynTitle">Loading...</h2>
+                    <p class="bdc-notice-desc-text" id="dynDesc">Please wait...</p>
+                </div>
+                <button type="button" class="premium-btn-action mt-3" data-bs-dismiss="modal">
+                    I Understand <span class="btn-shine"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="bdServiceUpdateModal" tabindex="-1" aria-hidden="true" style="z-index: 9999998;">
+    <div class="modal-dialog modal-dialog-centered position-relative bd-modal-custom">
+        <div class="ui-glow-aura"></div>
+        <div class="modal-content bdc-ultimate-card">
+            <div class="ultimate-icon-wrap">
+                <div class="ultimate-icon-box">
+                    <span class="rocket-icon" style="font-size: 28px;">🚀</span>
+                </div>
+            </div>
+            <!-- ✅ ইউনিক ক্লাস ব্যবহার করা হয়েছে এবং text-center বাদ দেওয়া হয়েছে -->
+            <div class="modal-body bdc-ultimate-content-body">
+                <div class="premium-badge-wrapper mb-2">
+                    <div class="announcement-badge">
+                        <span class="live-dot"></span>
+                        <span id="dynSrvCategory">SERVICE UPDATE</span>
+                    </div>
+                </div>
+                <div class="announcement-text-content">
+                    <h2 class="main-msg-title">New Services Added</h2>
+                    <div id="dynSrvList" class="srv-list-container"></div>
+                </div>
+                
+                <div class="modal-footer-custom mt-3">
+                    <button type="button" class="premium-btn-action btn-close-srv" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="premium-btn-action btn-join-srv" id="btnJoinChannel">
+                        Join Channel <span class="btn-shine"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. PREMIUM CSS & ANIMATIONS -->
+<style>
+    
+:root { --theme-color: #05c191; }
+.modal-backdrop.show { opacity: 0.8 !important; backdrop-filter: blur(12px) saturate(160%); }
+
+@media (min-width: 992px) { .bd-modal-custom { min-width: 550px !important; } }
+
+.ui-glow-aura { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 85%; background: radial-gradient(circle, rgba(5,193,145,0.4) 0%, rgba(5,193,145,0) 70%); filter: blur(45px); z-index: 0; pointer-events: none; animation: pulseAura 4s infinite alternate; }
+.bdc-ultimate-card { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(5, 193, 145, 0.3) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; z-index: 1; padding-top: 20px; border:none; }
+.dashboard.nightmode .bdc-ultimate-card { background: rgba(20, 22, 39, 0.96) !important; border-color: rgba(5, 193, 145, 0.2) !important; }
+
+.main-msg-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.3px; background: linear-gradient(135deg, #111 0%, #05c191 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;  text-align: center !important;  }
+.dashboard.nightmode .main-msg-title { background: linear-gradient(135deg, #fff 0%, #05c191 100%); -webkit-background-clip: text; }
+
+/* ✅ ইউনিক ক্লাস - ডেসক্রিপশনের জন্য */
+.bdc-notice-desc-text { 
+    font-size: 14.5px; 
+    font-weight: 500; 
+    line-height: 1.6; 
+    color: #141627; 
+    opacity: 0.9; 
+    margin-bottom: 15px; 
+  
+}
+.dashboard.nightmode .bdc-notice-desc-text { 
+    color: #ccc; 
+}
+
+.ultimate-icon-wrap { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); z-index: 10; }
+.ultimate-icon-box { width: 60px; height: 60px; background: #ffffff; border-radius: 18px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--theme-color); box-shadow: 0 10px 25px rgba(5, 193, 145, 0.2); transform: rotate(-3deg); animation: boxPulse 2s infinite; }
+.dashboard.nightmode .ultimate-icon-box { background: #1a1a1a !important; }
+.anim-bell { animation: ring 4s .7s ease-in-out infinite; transform-origin: 50% 4px; }
+@keyframes ring { 0%, 43%, 100% { transform: rotate(0); } 1%, 9%, 17%, 25%, 33%, 41% { transform: rotate(15deg); } 3%, 11%, 19%, 27%, 35%, 39% { transform: rotate(-15deg); } }
+.rocket-icon { display: inline-block; animation: floatingRocket 3s ease-in-out infinite; }
+@keyframes floatingRocket { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-6px) rotate(5deg); } }
+@keyframes boxPulse { 0%, 100% { box-shadow: 0 8px 20px rgba(5, 193, 145, 0.15); } 50% { box-shadow: 0 8px 30px rgba(5, 193, 145, 0.3); } }
+
+/* ✅ বডির জন্য ইউনিক ক্লাস এবং text-align center যুক্ত করা হয়েছে */
+.bdc-ultimate-content-body { 
+    padding: 30px 24px 20px; 
+  
+}
+
+.announcement-badge { background: rgba(5, 193, 145, 0.1); color: var(--theme-color); padding: 5px 14px; border-radius: 50px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(5, 193, 145, 0.2); }
+.premium-badge-wrapper { display: flex; justify-content: center; margin-bottom: 10px; }
+.live-dot { width: 8px; height: 8px; background: var(--theme-color); border-radius: 50%; animation: pulse-green 2s infinite; }
+
+.srv-list-container { max-height: 310px; overflow-y: auto; padding: 4px; margin-bottom: 5px; }
+.srv-list-container::-webkit-scrollbar { width: 5px; }
+.srv-list-container::-webkit-scrollbar-thumb { background: rgba(5, 193, 145, 0.3); border-radius: 10px; }
+
+.srv-row { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 8px;
+    text-align: left; 
+    padding: 8px 12px; 
+    margin-bottom: 6px; 
+    border-radius: 8px; 
+    background: rgba(0,0,0,0.03); 
+    border: 1px solid transparent; 
+    transition: 0.3s; 
+    animation: slideInUp 0.5s ease forwards; 
+    opacity: 0; 
+    cursor: pointer; 
+}
+.dashboard.nightmode .srv-row { background: rgba(255,255,255,0.05); color: #fff; }
+.srv-row:hover { background: rgba(5, 193, 145, 0.08) !important; border-color: rgba(5, 193, 145, 0.4) !important; transform: translateX(4px); }
+
+.srv-info { flex: 1; font-size: 13.5px; line-height: 1.3; word-break: break-word; }
+.srv-price { 
+    font-weight: 700; 
+    color: #05c191; 
+    white-space: nowrap; 
+    background: rgba(5, 193, 145, 0.1); 
+    padding: 3px 8px; 
+    border-radius: 6px; 
+    font-size: 12px;
+}
+
+/* বাটনের কমন স্টাইল */
+.premium-btn-action { width: 100%; padding: 12px; background: var(--theme-color); color: #fff !important; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; position: relative; overflow: hidden; box-shadow: 0 6px 15px rgba(5, 193, 145, 0.25); transition: 0.3s; }
+.premium-btn-action:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(5, 193, 145, 0.35); }
+.btn-shine { position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shine-loop 3s infinite; }
+
+/* ✅ নতুন বাটনের ফ্লেক্স লেআউট এবং কালার */
+.modal-footer-custom { display: flex; gap: 12px; justify-content: center; width: 100%; }
+.modal-footer-custom .premium-btn-action { flex: 1; font-size: 14.5px; }
+
+/* Close বাটন স্টাইল (আগের সবুজ রঙের জন্য) */
+.btn-close-srv { background: var(--theme-color) !important; color: #fff !important; box-shadow: 0 6px 15px rgba(5, 193, 145, 0.25) !important; }
+.btn-close-srv:hover { box-shadow: 0 10px 20px rgba(5, 193, 145, 0.35) !important; }
+
+/* Join Channel বাটন স্টাইল (টেলিগ্রাম ব্লু) */
+.btn-join-srv { background: #24A1DE !important; box-shadow: 0 6px 15px rgba(36, 161, 222, 0.25) !important; }
+.btn-join-srv:hover { box-shadow: 0 10px 20px rgba(36, 161, 222, 0.35) !important; }
+
+@keyframes slideInUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes pulse-green { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5, 193, 145, 0.5); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(5, 193, 145, 0); } 100% { transform: scale(0.95); } }
+@keyframes shine-loop { 0% { left: -100%; } 30% { left: 100%; } 100% { left: 100%; } }
+@keyframes pulseAura { 0% { opacity: 0.4; } 100% { opacity: 0.8; } }
+</style>
+
+<!-- 3. SCRIPT WITH FIXED LOGIC -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const apiUrl = 'https://pay.bdclick24.com/admin/api_notice.php?time=' + new Date().getTime();
+    let popupsQueue = []; 
+    let currentIndex = 0;
+    
+    let m1, m2;
+    try {
+        m1 = new bootstrap.Modal(document.getElementById('bdUltimateNotice'));
+        m2 = new bootstrap.Modal(document.getElementById('bdServiceUpdateModal'));
+    } catch(e) { return; }
+
+    function setNoticeCookie(name, days) {
+        if (!days || days <= 0) return;
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = name + "=true; expires=" + date.toUTCString() + "; path=/; SameSite=Lax";
+    }
+
+    function getNoticeCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for(let i=0;i < ca.length;i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    // শুধুমাত্র 'always' এর জন্য sessionStorage অ্যাড করা হয়েছে
+    window.handleSrvClick = function(id, cookieName, expiry, freq) {
+        if (freq === 'always') {
+            sessionStorage.setItem(cookieName, 'true');
+        } else if (expiry > 0) {
+            setNoticeCookie(cookieName, expiry);
+        }
+        
+        m2.hide();
+        setTimeout(function() {
+            window.location.href = '/order?service=' + id;
+        }, 100);
+    };
+
+    fetch(apiUrl).then(res => res.ok ? res.json() : []).then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+            popupsQueue = data;
+            setTimeout(showNext, 200); 
+        }
+    });
+
+    document.getElementById('bdUltimateNotice').addEventListener('hidden.bs.modal', next);
+    document.getElementById('bdServiceUpdateModal').addEventListener('hidden.bs.modal', next);
+
+    function next() {
+        currentIndex++; 
+        if (currentIndex < popupsQueue.length) setTimeout(showNext, 500); 
+    }
+
+    function showNext() {
+        const item = popupsQueue[currentIndex];
+        if (!item) return;
+
+        const cookieName = "bd_popup_" + item.type + "_" + item.id;
+        
+        // এখানে sessionStorage চেক করা হচ্ছে
+        if (getNoticeCookie(cookieName) || sessionStorage.getItem(cookieName)) {
+            next();
+            return;
+        }
+
+        let freq = item.data.frequency || 'always';
+        let expiry = 0;
+        if (freq === '1_hour') expiry = 1/24;
+        else if (freq === '24_hours') expiry = 1;
+        else if (freq === '7_days') expiry = 7;
+        else if (freq === 'once') expiry = 365;
+
+        if (item.type === 'system') {
+            document.getElementById('dynBadge').innerText = item.data.badge || 'UPDATE';
+            document.getElementById('dynTitle').innerText = item.data.title;
+            document.getElementById('dynDesc').innerHTML = item.data.description.replace(/\n/g, '<br>');
+            
+            document.querySelector('#bdUltimateNotice .premium-btn-action').onclick = function() {
+                // always হলে সেশন স্টোরেজে সেভ হবে
+                if (freq === 'always') sessionStorage.setItem(cookieName, 'true');
+                else setNoticeCookie(cookieName, expiry);
+            };
+            m1.show();
+            
+        } else if (item.type === 'service') {
+            document.getElementById('dynSrvCategory').innerText = item.data.category || 'SERVICE UPDATE';
+            let parsed = item.data.parsed_data;
+            if (typeof parsed === 'string') { try { parsed = JSON.parse(parsed); } catch(e) { parsed = []; } }
+            
+            let html = '';
+            if (Array.isArray(parsed)) {
+                parsed.forEach((s, i) => {
+                    html += `
+                    <div class="srv-row" style="animation-delay: ${i * 0.05}s" 
+                         onclick="handleSrvClick('${s.id}', '${cookieName}', ${expiry}, '${freq}')">
+                        <div class="srv-info">
+                            <b>ID: ${s.id}</b> - ${s.name}
+                        </div>
+                        <div class="srv-price">
+                            ${s.price}
+                        </div>
+                    </div>`;
+                });
+            }
+            document.getElementById('dynSrvList').innerHTML = html;
+
+            document.querySelector('.btn-close-srv').onclick = function() {
+                // always হলে সেশন স্টোরেজে সেভ হবে
+                if (freq === 'always') sessionStorage.setItem(cookieName, 'true');
+                else setNoticeCookie(cookieName, expiry);
+            };
+
+            document.getElementById('btnJoinChannel').onclick = function() {
+                // always হলে সেশন স্টোরেজে সেভ হবে
+                if (freq === 'always') sessionStorage.setItem(cookieName, 'true');
+                else setNoticeCookie(cookieName, expiry);
+                
+                m2.hide(); 
+                setTimeout(function() {
+                    window.open('https://t.me/bdclick24', '_blank'); 
+                }, 200);
+            };
+
+            m2.show();
+        }
+    }
+});
+</script>
+ <!-- Top Part -->
+<div class="container-fluid">
+    <div class="row">
+              <div class="col-12">
+             <!--     <div class="ai-promo">
+  <div class="ai-content">
+    <div class="ai-icon">🤖</div>
+    <div class="ai-info">
+      <h3>AI Support is Live!</h3>
+      <p>Instant solutions for your orders, 24/7.</p>
+    </div>
+    <a href="https://t.me/bdclick24_bot" target="_blank" class="ai-btn">
+      Chat Now <span class="ai-shine"></span>
+    </a>
+  </div>
+</div>-->
+
+          <div id="low-balance-alert" class="alert alert-warning mb-2" style="display: none;">
+    Your balance is low, Please <a href="/addfunds">Add Funds Now.</a>
+</div>
+        </div>
+       
+  <!-- #### Notices -->
+    </div> 
+  </div>
+  <!-- Top Part -->
+<!-- TELEGRAM POPUP -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bdTgBox">
+
+      <!-- HEADER -->
+      <div class="modal-header bdTgHeader border-0 justify-content-center">
+
+        <div class="text-center w-100">
+          <img
+            src="https://cloud.rentalpanelbd.com/files/yyavmy/uNnKts7haebsht.png"
+            class="bdTgLogo"
+            alt="logo">
+
+          <div class="bdLogoLine"></div>
+        </div>
+
+        <button type="button"
+          class="btn-close position-absolute end-0 me-3"
+          data-bs-dismiss="modal"></button>
+
+      </div>
+
+      <!-- TITLE -->
+      <div class="px-4 pb-2 text-center bdTgText">
+        <div class="bdTgTitle">Join Telegram Channel</div>
+        <div class="bdTgSub">
+          Get informed about latest updates instantly.
+        </div>
+      </div>
+
+      <!-- IMAGE -->
+      <div class="px-4 pb-3">
+        <div class="bdTgImageWrap">
+          <img
+            src="https://cloud.rentalpanelbd.com/files/yyavmy/images/7irwFqGyZyJad5.png"
+            class="bdTgImage">
+        </div>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="modal-footer bdTgFooter border-0 pt-0 px-4 pb-4">
+
+        <button class="btn bdBtnClose"
+          data-bs-dismiss="modal">
+          Close
+        </button>
+
+        <a href="https://t.me/bdclick24"
+           target="_blank"
+           class="btn bdBtnJoin">
+          Join Now
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>
+
+
+  <!-- User Statistic Area -->
+  <div class="container-fluid">
+    <div class="row neworder_statistics_row">
+
+
+      <!-- Username -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <div class="card mb-3 statics_card">
+          <div class="card-body">
+            <div class="statics_card_inner">
+              <div class="icon status_icons">
+               <img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/Sf5e9ctUudjszn.webp" class="img-fluid" alt="">
+              </div>
+              <div class="text">
+                <h6>{{ lang.Username }}</h6>
+                <h3>{{ user["username"] }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed Orders -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <div class="card mb-3 statics_card" onclick="window.location.href='/dashboard'" style="cursor: pointer;">
+          <div class="card-body">
+            <div class="statics_card_inner">
+              <div class="icon">
+                <img
+                  src="https://storage.perfectcdn.com/70llv9/g1siyq6tij5jq98d.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="text">
+                <h6>{{ lang['Total Orders'] }}</h6>
+                <h3>{{totalorders}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Spending -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <div class="card mb-3 statics_card" onclick="window.location.href='/dashboard'" style="cursor: pointer;">
+          <div class="card-body">
+            <div class="statics_card_inner">
+              <div class="icon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/11396/11396384.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="text">
+                <h6>{{ lang['Total Cost'] }}</h6>
+                <h3>{{ user["spent"] }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Orders Count -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <div class="card mb-3 statics_card" onclick="window.location.href='/addfunds'" style="cursor: pointer;">
+          <div class="card-body">
+            <div class="statics_card_inner" >
+              <div class="icon">
+                <img
+                  src="https://cloud.rentalpanelbd.com/files/yyavmy/images/xPKPqFW2zyVnck.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="text">
+                <h6>{{ lang['Remaining balance:']|replace({':': ''}) }}</h6>
+                <h3>{{ user["balance"] }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- User Statistic Area -->
+
+
+<!-- Social Media filter -->
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-lg-12">
+      <div class="cat_filter_wrap">
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="all" data-platform-id="1">
+              <span class="icons">
+              <img
+                src="https://storage.perfectcdn.com/ob5eq3/8oe705xd20cwfqux.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.All }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="facebook" data-platform-id="4">
+            <span class="icons" data-id="facebook">
+              <img src="https://smmxz.fexpink.com/dashboard/facebook-icon.png" alt="" class="img-fluid s_icon">
+            </span>
+            <span class="platforms-item__title">{{ lang.Facebook }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="instagram" data-platform-id="3">
+            <span class="icons">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/instagram-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Instagram }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="telegram" data-platform-id="8">
+            <span class="icons">
+            <img
+              src="https://smmxz.fexpink.com/dashboard/telegram-icon.png"
+              alt=""
+              class="img-fluid s_icon"
+            />
+          </span>
+            <span class="platforms-item__title">{{ lang.Telegram }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="tiktok" data-platform-id="5">
+             <span class="icons" data-id="tiktok">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/tiktok-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.TikTok }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="youtube" data-platform-id="6">
+              <span class="icons" data-id="youtube">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/youtube-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Youtube }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="twitch" data-platform-id="17">
+              <span class="icons" data-id="youtube">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/5968/5968819.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Twitch }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="linkedin" data-platform-id="14">
+ <span class="icons">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/linkedin-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Linkedin }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="twitter" data-platform-id="7">
+               <span class="icons" data-id="twitter">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/x-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Twitter }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="discord" data-platform-id="19">
+              <span class="icons" data-id="discord">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/discord-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.discord }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="spotify" data-platform-id="16">
+              <span class="icons">
+              <img
+                src="https://smmxz.fexpink.com/dashboard/spotify-icon.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Spotify }}</span>
+          </button>
+        </div>
+        <div class="platforms-item platforms-item-col-4">
+          <button type="button" class="filter_item brand-category" data-platform="others" data-platform-id="2">
+           <span class="icons">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/5974/5974701.png"
+                alt=""
+                class="img-fluid s_icon"
+              />
+            </span>
+            <span class="platforms-item__title">{{ lang.Other }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Social Media filter -->
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Left Column: Order Form -->
+    <div class="col-lg-6 col-md-6 col-12">
+      <div class="card card_auth_1 mb-3">
+        <div class="card-header">
+          <div class="header_buttons py-2">
+            <ul class="nav nav-pills" id="pills-tab-left" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" 
+                        data-bs-toggle="pill" data-bs-target="#pills-home" 
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                  <div class="icon">
+                    <iconify-icon icon="mdi:cart-check"></iconify-icon>
+                  </div>
+                  <div class="text">{{ lang['Create Order'] }}</div>
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+  <button class="nav-link"
+          id="pills-profile-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="false"
+          onclick="window.location.href='/massorder'">
+
+    <div class="icon">
+      <iconify-icon icon="mdi:format-list-bulleted"></iconify-icon>
+    </div>
+
+    <div class="text">{{ lang['Mass Order'] }}</div>
+
+  </button>
+</li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="tab-content" id="pills-tabContent-left">
+            <!-- New Order Tab -->
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+              {{ render_alerts() }}
+              {{ ordersuccess(orderdetails) }}
+              
+            <form method="post" action="{{ route('user.order.create') }}">
+                                        <div class="component_button_forms">
+                                            <div class="form-group">
+                                                <div class="search-dropdown" id="new-order-search"
+                                                    style="position: relative;" data-lang-placeholder="Search">
+                                                    <div class="input-wrapper" style="position: relative;">
+                                                        <button type="button" id="searchServicesButtonIcon"
+                                                            class="input-wrapper__prepend">
+                                                            <span class="icon"><i class="fa fa-search"></i></span>
+                                                        </button>
+                                                        <input style="padding-left:41px" type="text"
+                                                            class="form-control" id="searchServicesInputField"
+                                                            placeholder="{{ lang['Search Services...'] }}"
+                                                            data-search-url="{{ route('user.search.services') }}">
+                                                        <button type="button" class="input-wrapper__append"
+                                                            id="searchServicesInputClearButton">
+                                                            <span class="fas fa-times"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="select2-dropdown search-results"
+                                                    id="searchServicesResultsDropdown" style="display: none;"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="neworder_category"
+                                                    class="control-label">{{ lang.Category }}</label>
+                                                <select class="form-control" id="neworder_category" name="category">
+                                                    {{ categoryOptions }}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="neworder_services"
+                                                    class="control-label">{{ lang.Service }}</label>
+                                                <select class="form-control" id="neworder_services"
+                                                    name="service"></select>
+                                            </div>
+                                            <div id="neworder_fields"></div>
+
+                                            <div class="form-group" id="charge_div">
+                                                <label for="charge" class="control-label">{{ lang.Charge }}</label>
+                                                <input type="text" class="form-control" id="charge" readonly>
+                                            </div>
+                                            <input type="hidden" name="_token" value="{{ csrf_token }}">
+                                            <button type="submit"
+                                                class="btn btn-primary w-100">{{ lang.Submit }}</button>
+
+                                        </div>
+                                    </form>
+
+            </div>
+
+            <!-- Add Funds Tab (Redirect) -->
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel">
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                Redirecting to Mass Order Page...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Service Details -->
+     <div class="col-lg-6 col-md-6 col-12">
+  <div class="card card_auth_1 mb-3">
+    <div class="card-header">
+      <div class="card_text py-2">
+        <h4><span id="new_services_name">-</span></h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="infos_item mb-2">
+        <div class="lebel">Link Type</div>
+        <div class="info_box">
+          <div class="icon">
+            <img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/ISiygi2KazJMFl.png" class="img-fluid" alt="">
+          </div>
+          <div class="text" data-id="serviceExample">N/A</div>
+        </div>
+      </div>
+
+      <div class="service_infos mb-3">
+        <div class="infos_item">
+          <div class="lebel">Start Time</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/mbpMubxTdYWOGm.png" class="img-fluid"></div>
+            <div class="text" data-id="serviceStart">-</div>
+          </div>
+        </div>
+
+        <div class="infos_item">
+          <div class="lebel">Daily Speed</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/wXrfieNzYKQFS8.png" class="img-fluid"></div>
+            <div class="text" data-id="serviceSpeed">-</div>
+          </div>
+        </div>
+
+        <div class="infos_item">
+          <div class="lebel">Guarantee</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/iYOjkVqgdzZGwq.png" class="img-fluid"></div>
+            <div class="text" data-id="serviceGurantee">N/A</div>
+          </div>
+        </div>
+
+        <div class="infos_item">
+    <div class="lebel">Refill</div>
+    <div class="info_box">
+        <div class="icon">
+            <img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/iYOjkVqgdzZGwq.png"; class="img-fluid" alt="">
+        </div>
+        <div class="text" data-id="serviceRefill">N/A</div>
+    </div>
+</div>
+
+        <div class="infos_item">
+          <div class="lebel">Drop</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/sXn9UeoAYjMUoF.png" class="img-fluid"></div>
+            <div class="text" data-id="serviceDropRatio">-</div>
+          </div>
+        </div>
+
+        <div class="infos_item">
+          <div class="lebel">Quality</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/Ln9raiTVunAouS.png" class="img-fluid"></div>
+            <div class="text" data-id="serviceQuality">-</div>
+          </div>
+        </div>
+
+      <div class="infos_item">
+    <div class="lebel">Average Time</div>
+    <div class="info_box">
+        <div class="icon">
+            <img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/l1ddGfEGxOsYVx.png" class="img-fluid" alt="">
+        </div>
+        <div class="text" id="avarage_time">Not enough data</div>
+    </div>
+</div>
+
+        <div class="infos_item">
+          <div class="lebel">Quantity</div>
+          <div class="info_box">
+            <div class="icon"><img src="https://cloud.rentalpanelbd.com/files/yyavmy/images/52UCdhd2KcfWYG.png" class="img-fluid"></div>
+            <div class="text" id="minMax"><i class="fas fa-spinner fa-spin"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service_descriptions">
+        <label>Description</label>
+        <div id="service_descriptions" data-id="serviceDesc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+<script>
+(function () {
+    const targetDesc = document.getElementById("service_descriptions");
+    let lastContent = "";
+
+    function syncDescription() {
+        const sourceDesc = document.querySelector("#service_description .panel-description");
+        
+        if (!sourceDesc) {
+            if (targetDesc.innerHTML !== "") targetDesc.innerHTML = "";
+            return;
+        }
+
+        const currentRawHTML = sourceDesc.innerHTML.trim();
+        if (currentRawHTML === lastContent) return;
+        lastContent = currentRawHTML;
+
+        // ১. লেবেলগুলো মুছে ফেলা
+        let cleanHtml = currentRawHTML;
+        const labels = ['Start time', 'Speed', 'Quality', 'Drop', 'Guarantee', 'Refill', 'Example Link', 'Example', 'Link'];
+        labels.forEach(label => {
+            const regex = new RegExp(label + '\\s*:\\s*.*?(?=<br>|$|\\n|<div>|<li>)', 'gi');
+            cleanHtml = cleanHtml.replace(regex, '');
+        });
+
+        // ২. সব ধরণের ট্যাগ এবং স্টারের আগে জোর করে নিউ লাইন (\n) তৈরি করা
+        let forcedText = cleanHtml
+            .replace(/<br\s*\/?>/gi, '\n')
+            .replace(/<\/div>/gi, '\n')
+            .replace(/<div>/gi, '\n')
+            .replace(/✶/g, '\n') // পুরনো স্টার থাকলে সরিয়ে নিউ লাইন করা
+            .replace(/<\/?[^>]+(>|$)/g, ""); // সব HTML ট্যাগ মুছে ফেলা
+
+        // ৩. টেক্সটকে লাইনে লাইনে ভাগ করা এবং স্টার (✶) যোগ করা
+        let lines = forcedText.split('\n');
+        let finalOutput = "";
+
+        lines.forEach(line => {
+            let trimmed = line.trim();
+            // বাড়তি ডট বা স্টার থাকলে রিমুভ করে ফ্রেশ টেক্সট নেওয়া
+            trimmed = trimmed.replace(/^[✶\*\•\s]+/, '');
+
+            if (trimmed.length > 0 && trimmed !== "-") {
+                // প্রতিটি লাইনের শুরুতে স্টার (✶) যোগ করে DIV-এ ঢোকানো
+                finalOutput += '<div class="desc-line">✶ ' + trimmed + '</div>';
+            }
+        });
+
+        targetDesc.innerHTML = finalOutput;
+    }
+
+    setInterval(syncDescription, 500);
+
+    $(document).on('change', '#neworder_services', function() {
+        setTimeout(syncDescription, 300);
+    });
+})();
+</script>
+<script>
+(function () {
+    let lastServiceId = '';
+    let lastHtml = '';
+
+    function resetBoxes() {
+        const fields = [
+            'serviceStart', 'serviceSpeed', 'serviceQuality', 
+            'serviceDropRatio', 'serviceGurantee', 'serviceRefill', 
+            'serviceAverageTime', 'serviceExample'
+        ];
+        fields.forEach(id => {
+            const el = document.querySelector(`[data-id="${id}"]`);
+            if (el) el.innerText = 'N/A';
+        });
+    }
+
+    setInterval(function () {
+        /* 🔑 REAL TRIGGER: service input */
+        const serviceInput =
+            document.querySelector('#service') ||
+            document.querySelector('[name="service"]') ||
+            document.querySelector('[name="service_id"]');
+
+        const serviceId = serviceInput ? serviceInput.value : '';
+
+        /* ❌ NO SERVICE SELECTED */
+        if (!serviceId) {
+            lastServiceId = '';
+            lastHtml = '';
+            resetBoxes();
+            const el = document.getElementById('service_description');
+            if (el) el.removeAttribute('data-original');
+            return;
+        }
+
+        /* 🔄 SERVICE CHANGED */
+        if (serviceId !== lastServiceId) {
+            lastServiceId = serviceId;
+            lastHtml = '';
+            resetBoxes();
+        }
+
+        const el = document.getElementById('service_description');
+        if (!el) return;
+
+        const html = el.innerHTML.trim();
+        if (!html) return;
+
+        const originalHtml = el.getAttribute('data-original') || html;
+
+        if (!el.getAttribute('data-original')) {
+            el.setAttribute('data-original', originalHtml);
+        }
+
+        if (originalHtml === lastHtml) return;
+        lastHtml = originalHtml;
+
+        let workingHtml = originalHtml;
+
+        function extract(label) {
+            const r = new RegExp(label + '\\s*:\\s*(.*?)(<br>|$|\\n)', 'i');
+            const m = workingHtml.match(r);
+            if (!m) return 'N/A';
+            // Extract the value and remove the line from description
+            workingHtml = workingHtml.replace(m[0], '');
+            return m[1].replace(/<\/?[^>]+(>|$)/g, "").trim(); 
+        }
+
+        const data = {
+            start: extract('Start time'),
+            speed: extract('Speed'),
+            quality: extract('Quality'),
+            drop: extract('Drop'),
+            guarantee: extract('Guarantee'),
+           refill: extract('Refill'),
+            example: extract('(?:Example Link|Example|Link)')
+        };
+
+        // Mapping values to HTML
+        const mapping = {
+            'serviceStart': data.start,
+            'serviceSpeed': data.speed,
+            'serviceQuality': data.quality,
+            'serviceDropRatio': data.drop,
+            'serviceGurantee': data.guarantee,
+            'serviceRefill': data.refill,
+            'serviceExample': data.example
+        };
+
+        for (const [id, value] of Object.entries(mapping)) {
+            const target = document.querySelector(`[data-id="${id}"]`);
+            if (target) target.innerText = value;
+        }
+
+        el.innerHTML = workingHtml
+            .replace(/<br>\s*<br>/gi, '<br>')
+            .replace(/^\s*<br>/gi, '')
+            .trim();
+
+    }, 300);
+})();
+</script>
+<script>
+(function() {
+    function syncAverageTime() {
+        // ১. সিস্টেমের অরিজিনাল ডাটা সোর্সগুলো চেক করা
+        const sourceInput = document.querySelector('#field-orderform-fields-average_time');
+        const sourceLabel = document.querySelector('.average-time');
+        const displayBox = document.getElementById('avarage_time');
+
+        if (!displayBox) return;
+
+        let timeValue = "";
+
+        // ২. ভ্যালু কালেক্ট করার চেষ্টা
+        if (sourceInput && sourceInput.value && sourceInput.value !== "0") {
+            timeValue = sourceInput.value;
+        } else if (sourceLabel) {
+            // অনেক সময় ইনপুটে থাকে না, টেক্সট আকারে থাকে
+            timeValue = sourceLabel.innerText.replace(/Average time|:/gi, '').trim();
+        }
+
+        // ৩. ডিসপ্লে বক্সে ডাটা পাঠানো
+        if (timeValue && timeValue !== "" && timeValue !== "Not enough data") {
+            displayBox.innerText = timeValue;
+        } else {
+            displayBox.innerText = "Not enough data";
+        }
+    }
+
+    // ৪. ফর্মের ভেতরের পরিবর্তন লক্ষ্য করা (MutationObserver)
+    // এটি AJAX লোড হওয়ার সাথে সাথে কাজ করবে
+    const observer = new MutationObserver(function(mutations) {
+        syncAverageTime();
+    });
+
+    const targetNode = document.querySelector('#neworder_fields') || document.body;
+    if (targetNode) {
+        observer.observe(targetNode, { 
+            childList: true, 
+            subtree: true, 
+            attributes: true 
+        });
+    }
+
+    // ৫. অতিরিক্ত ব্যাকআপ হিসেবে সার্ভিস চেঞ্জ ইভেন্ট
+    $(document).on('change', '#neworder_services', function() {
+        setTimeout(syncAverageTime, 500);
+        setTimeout(syncAverageTime, 1500); // একটু দেরি করে আরেকবার চেক
+    });
+
+    // প্রথমবার পেজ লোডে রান করা
+    window.addEventListener('load', syncAverageTime);
+})();
+</script>
+<script>
+(function() {
+    /**
+     * Syncs Service Name and Min/Max quantity from the hidden inputs/fields
+     */
+    function syncServiceData() {
+        // 1. Update Service Name
+        const selectedServiceText = $("#neworder_services option:selected").text();
+        if (selectedServiceText) {
+            $('#new_services_name').text(selectedServiceText);
+        }
+
+        // 2. Update Min/Max Quantity (Directly from hidden inputs)
+        const minVal = $('#min').val() || '0';
+        const maxVal = $('#max').val() || '0';
+
+        if (minVal !== '0' && minVal !== '') {
+            $('#minMax').text(minVal + ' - ' + maxVal);
+        } else {
+            // Fallback: Try to get text from panel-generated .min-max class
+            const panelMinMax = $('.min-max').first().text();
+            if (panelMinMax && panelMinMax.trim() !== "") {
+                $('#minMax').text(panelMinMax);
+            } else {
+                $('#minMax').text('0 - 0');
+            }
+        }
+    }
+
+    // Initialize MutationObserver to watch for dynamic changes in the order form
+    const observer = new MutationObserver(function(mutations) {
+        syncServiceData();
+    });
+
+    // Start observing the fields wrapper or body for AJAX updates
+    const target = document.querySelector('#neworder_fields') || document.body;
+    if (target) {
+        observer.observe(target, { 
+            attributes: true, 
+            childList: true, 
+            characterData: true, 
+            subtree: true 
+        });
+    }
+
+    // Event listeners as a backup for category or service changes
+    $(document).on('change', '#neworder_services, #neworder_category', function() {
+        setTimeout(syncServiceData, 300);
+    });
+
+    // Initial run on page load
+    $(document).ready(function() {
+        setTimeout(syncServiceData, 500);
+    });
+})();
+</script>
+<script>
+(function () {
+    const nameDisplay = document.getElementById('new_services_name');
+    const serviceSelect = document.getElementById('neworder_services');
+
+    if (!nameDisplay || !serviceSelect) return;
+
+    function updateTitleWithID() {
+        const option = serviceSelect.options[serviceSelect.selectedIndex];
+        if (!option || !option.value || option.value === "") return;
+
+        const serviceId = option.value;
+        const serviceName = option.text.trim();
+        const expectedTitle = serviceId + " - " + serviceName;
+
+        // যদি অলরেডি আইডি বসানো না থাকে, তবেই বসাবে
+        if (nameDisplay.innerText !== expectedTitle) {
+            nameDisplay.innerText = expectedTitle;
+        }
+    }
+
+    // ১. টাইটেল বক্সের ওপর নজর রাখা (যদি প্যানেল নাম পাল্টে দেয়, আমরা আবার আইডি বসাবো)
+    const observer = new MutationObserver(updateTitleWithID);
+    observer.observe(nameDisplay, { characterData: true, childList: true, subtree: true });
+
+    // ২. সার্ভিস ড্রপডাউন চেঞ্জ হলে
+    $(document).on('change', '#neworder_services', function () {
+        updateTitleWithID();
+    });
+
+    // ৩. ক্যাটাগরি চেঞ্জ হওয়ার পর ডাটা আসার জন্য ইন্টারভল চেক
+    $(document).on('change', '#neworder_category', function () {
+        let attempts = 0;
+        let timer = setInterval(function() {
+            updateTitleWithID();
+            attempts++;
+            if(attempts > 10) clearInterval(timer);
+        }, 500);
+    });
+
+    // ৪. সেফটি হিসেবে প্রতি ১ সেকেন্ডে একবার চেক
+    setInterval(updateTitleWithID, 1000);
+
+    // প্রথমবার লোডে
+    $(document).ready(function() {
+        setTimeout(updateTitleWithID, 500);
+    });
+})();
+</script>
+<script>
+    (function() {
+        var alertBox = document.getElementById('low-balance-alert');
+        var rawBalance = '{{ user["balance"] }}';
+        var currencyCode = '{{ user["currency"] }}' || 'USD';
+        
+        // 1. Balance Clean kora
+        var balance = parseFloat(rawBalance.replace(/,/g, '').replace(/[^0-9.]/g, '')) || 0;
+
+        // 2. Local Storage theke data check kora
+        var savedData = localStorage.getItem('currency_rate_data');
+        var now = new Date().getTime();
+        var sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 diner millisecond
+
+        function applyLogic(rate) {
+            var minLimit = 1.00 * rate;
+            if (balance < minLimit) {
+                alertBox.style.display = 'block';
+            } else {
+                alertBox.style.display = 'none';
+            }
+        }
+
+        // 3. Jodi age theke rate save thake ebong 7 din na hoy
+        if (savedData) {
+            var parsed = JSON.parse(savedData);
+            if ((now - parsed.timestamp) < sevenDays && parsed.currency === currencyCode) {
+                console.log("Using cached rate for 7 days...");
+                applyLogic(parsed.rate);
+                return; // Script ekhanei sesh, no API call
+            }
+        }
+
+        // 4. Jodi rate na thake ba 7 din par hoye jay, tobe API call hobe
+        fetch('https://open.er-api.com/v6/latest/USD')
+            .then(res => res.json())
+            .then(data => {
+                var liveRate = data.rates[currencyCode] || parseFloat('{{ user["currency_rate"] }}') || 1;
+                
+                // Rate-ta save kore rakha jate agami 7 din call na hoy
+                var dataToSave = {
+                    rate: liveRate,
+                    timestamp: now,
+                    currency: currencyCode
+                };
+                localStorage.setItem('currency_rate_data', JSON.stringify(dataToSave));
+                
+                applyLogic(liveRate);
+            })
+            .catch(err => {
+                // API fail korle backend rate use korbe
+                var backRate = parseFloat('{{ user["currency_rate"] }}') || 1;
+                applyLogic(backRate);
+            });
+    })();
+</script>
+<script>
+(function () {
+  if (!window.jQuery || !jQuery.fn || !jQuery.fn.select2) return;
+
+  var AttachBody = jQuery.fn.select2.amd.require('select2/dropdown/attachBody');
+  var oldPosition = AttachBody.prototype._positionDropdown;
+
+  AttachBody.prototype._positionDropdown = function () {
+    oldPosition.call(this);
+
+    // Always force below for any open dropdown
+    var $dropdown  = this.$dropdown;
+    var $container = this.$container;
+
+    $dropdown.removeClass('select2-dropdown--above').addClass('select2-dropdown--below');
+    $container.removeClass('select2-container--above').addClass('select2-container--below');
+
+    // Force top = container top + container height
+    var off = $container.offset();
+    var h   = $container.outerHeight(false);
+
+    $dropdown.css({
+      top: (off.top + h) + 'px',
+      bottom: 'auto'
+    });
+  };
+})();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+
+const modalEl=document.getElementById("myModal");
+if(!modalEl)return;
+
+/* ===============================
+   AUTO HEADER THEME COLOR
+================================*/
+const themeHeader=
+document.querySelector(".card_auth_1 .card-header");
+
+const modalHeader=
+document.querySelector("#myModal .bdTgHeader");
+
+if(themeHeader && modalHeader){
+ let s=getComputedStyle(themeHeader);
+ modalHeader.style.background=s.background;
+ modalHeader.style.color=s.color;
+}
+
+/* ===============================
+   AUTO BODY BACKGROUND
+================================*/
+const sourceBox=document.querySelector(
+".daymode .infos_item .info_box,\
+ .daymode .example_link .example_set,\
+ .daymode .service_descriptions #service_descriptions"
+);
+
+const modalBox=
+document.querySelector("#myModal .bdTgBox");
+
+if(sourceBox && modalBox){
+ let s=getComputedStyle(sourceBox);
+ modalBox.style.background=s.background;
+ modalBox.style.border=s.border;
+ modalBox.style.boxShadow=s.boxShadow;
+}
+
+/* ===============================
+   COOKIE SAFE
+================================*/
+function hasCookie(name){
+ return document.cookie.split("; ")
+ .some(row=>row.startsWith(name+"="));
+}
+
+if(typeof bootstrap==="undefined")return;
+
+if(!hasCookie("bd_tg_popup")){
+
+ let modal=new bootstrap.Modal(modalEl);
+ modal.show();
+
+ let d=new Date();
+ d.setTime(d.getTime()+7*24*60*60*1000);
+
+ document.cookie=
+ "bd_tg_popup=1; expires="+
+ d.toUTCString()+
+ "; path=/; SameSite=Lax";
+}
+
+});
+</script>
+{% include 'footer.twig' %}
