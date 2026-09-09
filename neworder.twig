@@ -14,7 +14,12 @@
 #neworder_services{
   display: none !important;
 }
-
+    .select2-dropdown{
+            margin-top: 0px !important;
+    }
+    #service_description{
+        display: none;
+    }
 /* Flex-column form er item gula jeno lomba text er karone overflow na kore */
 .component_button_forms > *,
 #neworder_fields > *{
@@ -94,7 +99,7 @@
 }
 
 /* Result list: ekta-i scroll, height screen onujayi */
-.select2-results__options{
+.select2-results > .select2-results__options{
   max-height: 390px !important;
   max-height: min(390px, 60vh) !important;
   overflow-y: auto !important;
@@ -173,10 +178,16 @@
   border-radius: 3px;
 }
 
-/* Dropdown sob somoy niche khulbe (flip off) */
-.select2-container--open .select2-dropdown--above{
-  top: 100% !important;
+/* Dropdown SOB SOMOY select box er thik niche (flip off, scroll safe)
+   -> position JS theke outer container e bosano hoy; inner dropdown
+      outer er (0,0) te thakbe, jate theme/purono inline top e na sore */
+.select2-container--open .select2-dropdown,
+.select2-container--open .select2-dropdown--above,
+.select2-container--open .select2-dropdown--below{
+  top: 0 !important;
   bottom: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* Search services result box o full width */
@@ -214,7 +225,7 @@
     font-size: 14px;
     padding: 10px 12px;   /* touch friendly */
   }
-  .select2-results__options{
+  .select2-results > .select2-results__options{
     max-height: 320px !important;
     max-height: min(320px, 55vh) !important;
   }
@@ -226,7 +237,7 @@
     max-width: calc(100vw - 12px) !important;
     border-radius: 0 0 6px 6px;
   }
-  .select2-results__options{
+  .select2-results > .select2-results__options{
     max-height: 50vh !important;
   }
   .select2-results__option{
@@ -267,7 +278,9 @@ button.active{
   grid-template-columns: repeat(6, 1fr);
   gap: 15px 20px;
 }
-
+ul {
+    padding-left: 0px !important;
+}
 @media only screen and (max-width: 550px){
   .platforms{ grid-template-columns: repeat(6, 1fr); }
 }
@@ -2328,137 +2341,206 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
 /* ================================================
-   Category + Service Select2 -> FULL RESPONSIVE
+   Category + Service Select2 -> FULL RESPONSIVE + SCROLL SAFE
    - Select box sob somoy 100% width
-   - Dropdown select box er width e khule (screen er baire jay na)
-   - Resize / rotate / scroll e position + width auto sync
-   - Sob somoy niche khule (flip off)
+   - Dropdown SOB SOMOY select box er thik niche khule (upore flip kore na)
+   - Page / wrapper scroll korle dropdown select box er sathe sathe thake
+   - Dropdown screen er baire jay na (width + list height viewport onujayi)
+   - Select box screen er niche thakle page ektu scroll kore jayga banay
+   - Resize / rotate e position auto sync
 ================================================ */
 (function () {
   if (!window.jQuery) return;
   var $ = window.jQuery;
+  var MARGIN   = 8;     // screen edge theke gap
+  var MIN_LIST = 140;   // list er minimum height
+  var openList = [];    // ekhon khola dropdown gula (AttachBody instances)
+
+  function vw() { return document.documentElement.clientWidth || window.innerWidth; }
+  function vh() { return window.innerHeight || document.documentElement.clientHeight; }
+  function scrollX() { return window.pageXOffset || document.documentElement.scrollLeft || 0; }
+  function scrollY() { return window.pageYOffset || document.documentElement.scrollTop || 0; }
 
   function fixSelectWidth() {
-    // Select2 inline style e "width: 123px" / "auto" bosay -> sob somoy 100% kore dei
-    $('.component_button_forms .select2-container').css({
-      width: '100%',
-      maxWidth: '100%'
+    // Select2 inline style e "width: 123px" / "auto" bosay -> sob somoy 100%
+    $('.component_button_forms .select2-container').css({ width: '100%', maxWidth: '100%' });
+  }
+
+  function baseListHeight() {
+    var w = vw(), h = vh();
+    if (w >= 992) return 390;
+    if (w >= 576) return Math.min(320, Math.round(h * 0.55));
+    return Math.round(h * 0.5);
+  }
+
+  /* ---- Main: dropdown ke select box er thik niche bosano ---- */
+  function place(self) {
+    var $box = self.$container, $outer = self.$dropdownContainer, $inner = self.$dropdown;
+    if (!$box || !$box.length || !$outer || !$outer.length || !$inner || !$inner.length) return;
+    if (!$.contains(document.documentElement, $outer[0])) return;   // closed
+
+    var rect = $box[0].getBoundingClientRect();
+    var W = vw(), H = vh();
+
+    // Sob somoy "below"
+    $inner.removeClass('select2-dropdown--above').addClass('select2-dropdown--below');
+    $box.removeClass('select2-container--above').addClass('select2-container--below');
+
+    // Width = select box width, screen er cheye boro na
+    var w = Math.max(0, Math.min(Math.round(rect.width), W - MARGIN * 2));
+    $inner.css({ width: w + 'px', minWidth: 0, maxWidth: (W - MARGIN * 2) + 'px' });
+
+    // Inner dropdown outer er (0,0) te thakbe (purono inline top/left thakle o)
+    $inner[0].style.setProperty('top', '0px', 'important');
+    $inner[0].style.setProperty('left', '0px', 'important');
+    $inner[0].style.setProperty('bottom', 'auto', 'important');
+
+    // List height: select box er niche joto jayga ache tar moddhe
+    var $list = $inner.find('.select2-results > .select2-results__options').first();
+    if (!$list.length) $list = $inner.find('.select2-results__options').first();
+    var listH  = $list.length ? $list.outerHeight(false) : 0;
+    var chrome = Math.max(0, $inner.outerHeight(false) - listH);
+    var avail  = H - rect.bottom - MARGIN;
+    var listMax = Math.max(MIN_LIST, Math.min(baseListHeight(), avail - chrome));
+    if ($list.length) $list[0].style.setProperty('max-height', Math.round(listMax) + 'px', 'important');
+
+    // OUTER container position (Select2 asole eta-i position kore)
+    var left = rect.left;
+    if (left + w > W - MARGIN) left = Math.max(MARGIN, W - MARGIN - w);
+    var top = rect.bottom;
+
+    // dropdownParent (default body) er offset parent onujayi (Select2 er niyom e)
+    var $op = self.$dropdownParent && self.$dropdownParent.length ? self.$dropdownParent : $(document.body);
+    if ($op.css('position') === 'static') $op = $op.offsetParent();
+    var po = ($op.length && $op.offset()) || { top: 0, left: 0 };
+
+    $outer.css({
+      position: 'absolute',
+      top:  Math.round(top  + scrollY() - po.top) + 'px',
+      left: Math.round(left + scrollX() - po.left) + 'px',
+      bottom: 'auto'
     });
   }
 
-  function patchSelect2() {
+  // Select box screen er ekdom niche thakle -> page ke ektu scroll kore dropdown dekhano
+  function ensureRoom(self) {
+    var $box = self.$container, $inner = self.$dropdown;
+    if (!$box || !$box.length || !$inner || !$inner.length) return;
+    var rect = $box[0].getBoundingClientRect();
+    var bottom = rect.bottom + $inner.outerHeight(false);
+    var shortfall = bottom - (vh() - MARGIN);
+    if (shortfall > 2) {
+      try { window.scrollBy({ top: shortfall + MARGIN, left: 0, behavior: 'smooth' }); }
+      catch (e) { window.scrollBy(0, shortfall + MARGIN); }
+    }
+  }
+
+  function placeAll() {
+    for (var i = 0; i < openList.length; i++) place(openList[i]);
+  }
+
+  var raf = null;
+  function schedule() {
+    if (!openList.length || raf) return;
+    var req = window.requestAnimationFrame || function (f) { return setTimeout(f, 16); };
+    raf = req(function () { raf = null; placeAll(); });
+  }
+
+  function track(self)   { if (openList.indexOf(self) < 0) openList.push(self); }
+  function untrack(self) { var i = openList.indexOf(self); if (i > -1) openList.splice(i, 1); }
+
+  /* ---- Prototype patch (notun select2 instance er jonno) ---- */
+  function patchPrototype() {
     if (!$.fn || !$.fn.select2 || !$.fn.select2.amd) return false;
+    var AttachBody;
+    try { AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody'); } catch (e) { return false; }
+    if (!AttachBody || !AttachBody.prototype) return false;
+    if (AttachBody.prototype.__bdScrollSafe) return true;
+    AttachBody.prototype.__bdScrollSafe = true;
 
-    var AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
-    if (!AttachBody || AttachBody.prototype.__bdResponsivePatched) return true;
-    AttachBody.prototype.__bdResponsivePatched = true;
+    var oldShow = AttachBody.prototype._showDropdown;
+    var oldHide = AttachBody.prototype._hideDropdown;
 
-    var oldPosition = AttachBody.prototype._positionDropdown;
-    var oldResize   = AttachBody.prototype._resizeDropdown;
-
-    // Dropdown width = select box width (never wider than the screen)
-    AttachBody.prototype._resizeDropdown = function () {
-      oldResize.call(this);
-
-      var $container = this.$container;
-      var $dropdown  = this.$dropdown;
-      if (!$container || !$container.length) return;
-
-      var w    = $container.outerWidth(false);
-      var maxW = $(window).width() - 16;
-      if (w > maxW) w = maxW;
-
-      $dropdown.css({
-        width: w + 'px',
-        minWidth: 0,
-        maxWidth: maxW + 'px'
-      });
+    AttachBody.prototype._positionDropdown = function () { place(this); };
+    AttachBody.prototype._resizeDropdown   = function () { place(this); };
+    AttachBody.prototype._showDropdown = function () {
+      track(this);
+      oldShow.apply(this, arguments);
+      fixSelectWidth();
+      place(this);
+      ensureRoom(this);
     };
-
-    // Always open BELOW the select box and align to its left edge
-    AttachBody.prototype._positionDropdown = function () {
-      oldPosition.call(this);
-
-      var $container = this.$container;
-      var $dropdown  = this.$dropdown;
-      if (!$container || !$container.length) return;
-
-      $dropdown.removeClass('select2-dropdown--above').addClass('select2-dropdown--below');
-      $container.removeClass('select2-container--above').addClass('select2-container--below');
-
-      var off  = $container.offset();
-      var h    = $container.outerHeight(false);
-      var w    = $dropdown.outerWidth(false);
-      var left = off.left;
-      var maxLeft = $(window).width() - w - 8;
-      if (left > maxLeft) left = Math.max(8, maxLeft);
-
-      $dropdown.css({
-        top: (off.top + h) + 'px',
-        left: left + 'px',
-        bottom: 'auto'
-      });
+    AttachBody.prototype._hideDropdown = function () {
+      untrack(this);
+      oldHide.apply(this, arguments);
     };
-
     return true;
   }
 
-  // Select2 already loaded? patch now. Else wait for footer scripts.
-  if (!patchSelect2()) {
+  /* ---- Instance patch (amader script er AGE init hoye gele) ---- */
+  function patchInstance(inst) {
+    var d = inst && inst.dropdown;
+    if (!d || d.__bdScrollSafe || !d.$dropdownContainer) return;
+    d.__bdScrollSafe = true;
+    var oldShow = d._showDropdown, oldHide = d._hideDropdown;
+    d._positionDropdown = function () { place(this); };
+    d._resizeDropdown   = function () { place(this); };
+    d._showDropdown = function () {
+      track(this);
+      if (oldShow) oldShow.apply(this, arguments);
+      fixSelectWidth();
+      place(this);
+      ensureRoom(this);
+    };
+    d._hideDropdown = function () {
+      untrack(this);
+      if (oldHide) oldHide.apply(this, arguments);
+    };
+  }
+
+  function patchExisting() {
+    $('select').each(function () {
+      var inst = $(this).data('select2');
+      if (inst) patchInstance(inst);
+    });
+  }
+
+  function tryPatch() {
+    if (!patchPrototype()) return false;
+    patchExisting();
+    return true;
+  }
+
+  // Select2 ekhono load na hole (footer e thakle) wait kori
+  if (!tryPatch()) {
     var tries = 0;
     var t = setInterval(function () {
       tries++;
-      if (patchSelect2() || tries > 50) clearInterval(t);
-    }, 200);
+      if (tryPatch() || tries > 100) clearInterval(t);
+    }, 100);
   }
 
-  // Keep the select box 100% wide at all times (init + re-init by the panel)
+  // Khola-r thik age instance patch (100% safe, jekhan thekei init hok)
+  $(document).on('select2:opening', 'select', function () {
+    patchInstance($(this).data('select2'));
+  });
+
+  // Scroll (window BA jekono wrapper), resize, rotate -> position sync
+  document.addEventListener('scroll', schedule, true);
+  window.addEventListener('resize', schedule);
+  window.addEventListener('orientationchange', function () { setTimeout(schedule, 300); });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', schedule);
+    window.visualViewport.addEventListener('scroll', schedule);
+  }
+
+  // Select box 100% width rakha (init + panel re-render)
   $(function () {
     fixSelectWidth();
-
     var host = document.querySelector('.component_button_forms') || document.body;
     if (window.MutationObserver) {
-      new MutationObserver(fixSelectWidth).observe(host, { childList: true, subtree: true });
+      new MutationObserver(function () { fixSelectWidth(); schedule(); }).observe(host, { childList: true, subtree: true });
     }
-
-    $(document).on('select2:open', '#neworder_category, #neworder_services', function () {
-      fixSelectWidth();
-      // Mobile keyboard/rotate: re-measure after the layout settles
-      var $el = $(this);
-      setTimeout(function () {
-        var inst = $el.data('select2');
-        if (inst && inst.dropdown && inst.dropdown._positionDropdown) {
-          inst.dropdown._resizeDropdown();
-          inst.dropdown._positionDropdown();
-        }
-      }, 50);
-    });
-
-    // Resize / rotate / scroll: re-sync open dropdown; close on orientation change
-    var raf = null;
-    function resync() {
-      if (raf) return;
-      raf = requestAnimationFrame(function () {
-        raf = null;
-        fixSelectWidth();
-        $('#neworder_category, #neworder_services').each(function () {
-          var inst = $(this).data('select2');
-          if (inst && inst.isOpen && inst.isOpen() && inst.dropdown && inst.dropdown._positionDropdown) {
-            inst.dropdown._resizeDropdown();
-            inst.dropdown._positionDropdown();
-          }
-        });
-      });
-    }
-    $(window).on('resize', resync);
-    $(window).on('scroll', resync);
-    $(window).on('orientationchange', function () {
-      $('#neworder_category, #neworder_services').each(function () {
-        var inst = $(this).data('select2');
-        if (inst && inst.isOpen && inst.isOpen()) $(this).select2('close');
-      });
-      setTimeout(resync, 300);
-    });
   });
 })();
 </script>
