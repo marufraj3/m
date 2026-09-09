@@ -4,107 +4,167 @@
    Select2 + UI Global Fixes (Assembled)
 ================================ */
 
+/* ================================================
+   Category + Service Dropdown (Select2)
+   FULL RESPONSIVE (mobile / tablet / desktop)
+================================================ */
+
+/* Native select hidden thakbe (Select2 UI dekhabe) */
 #neworder_category,
-#neworder_services {
-    display: none !important;
+#neworder_services{
+  display: none !important;
 }
-   
-/* Badge inside selected option */
+    .select2-dropdown{
+            margin-top: 0px !important;
+    }
+    #service_description{
+        display: none;
+    }
+/* Flex-column form er item gula jeno lomba text er karone overflow na kore */
+.component_button_forms > *,
+#neworder_fields > *{
+  min-width: 0;
+  max-width: 100%;
+}
+.component_button_forms .form-group{
+  width: 100%;
+  min-width: 0;
+}
+
+/* ---------- 1) SELECT BOX: sob somoy 100% width ---------- */
+/* Select2 inline style e "width:auto" / "width:123px" bosay -> eta override */
+.component_button_forms .select2-container{
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+.component_button_forms .select2-container .select2-selection--single{
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: #e5fff8 !important;
+  border: 1px solid #05c191 !important;
+  outline: none !important;
+  cursor: pointer;
+  transition: box-shadow .15s ease;
+}
+
+.component_button_forms .select2-container .select2-selection--single .select2-selection__rendered{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-right: 38px;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component_button_forms .select2-container .select2-selection--single .select2-selection__arrow{
+  position: absolute;
+  top: 0;
+  right: 6px;
+  height: 100%;
+  width: 24px;
+}
+
+/* Focus / Open */
+.component_button_forms .select2-container--focus .select2-selection--single,
+.component_button_forms .select2-container--open .select2-selection--single{
+  border-color: #05c191 !important;
+  box-shadow: 0 0 0 3px rgba(5,193,145,.15);
+}
+.component_button_forms .select2-container--open .select2-selection--single{
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* ---------- 2) DROPDOWN PANEL (body te attach hoy) ---------- */
+.select2-container--open .select2-dropdown{
+  box-sizing: border-box;
+  border: 1px solid #05c191 !important;
+  border-radius: 0 0 8px 8px;
+  z-index: 999999 !important;
+  max-width: calc(100vw - 16px) !important;   /* screen er baire jabe na */
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+}
+
+/* Result list: ekta-i scroll, height screen onujayi */
+.select2-results__options{
+  max-height: 390px !important;
+  max-height: min(390px, 60vh) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Option: lomba name wrap hobe, cut hobe na */
+.select2-results__option{
+  border-bottom: 1px solid #05c19133;
+  border-radius: 0 !important;
+  padding: 8px 12px;
+  font-size: 15px;
+  line-height: 1.45;
+  white-space: normal !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.select2-results__option:last-child{
+  border-bottom: 0;
+}
+
+/* Option er vitorer badge (ID / rate) */
+.select2-results__option .badge{
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 11px;
+  line-height: 1.2;
+  padding: 3px 8px;
+  margin-right: 4px;
+}
 .select2-results__option.select2-results__option--selected.select2-results__option--selectable .badge{
   background-color: #000;
 }
 
-/* Active pill bg */
-.header_buttons .nav-pills .nav-item .nav-link.active{
-  background: #fff !important;
-}
-
-/* Hide old service description */
-#service_description{
-  display: none;
-}
-
-/* Custom search results dropdown show */
-#searchServicesResultsDropdown.show{
-  display: block !important;
-}
-
-/* Select2 option base */
-.select2-results__option{
-  border-bottom: 1px solid #05c19133;
-  font-size: 15px;
-  padding: 5px 0 5px 10px;
-  border-radius: 0 !important;
-}
-
-/* Select2 selected option */
+/* Selected option */
 .select2-results__option.select2-results__option--selected.select2-results__option--selectable{
   background-color: #05c191;
   color: #fff;
 }
 
-/* Rendered text size */
-.select2-container .select2-selection--single .select2-selection__rendered{
-  font-size: 15px;
-}
-
-/* Selection box style */
-.select2-container .select2-selection--single{
-  background-color: #e5fff8 !important;
-  border: 1px solid #05c191 !important;
-}
-
-/* When open, match border + remove bottom radius */
-.select2-container--open .select2-selection{
-  border: 1px solid #05c191 !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
-/* Dropdown (main container) */
-.select2-container--open .select2-dropdown{
-  border: 1px solid #05c191 !important;
-  z-index: 999999 !important;
-  max-height: 400px !important;
-  overflow-y: auto !important;
-}
-
-/* Results list max-height + scroll */
-.select2-results__options{
-  max-height: 390px !important;
-  overflow-y: auto !important;
-}
-
-/* Dropdown search box */
+/* Dropdown er vitorer search box hide */
 .select2-search--dropdown{
-   display: none !important;
+  display: none !important;
 }
 
-/* Hover / highlighted: keep normal font */
+/* Hover / highlight */
 .select2-results__option--highlighted,
 .select2-results__option:hover{
   font-weight: normal !important;
   transition: none !important;
 }
-
-/* Hover bg */
 .select2-results__option[aria-selected]:hover{
   background-color: #05c1912e !important;
   cursor: pointer;
 }
-
-/* Highlight text color fix (selectable) */
 .select2-results__option.select2-results__option--highlighted.select2-results__option--selectable{
   color: #141627 !important;
 }
-
-/* Highlight background (general) */
 .select2-results__option--highlighted{
   background-color: #05c1912e !important;
   transition: background-color 0.2s ease;
 }
-
-/* Selected + highlighted */
 .select2-results__option--selected.select2-results__option--highlighted{
   background-color: #05c191 !important;
   color: #fff !important;
@@ -118,10 +178,70 @@
   border-radius: 3px;
 }
 
-/* Force dropdown always below (disable flip) */
+/* Dropdown sob somoy niche khulbe (flip off) */
 .select2-container--open .select2-dropdown--above{
   top: 100% !important;
   bottom: auto !important;
+}
+
+/* Search services result box o full width */
+#searchServicesResultsDropdown{
+  width: 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* ---------- 3) TABLET + MOBILE (<= 991px) ---------- */
+/* Selected service name 2 line porjonto dekhabe (tarpor ...), box auto-height */
+@media (max-width: 991.98px){
+  .component_button_forms .select2-container .select2-selection--single{
+    height: auto !important;
+    min-height: 44px;
+    padding: 9px 0 !important;
+  }
+  .component_button_forms .select2-container .select2-selection--single .select2-selection__rendered{
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal !important;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.45 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 38px 0 12px !important;
+    font-size: 14px;
+  }
+  .select2-results__option{
+    font-size: 14px;
+    padding: 10px 12px;   /* touch friendly */
+  }
+  .select2-results__options{
+    max-height: 320px !important;
+    max-height: min(320px, 55vh) !important;
+  }
+}
+
+/* ---------- 4) SMALL PHONE (<= 575px) ---------- */
+@media (max-width: 575.98px){
+  .select2-container--open .select2-dropdown{
+    max-width: calc(100vw - 12px) !important;
+    border-radius: 0 0 6px 6px;
+  }
+  .select2-results__options{
+    max-height: 50vh !important;
+  }
+  .select2-results__option{
+    font-size: 13.5px;
+    padding: 9px 10px;
+  }
+  .component_button_forms .select2-container .select2-selection--single .select2-selection__rendered{
+    font-size: 13.5px;
+    padding: 0 34px 0 10px !important;
+  }
 }
 
 /* Generic badge */
@@ -152,7 +272,9 @@ button.active{
   grid-template-columns: repeat(6, 1fr);
   gap: 15px 20px;
 }
-
+ul {
+    padding-left: 0px !important;
+}
 @media only screen and (max-width: 550px){
   .platforms{ grid-template-columns: repeat(6, 1fr); }
 }
@@ -372,9 +494,17 @@ button.active{
 
 /* Selection box */
 .dashboard.nightmode .select2-container .select2-selection--single,
-[data-bs-theme="dark"] .select2-container .select2-selection--single{
+.dashboard.nightmode .component_button_forms .select2-container .select2-selection--single,
+[data-bs-theme="dark"] .select2-container .select2-selection--single,
+[data-bs-theme="dark"] .component_button_forms .select2-container .select2-selection--single{
   background: #0b0b0b !important;
   border: 1px solid #333 !important;
+}
+.dashboard.nightmode .component_button_forms .select2-container--open .select2-selection--single,
+.dashboard.nightmode .component_button_forms .select2-container--focus .select2-selection--single,
+[data-bs-theme="dark"] .component_button_forms .select2-container--open .select2-selection--single,
+[data-bs-theme="dark"] .component_button_forms .select2-container--focus .select2-selection--single{
+  border-color: #05c191 !important;
 }
 
 /* Selected text */
@@ -1854,31 +1984,139 @@ document.addEventListener("DOMContentLoaded", function() {
     })();
 </script>
 <script>
+/* ================================================
+   Category + Service Select2 -> FULL RESPONSIVE
+   - Select box sob somoy 100% width
+   - Dropdown select box er width e khule (screen er baire jay na)
+   - Resize / rotate / scroll e position + width auto sync
+   - Sob somoy niche khule (flip off)
+================================================ */
 (function () {
-  if (!window.jQuery || !jQuery.fn || !jQuery.fn.select2) return;
+  if (!window.jQuery) return;
+  var $ = window.jQuery;
 
-  var AttachBody = jQuery.fn.select2.amd.require('select2/dropdown/attachBody');
-  var oldPosition = AttachBody.prototype._positionDropdown;
-
-  AttachBody.prototype._positionDropdown = function () {
-    oldPosition.call(this);
-
-    // Always force below for any open dropdown
-    var $dropdown  = this.$dropdown;
-    var $container = this.$container;
-
-    $dropdown.removeClass('select2-dropdown--above').addClass('select2-dropdown--below');
-    $container.removeClass('select2-container--above').addClass('select2-container--below');
-
-    // Force top = container top + container height
-    var off = $container.offset();
-    var h   = $container.outerHeight(false);
-
-    $dropdown.css({
-      top: (off.top + h) + 'px',
-      bottom: 'auto'
+  function fixSelectWidth() {
+    // Select2 inline style e "width: 123px" / "auto" bosay -> sob somoy 100% kore dei
+    $('.component_button_forms .select2-container').css({
+      width: '100%',
+      maxWidth: '100%'
     });
-  };
+  }
+
+  function patchSelect2() {
+    if (!$.fn || !$.fn.select2 || !$.fn.select2.amd) return false;
+
+    var AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
+    if (!AttachBody || AttachBody.prototype.__bdResponsivePatched) return true;
+    AttachBody.prototype.__bdResponsivePatched = true;
+
+    var oldPosition = AttachBody.prototype._positionDropdown;
+    var oldResize   = AttachBody.prototype._resizeDropdown;
+
+    // Dropdown width = select box width (never wider than the screen)
+    AttachBody.prototype._resizeDropdown = function () {
+      oldResize.call(this);
+
+      var $container = this.$container;
+      var $dropdown  = this.$dropdown;
+      if (!$container || !$container.length) return;
+
+      var w    = $container.outerWidth(false);
+      var maxW = $(window).width() - 16;
+      if (w > maxW) w = maxW;
+
+      $dropdown.css({
+        width: w + 'px',
+        minWidth: 0,
+        maxWidth: maxW + 'px'
+      });
+    };
+
+    // Always open BELOW the select box and align to its left edge
+    AttachBody.prototype._positionDropdown = function () {
+      oldPosition.call(this);
+
+      var $container = this.$container;
+      var $dropdown  = this.$dropdown;
+      if (!$container || !$container.length) return;
+
+      $dropdown.removeClass('select2-dropdown--above').addClass('select2-dropdown--below');
+      $container.removeClass('select2-container--above').addClass('select2-container--below');
+
+      var off  = $container.offset();
+      var h    = $container.outerHeight(false);
+      var w    = $dropdown.outerWidth(false);
+      var left = off.left;
+      var maxLeft = $(window).width() - w - 8;
+      if (left > maxLeft) left = Math.max(8, maxLeft);
+
+      $dropdown.css({
+        top: (off.top + h) + 'px',
+        left: left + 'px',
+        bottom: 'auto'
+      });
+    };
+
+    return true;
+  }
+
+  // Select2 already loaded? patch now. Else wait for footer scripts.
+  if (!patchSelect2()) {
+    var tries = 0;
+    var t = setInterval(function () {
+      tries++;
+      if (patchSelect2() || tries > 50) clearInterval(t);
+    }, 200);
+  }
+
+  // Keep the select box 100% wide at all times (init + re-init by the panel)
+  $(function () {
+    fixSelectWidth();
+
+    var host = document.querySelector('.component_button_forms') || document.body;
+    if (window.MutationObserver) {
+      new MutationObserver(fixSelectWidth).observe(host, { childList: true, subtree: true });
+    }
+
+    $(document).on('select2:open', '#neworder_category, #neworder_services', function () {
+      fixSelectWidth();
+      // Mobile keyboard/rotate: re-measure after the layout settles
+      var $el = $(this);
+      setTimeout(function () {
+        var inst = $el.data('select2');
+        if (inst && inst.dropdown && inst.dropdown._positionDropdown) {
+          inst.dropdown._resizeDropdown();
+          inst.dropdown._positionDropdown();
+        }
+      }, 50);
+    });
+
+    // Resize / rotate / scroll: re-sync open dropdown; close on orientation change
+    var raf = null;
+    function resync() {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        fixSelectWidth();
+        $('#neworder_category, #neworder_services').each(function () {
+          var inst = $(this).data('select2');
+          if (inst && inst.isOpen && inst.isOpen() && inst.dropdown && inst.dropdown._positionDropdown) {
+            inst.dropdown._resizeDropdown();
+            inst.dropdown._positionDropdown();
+          }
+        });
+      });
+    }
+    $(window).on('resize', resync);
+    $(window).on('scroll', resync);
+    $(window).on('orientationchange', function () {
+      $('#neworder_category, #neworder_services').each(function () {
+        var inst = $(this).data('select2');
+        if (inst && inst.isOpen && inst.isOpen()) $(this).select2('close');
+      });
+      setTimeout(resync, 300);
+    });
+  });
 })();
 </script>
 
