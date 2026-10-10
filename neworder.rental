@@ -382,7 +382,8 @@ View Announcements
 </div>  
 </div>  
 </div>  
-</div>  </section>  <!-- CATEGORY FILTER -->  <div id="category_filter" class="mb-3">  
+</div>  
+</div><!-- /.anouncement_card -->  </section>  <!-- CATEGORY FILTER -->  <div id="category_filter" class="mb-3">  
 <div class="container-fluid">  <div class="row">  
 <div class="col-md-12" style="margin-top:-23px;">  <div class="category_filter_wrap">  
 <div class="">  
@@ -487,7 +488,7 @@ style="font-weight:800;">
 name="order_url"  
 type="text">
 
-</div>  <p id="addon">  <div class="form-group"  
+</div>  <div id="addon">  <div class="form-group"  
 id="have_comment"  
 style="display:none;">  <label>[addorder.form.comments]</label>
 
@@ -643,7 +644,7 @@ type="button">
 
 <span class="fa fa-trash-o"></span>
 
-</button>  </span>  </div>  </div>  </div>  </div>  </p>  <div class="form-group"  
+</button>  </span>  </div>  </div>  </div>  </div>  </div><!-- /#addon -->  <div class="form-group"  
 id="order_charge">  <label class="control-label"  
 for="charge"  
 style="font-weight:800;">
@@ -3429,18 +3430,414 @@ body:has(#main_container) {
     max-height: none !important;  
     overflow: visible !important;  
 }  
-#main_container #categoryFIlterWraper .btn_filter {  
-    display: flex !important;  
-    align-items: center !important;  
-    justify-content: center !important;  
-    width: 100% !important;  
-    height: 46px !important;  
-    min-height: 46px !important;  
-    max-height: 46px !important;  
-    min-width: 0 !important;  
-    margin: 0 !important;  
-    padding: 4px 2px !important;  
-    gap: 0 !important;  
-    border-radius: 9px !important;  
-    box-shadow: 0 2px 6px rgba(35,70,125,.04) !important;  
-    animation: none !important
+#main_container #categoryFIlterWraper .btn_filter {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 4px 2px !important;
+    gap: 0 !important;
+    border-radius: 9px !important;
+    box-shadow: 0 2px 6px rgba(35,70,125,.04) !important;
+    animation: none !important;
+}
+/* ---- BLOCK REPAIRED: the rule above was cut off mid-way in the
+       original file (no semicolon, no closing brace), which invalidated
+       this style block and let the browser treat everything after it
+       as CSS text. ---- */
+</style>
+<!-- ==========================================================
+     RESPONSIVE LAYOUT MASTER FIX — appended last so it always wins
+     the cascade over the earlier, conflicting override blocks.
+     • No horizontal page scrolling on phone / tablet / desktop
+     • Statistics: 4 columns desktop, 2 columns on tablet & phone
+     • Category tiles: 6 columns desktop, 4 columns tablet & phone,
+       labels on larger screens, icon-only on phones
+     • Order form, tabs, guide and tables stack / scroll cleanly
+     No form fields, backend placeholders, links or JavaScript changed.
+========================================================== -->
+<style>
+/* ---------- Page wrapper: always full width, no colored edge strips ---------- */
+#main_container,
+#main_container .content_area,
+#main_container .content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+#main_container {
+    overflow-x: clip !important;
+}
+/* Desktop: keep the existing 240px offset so content is not hidden under the sidebar */
+@media only screen and (min-width: 992px) {
+    #main_container .content_area {
+        width: auto !important;
+        max-width: none !important;
+        margin-left: 240px !important;
+    }
+}
+
+/* ---------- Fluid container gutters per screen size ---------- */
+#main_container .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+}
+@media only screen and (max-width: 991px) {
+    #main_container .container-fluid {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+}
+@media only screen and (max-width: 550px) {
+    #main_container .container-fluid {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    #main_container .container-fluid {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}
+
+/* ---------- Media can never overflow its container ---------- */
+#main_container img,
+#main_container video,
+#main_container embed {
+    max-width: 100% !important;
+    height: auto;
+}
+#main_container iframe {
+    max-width: 100% !important;
+}
+
+/* ---------- Statistics: 4 columns on desktop, 2 columns below 768px ---------- */
+#main_container .user_statistic_wraper {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin: 0 0 14px !important;
+}
+@media only screen and (max-width: 767px) {
+    #main_container .user_statistic_wraper {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        margin-bottom: 12px !important;
+    }
+}
+#main_container .user_statistic_wraper > .statistic__item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 62px !important;
+    max-height: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 8px 10px !important;
+    border-radius: 12px !important;
+    text-align: left !important;
+    overflow: hidden !important;
+    animation: none !important;
+}
+#main_container .user_statistic_wraper > .statistic__item::before,
+#main_container .user_statistic_wraper > .statistic__item::after {
+    content: none !important;
+    display: none !important;
+    animation: none !important;
+}
+#main_container .user_statistic_wraper .statistic__item .icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 24px !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+}
+#main_container .user_statistic_wraper .statistic__item .icon img {
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    object-fit: contain !important;
+}
+#main_container .user_statistic_wraper .statistic__item .user__data {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    line-height: 1.2 !important;
+}
+#main_container .user_statistic_wraper .statistic__item .user__data span:first-child {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: left !important;
+}
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),
+#main_container .user_statistic_wraper .statistic__item .user__data h4,
+#main_container .user_statistic_wraper .statistic__item .user__data h4 a {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: left !important;
+}
+@media only screen and (max-width: 360px) {
+    #main_container .user_statistic_wraper .statistic__item .user__data span:first-child {
+        font-size: 9px !important;
+    }
+    #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),
+    #main_container .user_statistic_wraper .statistic__item .user__data h4 {
+        font-size: 11px !important;
+    }
+}
+
+/* ---------- Category tiles: 6 columns desktop, 4 columns tablet/phone ---------- */
+#main_container #category_filter .filter_btn_wrap,
+#main_container #categoryFIlterWraper {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+@media only screen and (max-width: 991px) {
+    #main_container #category_filter .filter_btn_wrap,
+    #main_container #categoryFIlterWraper {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+}
+@media only screen and (max-width: 550px) {
+    #main_container #category_filter .filter_btn_wrap,
+    #main_container #categoryFIlterWraper {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+    }
+}
+#main_container #categoryFIlterWraper .btn_filter {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 84px !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 10px 6px !important;
+    gap: 6px !important;
+    border-radius: 13px !important;
+    box-sizing: border-box !important;
+    cursor: pointer;
+    animation: none !important;
+}
+#main_container #categoryFIlterWraper .btn_filter img,
+#main_container #categoryFIlterWraper .btn_filter i {
+    width: 30px !important;
+    min-width: 0 !important;
+    height: 30px !important;
+    max-width: 100% !important;
+}
+#main_container #categoryFIlterWraper .btn_filter i {
+    font-size: 27px !important;
+    line-height: 30px !important;
+}
+@media only screen and (min-width: 551px) {
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 11.5px !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+    }
+}
+@media only screen and (max-width: 550px) {
+    #main_container #categoryFIlterWraper .btn_filter {
+        height: 56px !important;
+        min-height: 56px !important;
+        max-height: 56px !important;
+        padding: 6px 4px !important;
+        gap: 0 !important;
+    }
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    #main_container #categoryFIlterWraper .btn_filter img,
+    #main_container #categoryFIlterWraper .btn_filter i {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    #main_container #categoryFIlterWraper .btn_filter i {
+        font-size: 24px !important;
+        line-height: 26px !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    #main_container #categoryFIlterWraper .btn_filter {
+        height: 48px !important;
+        min-height: 48px !important;
+        max-height: 48px !important;
+    }
+    #main_container #categoryFIlterWraper .btn_filter img,
+    #main_container #categoryFIlterWraper .btn_filter i {
+        width: 23px !important;
+        height: 23px !important;
+    }
+    #main_container #categoryFIlterWraper .btn_filter i {
+        font-size: 21px !important;
+        line-height: 23px !important;
+    }
+}
+
+/* ---------- Welcome/announcement card stacks vertically on phones ---------- */
+@media only screen and (max-width: 550px) {
+    #main_container .anouncement_card .announcement_inner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    #main_container .anouncement_card .announcement_inner .right_ann {
+        width: 100%;
+    }
+    #main_container .anouncement_card .btn_announcement {
+        display: inline-flex !important;
+        width: auto !important;
+    }
+}
+
+/* ---------- New Order form & tabs ---------- */
+#main_container #newOrderTabsWrap .tab_btn_wrap {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+}
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-item {
+    min-width: 0 !important;
+}
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-link {
+    white-space: normal !important;
+}
+#main_container #newOrderTabsWrap .newordersr form .form-control,
+#main_container #newOrderTabsWrap .newordersr form .custom-select,
+#main_container #newOrderTabsWrap .newordersr form select,
+#main_container #newOrderTabsWrap .newordersr form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+#main_container #newOrderTabsWrap .newordersr form textarea.form-control {
+    height: auto !important;
+    min-height: 110px !important;
+    resize: vertical;
+}
+#main_container .def_wraper .row > [class*="col-"] {
+    min-width: 0 !important;
+}
+/* .col-xs-6 fallback so delay / min-max fields stay 50-50 on Bootstrap 4/5 themes */
+#main_container .def_wraper .row > .col-xs-6 {
+    width: 50% !important;
+    max-width: 50% !important;
+    flex: 0 0 50% !important;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+/* Both order-form columns (New Order + video guide) stack full width below 768px */
+@media only screen and (max-width: 767px) {
+    #main_container .def_wraper > .container-fluid > .row > [class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding-left: 7px !important;
+        padding-right: 7px !important;
+    }
+}
+
+/* ---------- Long words / links / tables never force sideways scrolling ---------- */
+#main_container .newordersr,
+#main_container #description,
+#main_container .sf-order-guide,
+#main_container .well {
+    overflow-wrap: anywhere;
+    max-width: 100%;
+}
+#main_container .well.table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+#main_container .table-responsive,
+#main_container .table {
+    max-width: 100% !important;
+}
+
+/* ---------- Video guide stays inside its card ---------- */
+#main_container .sf-video-box {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+#main_container .sf-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+#main_container .sf-step {
+    min-width: 0 !important;
+}
+@media only screen and (max-width: 360px) {
+    #main_container .sf-step strong {
+        font-size: 10px !important;
+    }
+}
+</style>
+</div><!-- /.content -->
+</div><!-- /.content_area -->
+</div><!-- /.main_container -->
