@@ -1,0 +1,3446 @@
+<!-- SAFOLLOW NEW ORDER PAGE — COMPLETE CODE  
+     Original HTML structure, form fields, backend placeholders, video, and JavaScript retained.  
+     Design enhancements are appended as page-scoped CSS.  
+-->  <div class="main_container" id="main_container">  
+    <div class="content_area">  
+      <div class="content">  <div class="page_top_info" id="page_top_info"></div>
+
+<style>  
+.border-solid{  
+    height:auto!important;  
+}  
+.coli{  
+    background:#E9F2FC;  
+    border-radius:10px;  
+}  
+.card{  
+    border:0 solid!important;  
+}  
+.nightmode a{  
+    color:#007bff;  
+}  
+.nightmode .announcement_inner .left_ann p{  
+    color:white;  
+}  
+.nightmode .btn_announcement{  
+    background:#0F172A;  
+}  
+@media only screen and (max-width:550px){  
+    .announcement_inner{  
+        flex-direction:column;  
+        gap:10px;  
+        padding:0;  
+    }  
+}  
+.announcement_inner{  
+    display:flex;  
+    padding:10px 0;  
+    justify-content:space-between;  
+}  
+.announcement_inner .left_ann h4{  
+    font-size:16px;  
+    font-weight:800;  
+    margin-bottom:3px;  
+}  
+@media only screen and (max-width:550px){  
+    .announcement_inner .left_ann p{  
+        font-size:12px;  
+    }  
+}  
+@media only screen and (max-width:992px){  
+    .announcement_inner .left_ann p{  
+        font-size:13px;  
+    }  
+}  
+.announcement_inner .left_ann p{  
+    font-size:13px;  
+    color:var(--text-black);  
+    font-weight:normal;  
+}  
+@media only screen and (max-width:550px){  
+    .btn_announcement{  
+        font-size:14px;  
+    }  
+}  
+@media only screen and (max-width:992px){  
+    .btn_announcement{  
+        font-size:16px;  
+    }  
+}  
+.btn_announcement{  
+    border-radius:10px;  
+    background:#F0ECFC;  
+    font-size:12px;  
+    font-family:var(--font-text);  
+    font-weight:600;  
+    transition:.5s;  
+}  
+@media only screen and (max-width:550px){  
+    .user_statistic_wraper .statistic__item .statistic_inner{  
+        gap:5px;  
+        padding:5px 10px;  
+    }  
+}  
+.nightmode .border-solid{  
+    background:#0F172A;  
+    color:white;  
+}  
+.border-solid{  
+    border:0 solid #ddd;  
+    height:25px;  
+    padding-left:5px;  
+    background:#E9F2FC;  
+}  
+.fab{  
+    font-size:20px;  
+}  
+@media only screen and (max-width:550px){  
+    .filter_btn_wrap .btn_filter .filter_txt{  
+        display:none!important;  
+    }  
+}  
+@media only screen and (max-width:550px){  
+    .filter_btn_wrap{  
+        grid-template-columns:repeat(4,1fr);  
+        height:150px;  
+        overflow:hidden;  
+        overflow-y:scroll;  
+        grid-gap:8px 10px;  
+    }  
+}  
+li.selected{  
+    background-color:#63c5ff;  
+    color:white;  
+}  
+a.forget-pass,.form-group{  
+    font-size:15px;  
+    color:#000000!important;  
+}  
+.nightmode marquee{  
+    color:white;  
+}  
+.currency-name-span{  
+    color:black;  
+}  
+.nightmode span{  
+    color:white;  
+}  
+span{  
+    font-weight:500;  
+}  
+@media only screen and (max-width:550px){  
+    .for_desktop{  
+        display:none;  
+    }  
+    .for_phone{  
+        display:block;  
+    }  
+}  
+.user_statistic_wraper{  
+    display:grid;  
+    grid-template-columns:repeat(4,1fr);  
+    gap:5px;  
+    margin-bottom:20px;  
+}  
+.user_statistic_wraper .statistic__item{  
+    display:flex;  
+    flex-direction:row;  
+    align-items:center;  
+    gap:5px;  
+    background:white;  
+    padding:5px;  
+    border-radius:10px;  
+}  
+.statistic__item .icon{  
+    width:45px;  
+}  
+.statistic__item .user__data span{  
+    font-size:14px!important;  
+    font-weight:normal;  
+    color:#232323;  
+}  
+.statistic__item .user__data h4{  
+    font-size:20px;  
+    font-weight:bold;  
+    margin-bottom:0;  
+}  
+.nightmode .user_statistic_wraper .statistic__item{  
+    background:#182741;  
+    box-shadow:none;  
+}  
+.nightmode .statistic__item .user__data h4,  
+.nightmode .statistic__item .user__data span{  
+    color:#fff;  
+}  
+#service_description{  
+    display:none;  
+}  
+@media only screen and (max-width:992px){  
+    .user_statistic_wraper{  
+        grid-template-columns:repeat(2,1fr);  
+        gap:10px;  
+    }  
+}  
+.statistic__item .icon{  
+    width:45px;  
+}  
+.statistic__item .user__data span{  
+    font-size:16px;  
+    font-weight:normal;  
+    color:#232323;  
+}  
+.statistic__item .user__data h4{  
+    font-size:20px;  
+    font-weight:bold;  
+    margin-bottom:0;  
+}  
+#orderform-category,  
+#orderform-service{  
+    display:none;  
+}  
+.nightmode #category_filter .stats-wrap{  
+    background-color:#3d8dff;  
+}  
+#category_filter .stats-wrap{  
+    background-color:#fff;  
+    border-radius:12px;  
+    padding:20px 15px;  
+    box-shadow:0 7px 26px 0 rgb(201 195 195 / 78%);  
+    margin-bottom:0;  
+    margin-top:20px;  
+}  
+#category_filter .stats-wrap .align_center{  
+    display:flex;  
+    justify-content:end;  
+}  
+#category_filter .stats-wrap .align_center i{  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+    width:40px;  
+    height:40px;  
+    background-color:#3d8dff;  
+    color:#fff;  
+    border-radius:50%;  
+    font-size:20px;  
+}  
+.nightmode .stats-txt{  
+    font-size:14px;  
+    font-weight:700;  
+    color:#fff;  
+    margin-bottom:0;  
+}  
+.stats-txt{  
+    color:#3d8dff;  
+}  
+.stats-title{  
+    color:#3d8dff;  
+}  
+.nightmode .stats-title{  
+    font-size:30px;  
+    font-weight:600;  
+    color:#fff;  
+    margin-top:5px;  
+}  
+.stats-wrap img{  
+    width:50px;  
+}  
+</style>  <style>  
+.news-wrapper-023904 .news-title{  
+    background:transparent;  
+    font-weight:700;  
+}  
+.nightmode .news-title center{  
+    color:#fff!important;  
+}  
+.news-wrapper-023904 .timeLineWrapper{  
+    overflow-y:scroll;  
+}  
+.news-wrapper-023904 .news-wrap{  
+    position:relative;  
+    padding:0;  
+}  
+.news-wrapper-023904 .news-wrap::before{  
+    content:"";  
+    background:#bebebe;  
+    height:100%;  
+    width:1px;  
+    display:block;  
+    position:absolute;  
+    left:15px;  
+    top:0;  
+}  
+.news-wrapper-023904 .singleNewsBlock{  
+    padding:0 0 20px 35px;  
+    position:relative;  
+}  
+.news-wrapper-023904 .singleNewsBlock::before{  
+    content:"";  
+    width:16px;  
+    height:16px;  
+    display:block;  
+    background-color:#fff;  
+    border:5px solid #3d8dff;  
+    border-radius:500px;  
+    position:absolute;  
+    left:8px;  
+    top:0;  
+}  
+.news-wrapper-023904 #myTabs li a{  
+    border:2px solid #3d8dff;  
+    padding:10px;  
+}  
+.news-wrapper-023904 .date{  
+    position:relative;  
+    font-size:12px;  
+    color:#3d8dff;  
+    margin:0;  
+}  
+.news-wrapper-023904 .date::before{  
+    content:"\f073";  
+    font-family:"Font Awesome 5 Pro";  
+    font-weight:900;  
+    color:#3d8dff;  
+}  
+.news-wrapper-023904 .news-desc p{  
+    font-size:14px;  
+    display:block;  
+    color:#2d2b32;  
+    font-weight:400;  
+}  
+.nightmode .news-wrapper-023904 .news-desc p,  
+.nightmode .news-wrapper-023904 .news-desc{  
+    color:#fff!important;  
+}  
+</style>  <br>  <section class="section_49041" style="margin-top:35px;">  
+<br>  <div class="container-fluid">  
+<div class="row">  
+<div class="col-lg-12">  <div class="user_statistic_wraper">  <div class="statistic__item" style="height:80px;">  
+<div class="icon">  
+<img src="https://cdn-icons-png.flaticon.com/256/4402/4402521.png" class="img-fluid" alt="">  
+</div>  
+<div class="user__data">  
+<span>My Balance</span>  
+<span style="font-weight:bold;font-size:15px;">  
+[panel.currency.symbol][user.available_funds]  
+</span>  
+</div>  
+</div>  <div class="statistic__item" style="height:80px;">  
+<div class="icon">  
+<img src="https://cdn-icons-png.flaticon.com/128/9431/9431186.png" class="img-fluid" alt="">  
+</div>  
+<div class="user__data">  
+<span>Total Orders</span>  
+<span style="font-weight:bold;">[panel.last_order_id]</span>  
+</div>  
+</div>  <div class="statistic__item" style="height:80px;">  
+<div class="icon">  
+<img src="https://cdn-icons-png.flaticon.com/128/3967/3967518.png" class="img-fluid" alt="">  
+</div>  
+<div class="user__data">  
+<span>My Spent</span>  
+<span style="font-weight:bold;font-size:15px;">  
+[panel.currency.symbol][user.total_spent]  
+</span>  
+</div>  
+</div>  <div class="statistic__item" style="height:80px;">  
+<div class="icon">  
+<img src="https://cdn-icons-png.flaticon.com/128/7653/7653930.png" class="img-fluid" alt="">  
+</div>  
+<div class="user__data">  
+<span>Announcement</span>  
+<h4 style="font-size:15px;">  
+<a href="https://t.me/+axEHzZIMSBMxM2U1" target="_blank">  
+Join Now ➜  
+</a>  
+</h4>  
+</div>  
+</div>  </div>  
+</div>  
+</div>  
+</div>  <div class="anouncement_card mt-3" style="margin-top:4px!important;">  
+<div class="container-fluid">  
+<div class="row">  
+<div class="col-lg-12 col-12">  
+<div class="card card_v2">  
+<div class="card-body">  <div class="announcement_inner">  
+<div class="left_ann">  
+<h4>Welcome back, [user.username]!</h4>  
+<p class="mb-0">  
+Join our  
+<a href="https://t.me/+axEHzZIMSBMxM2U1" target="_blank">  
+Telegram Channel  
+</a>  
+for the latest updates and service announcements.  
+</p>  
+</div>  <div class="right_ann">  
+<a href="https://t.me/safollow" target="_blank" class="btn btn_announcement">  
+View Announcements  
+</a>  
+</div>  </div>  
+</div>  
+</div>  
+</div>  
+</div>  
+</div>  </section>  <!-- CATEGORY FILTER -->  <div id="category_filter" class="mb-3">  
+<div class="container-fluid">  <div class="row">  
+<div class="col-md-12" style="margin-top:-23px;">  <div class="category_filter_wrap">  
+<div class="">  
+<div class="mt-4">  <div class="filter_btn_wrap" id="categoryFIlterWraper">  <button class="btn_filter" onclick="filterStarted(this,'all')">  
+<img src="https://cdn-icons-png.flaticon.com/128/4840/4840856.png" style="width:25px;">  
+<span class="filter_txt">All Services</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'facebook')">  
+<img src="https://cdn-icons-png.flaticon.com/128/1312/1312139.png" style="width:25px;">  
+<span class="filter_txt">Facebook</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'youtube')">  
+<img src="https://cdn-icons-png.flaticon.com/128/3670/3670147.png" style="width:25px;">  
+<span class="filter_txt">YouTube</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'instagram')">  
+<img src="https://cdn-icons-png.flaticon.com/128/3955/3955024.png" style="width:25px;">  
+<span class="filter_txt">Instagram</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Twitter')">  
+<img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" style="width:25px;">  
+<span class="filter_txt">Twitter</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Spotify')">  
+<img src="https://cdn-icons-png.flaticon.com/128/3670/3670145.png" style="width:25px;">  
+<span class="filter_txt">Spotify</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Tiktok')">  
+<img src="https://cdn-icons-png.flaticon.com/128/3116/3116491.png" style="width:25px;">  
+<span class="filter_txt">TikTok</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Linkedin')">  
+<img src="https://cdn-icons-png.flaticon.com/128/4494/4494497.png" style="width:25px;">  
+<span class="filter_txt">LinkedIn</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Telegram')">  
+<img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" style="width:25px;">  
+<span class="filter_txt">Telegram</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Discord')">  
+<img src="https://cdn-icons-png.flaticon.com/128/3670/3670157.png" style="width:25px;">  
+<span class="filter_txt">Discord</span>  
+</button>  <button class="btn_filter" onclick="filterStarted(this,'Traffic')">  
+<img src="https://cdn-icons-png.flaticon.com/128/4381/4381165.png" style="width:25px;">  
+<span class="filter_txt">Web Traffic</span>  
+</button>  <button class="btn_filter" onclick="filterOthers(this,'Soundcloud')">  
+<i class="fab fa-soundcloud"></i>  
+<span class="filter_txt">Soundcloud</span>  
+</button>  </div>  
+</div>  
+</div>  
+</div>  </div>  
+</div>  
+</div>  
+</div>  <!-- NEW ORDER -->  <div class="def_wraper">  
+<div class="container-fluid">  <div class="row">  <div class="col-md-6">  <div class="card card_v2">  <div class="card-body" id="newOrderTabsWrap">  <ul class="nav nav-pills tab_btn_wrap mb-3" id="pills-tab" role="tablist">  <li class="nav-item active" role="presentation">  <button class="nav-link active"  
+id="pills-order-tab"  
+data-toggle="pill"  
+href="#pills-order">
+
+<i class="fas fa-shopping-cart"></i>
+New Order
+
+</button>  </li>  <li class="nav-item" role="presentation">  <a href="/addfunds">  <button class="nav-link active">  <i class="far fa-credit-card"></i>
+Add Funds
+
+</button>  </a>  </li>  </ul>  <div class="tab-content tab_wrap" id="pills-tabContent">  <div class="tab-pane fade show active in"  
+id="pills-order"  
+role="tabpanel"  
+aria-labelledby="pills-order-tab">  <div class="newordersr">  [error_message]
+
+<form method="post" action="">  <div class="form-hidden form-group">  <label class="control-label"  
+for="orderCategory"  
+style="font-weight:800;">
+
+[addorder.form.category]
+
+</label>  <select name="category"  
+id="orderCategory"  
+class="custom-select w-full form-control">
+
+[addorder.form.category.list]
+
+</select>  </div>  <div class="form-group">  <label class="control-label"  
+for="OrderService"  
+style="font-weight:800;">
+
+[addorder.form.service]
+
+</label>  <select name="service_id"  
+onchange="addon_details(event)"  
+id="OrderService"  
+class="form-control custom-select w-full">
+
+[addorder.form.services.list]
+
+</select>  </div>  <div id="orders_type_order_13" class="description_div">  <div class="form-group" id="description_style">  <label class="control-label"  
+for="description">
+
+[addorder.form.description]
+
+</label>  <div class="panel-body border-solid border-rounded description"  
+id="description">  
+</div>  </div>  </div>  <div class="form-group" id="order_link">  <label class="control-label"  
+for="link"  
+style="font-weight:800;">
+
+[addorder.form.link]
+
+</label>  <input class="form-control"  
+name="order_url"  
+type="text">
+
+</div>  <p id="addon">  <div class="form-group"  
+id="have_comment"  
+style="display:none;">  <label>[addorder.form.comments]</label>
+
+<textarea name="comments"  
+id="service_comments"  
+class="form-control"  
+rows="6"  
+placeholder="1 comment per line"  
+style="width:100%;"></textarea>  </div>  <div class="form-group"  
+id="order_quantity"  
+style="display:none">  <label class="control-label"  
+for="quantity"  
+style="font-weight:800;">
+
+[addorder.form.amount]
+
+</label>  <input class="form-control"  
+id="order_count"  
+name="order_amount"  
+type="text">
+
+<br>  <span>  
+Min:<span class="service_min_amount_span"></span>  
+</span>  <span>  
+Max:<span class="service_max_amount_span"></span>  
+</span>  </div>  <div class="form-group"  
+id="have_username"  
+style="display:none;">  <label for="service_usernames">  
+[addorder.form.usernames]  
+</label>  <textarea name="usernames"  
+id="service_usernames"  
+class="form-control"  
+rows="6"  
+placeholder="1 username per line"  
+style="width:100%;height:30%;"></textarea>  </div>  <div class="form-group"  
+id="have_hashtag"  
+style="display:none;">  <label>[addorder.form.hashtags]</label>
+
+<textarea name="hashtags"  
+id="service_hashtags"  
+class="form-control"  
+rows="6"  
+placeholder="1 hashtag per line"  
+style="width:100%;height:30%;"></textarea>  </div>  <div class="form-group"  
+id="have_media"  
+style="display:none;">  <label>[addorder.form.medias]</label>
+
+<textarea name="medias"  
+id="service_medias"  
+class="form-control"  
+rows="6"  
+placeholder="1 Media per line"  
+style="width:100%;height:30%;"></textarea>  </div>  <div class="form-group"  
+id="order_posts"  
+style="display:none;">  <label class="control-label"  
+for="total_posts">
+
+[addorder.form.newposts]
+
+</label>  <input class="form-control"  
+id="total_posts"  
+name="total_posts"  
+type="text">
+
+</div>  <div class="form-group fields"  
+id="order_min"  
+style="display:none;">  <label class="control-label"  
+for="order_count_extra">
+
+[addorder.form.newposts.quantity]
+
+</label>  <div class="row">  <div class="col-xs-6"  
+id="have_min"  
+style="display:none;">  <input class="form-control"  
+id="order_count_extra"  
+name="min_amount"  
+value=""  
+placeholder="[addorder.form.min]"  
+type="text">
+
+</div>  <div class="col-xs-6"  
+id="have_max"  
+style="display:none;">  <input class="form-control"  
+id="order_count_extra"  
+name="max_amount"  
+value=""  
+placeholder="[addorder.form.max]"  
+type="text">
+
+</div>  </div>  
+</div>  <div id="dripfeed" style="display:none;">  <div class="form-group fields"  
+id="order_check">  <label class="control-label has-depends">  <input name="drip_feed_check"  
+onclick="drip_feed_css()"  
+value="1"  
+id="field-orderform-fields-check"  
+type="checkbox">
+
+[addorder.form.dripfeed]
+
+</label>  <div class="depend-fields"  
+id="dripfeed-options">  <div class="form-group">  <label class="control-label">  [addorder.form.runs]
+
+</label>  <input class="form-control"  
+name="runs"  
+value=""  
+id="field-orderform-fields-runs"  
+type="text">
+
+</div>  <div class="form-group">  <label class="control-label">  [addorder.form.interval]
+
+</label>  <input class="form-control"  
+name="interval"  
+value=""  
+id="field-orderform-fields-interval"  
+type="text">
+
+</div>  <div class="form-group">  <label class="control-label">  [addorder.form.total_quantity]
+
+</label>  <input class="form-control"  
+name="total_quantity"  
+value=""  
+id="field-orderform-fields-total-quantity"  
+readonly  
+type="text">
+
+</div>  </div>  
+</div>  
+</div>  <div class="form-group fields"  
+id="order_delay"  
+style="display:none;">  <div class="row">  <div class="col-xs-6">  <label class="control-label">  [addorder.form.delay]
+
+</label>  <select class="form-control"  
+name="delay"  
+id="field-orderform-fields-delay">
+
+<option value="0">No delay</option>  
+<option value="300">5 minutes</option>  
+<option value="600">10 minutes</option>  
+<option value="900">15 minutes</option>  
+<option value="1800">30 minutes</option>  
+<option value="3600">60 minutes</option>  
+<option value="5400">90 minutes</option>  </select>  </div>  <div class="col-xs-6">  <label>  [addorder.form.expiry]
+
+</label>  <div class="input-group">  <input class="form-control datetime"  
+name="expiry"  
+value=""  
+id="field-orderform-fields-expiry"  
+type="text">
+
+<span class="input-group-btn">  <button class="btn btn-default clear-datetime"  
+onclick="remove_date()"  
+type="button">
+
+<span class="fa fa-trash-o"></span>
+
+</button>  </span>  </div>  </div>  </div>  </div>  </p>  <div class="form-group"  
+id="order_charge">  <label class="control-label"  
+for="charge"  
+style="font-weight:800;">
+
+[addorder.form.charge]
+
+</label>  <input class="form-control"  
+id="charge"  
+name="charge"  
+disabled  
+type="text">
+
+</div>  [panel.csrf_protection]
+
+<input type="hidden"  
+name="place_order"  
+value="place_order">
+
+<button type="submit"  
+class="btn btn-primary"  
+name="place_order">
+
+[addorder.form.submit_button]
+
+</button>  </form>  </div>  
+</div>  <div class="tab-pane fade"  
+id="pills-favorite"  
+role="tabpanel">  <div class="mt-4">  <form action=""  
+method="get"  
+id="history-search">  <div class="input-group">  <input name="search"  
+class="form-control"  
+placeholder="Search orders"  
+type="text">
+
+<span class="input-group-btn">  <button type="submit"  
+class="btn btn_search">
+
+<i class="fa fa-search"></i>
+
+</button>  </span>  </div>  </form>  </div>  </div>  <div class="tab-pane fade"  
+id="pills-search"  
+role="tabpanel">  <small class="text-danger">  You can search by services id from here, please check
+
+<a href="/services">Services</a>
+
+Page and then you can enter the services id here.
+
+</small>  <div id="error_search"></div>  </div>  <div class="tab-pane fade"  
+id="pills-auto"  
+role="tabpanel">  <div class="alert alert-success">  Auto Subscriptions will coming soon...
+
+</div>  </div>  </div>  </div>  
+</div>  </div>  <!-- RIGHT SIDE -->  <div class="col-md-6">  <div class="card card_v2">  
+
+    <div class="card-body">  
+
+        <div class="tab-content tab_wrap">  
+
+            <div class="tab-pane fade show active in">  
+
+                <!-- VIDEO / GUIDE -->  
+                <div class="sf-order-guide">  
+
+                    <!-- GUIDE HEADER -->  
+                    <div class="sf-guide-head">  
+
+                        <div class="sf-guide-icon">  
+                            <i class="fas fa-play"></i>  
+                        </div>  
+
+                        <div>  
+                            <h3>How to Use SAFollow</h3>  
+                            <p>Quick guide to placing your order correctly</p>  
+                        </div>  
+
+                    </div>  
+
+                    <!-- VIDEO -->  
+                    <div class="sf-video-box">  
+
+                        <iframe  
+                            src="https://www.youtube.com/embed/W26YbZOHNpk?rel=0"  
+                            title="SAFollow Tutorial"  
+                            frameborder="0"  
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  
+                            allowfullscreen>  
+                        </iframe>  
+
+                    </div>  
+
+                    <!-- BEFORE ORDER -->  
+                    <div class="sf-before-order">  
+
+                        <h3>Before You Place an Order</h3>  
+
+                        <p>  
+                            New to SAFollow? Watch the tutorial above to learn how to  
+                            select a service, place an order, and use our panel correctly.  
+                        </p>  
+
+                    </div>  
+
+                    <!-- STEPS -->  
+                    <div class="sf-steps">  
+
+                        <div class="sf-step">  
+                            <div class="sf-step-icon">🔎</div>  
+                            <strong>Select Service</strong>  
+                        </div>  
+
+                        <div class="sf-step">  
+                            <div class="sf-step-icon">🔗</div>  
+                            <strong>Add Link</strong>  
+                        </div>  
+
+                        <div class="sf-step">  
+                            <div class="sf-step-icon">🚀</div>  
+                            <strong>Place Order</strong>  
+                        </div>  
+
+                    </div>  
+
+                    <!-- FOOTER -->  
+                    <div class="sf-guide-footer">  
+                        Need help? Follow the tutorial above before placing your first order.  
+                    </div>  
+
+                </div>  
+
+            </div>  
+
+        </div>  
+
+    </div>  
+
+</div>
+
+</div>  <!-- =====================================================  
+     EXISTING VIDEO GUIDE CSS — RETAINED  
+===================================================== -->  <style>  
+.sf-order-guide{  
+    width:100%;  
+    box-sizing:border-box;  
+    padding:4px 0 10px;  
+}  
+.sf-guide-head{  
+    display:flex;  
+    align-items:center;  
+    gap:14px;  
+    margin-bottom:20px;  
+}  
+.sf-guide-icon{  
+    width:76px;  
+    height:76px;  
+    min-width:76px;  
+    border-radius:20px;  
+    background:linear-gradient(135deg,#4285f4,#5b63f6);  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+    color:#fff;  
+    font-size:30px;  
+}  
+.sf-guide-head h3{  
+    margin:0!important;  
+    padding:0!important;  
+    font-size:27px!important;  
+    font-weight:800!important;  
+    color:#263238;  
+}  
+.sf-guide-head p{  
+    margin:4px 0 0!important;  
+    padding:0!important;  
+    font-size:17px!important;  
+    color:#8b95a5;  
+}  
+.sf-video-box{  
+    width:100%;  
+    position:relative;  
+    overflow:hidden;  
+    border-radius:24px;  
+    background:#000;  
+    box-shadow:0 10px 30px rgba(50,90,140,.12);  
+    aspect-ratio:16 / 9;  
+}  
+.sf-video-box iframe{  
+    position:absolute;  
+    top:0;  
+    left:0;  
+    width:100%!important;  
+    height:100%!important;  
+    border:0;  
+    display:block;  
+    border-radius:24px;  
+}  
+.sf-before-order{  
+    margin-top:25px;  
+    padding:22px 24px;  
+    border-radius:22px;  
+    background:#f1f6ff;  
+    border:1px solid #d9e7fa;  
+}  
+.sf-before-order h3{  
+    margin:0 0 12px!important;  
+    font-size:22px!important;  
+    color:#2869c9;  
+    font-weight:800!important;  
+}  
+.sf-before-order p{  
+    margin:0!important;  
+    font-size:16px!important;  
+    line-height:1.7!important;  
+    color:#596678;  
+}  
+.sf-steps{  
+    display:grid;  
+    grid-template-columns:repeat(3,1fr);  
+    gap:12px;  
+    margin-top:22px;  
+}  
+.sf-step{  
+    min-height:115px;  
+    padding:15px 8px;  
+    border-radius:20px;  
+    background:#f8fafc;  
+    display:flex;  
+    flex-direction:column;  
+    align-items:center;  
+    justify-content:center;  
+    text-align:center;  
+}  
+.sf-step-icon{  
+    font-size:32px;  
+    line-height:1;  
+    margin-bottom:12px;  
+}  
+.sf-step strong{  
+    font-size:15px!important;  
+    color:#374151;  
+    font-weight:700!important;  
+}  
+.sf-guide-footer{  
+    text-align:center;  
+    padding:20px 8px 4px;  
+    color:#8993a1;  
+    font-size:16px;  
+    line-height:1.6;  
+}  
+.nightmode .sf-guide-head h3{color:#fff;}  
+.nightmode .sf-guide-head p{color:#aeb9ca;}  
+.nightmode .sf-before-order{  
+    background:#17243a;  
+    border-color:#263956;  
+}  
+.nightmode .sf-before-order h3{color:#6fa5ff;}  
+.nightmode .sf-before-order p{color:#c7d1df;}  
+.nightmode .sf-step{background:#182741;}  
+.nightmode .sf-step strong{color:#fff;}  
+.nightmode .sf-guide-footer{color:#aeb9ca;}  
+  
+@media only screen and (max-width:550px){  
+    .sf-order-guide{padding:2px 0 8px;}  
+    .sf-guide-head{gap:12px;margin-bottom:18px;}  
+    .sf-guide-icon{  
+        width:58px;height:58px;min-width:58px;  
+        border-radius:17px;font-size:23px;  
+    }  
+    .sf-guide-head h3{font-size:22px!important;}  
+    .sf-guide-head p{font-size:14px!important;}  
+    .sf-video-box{border-radius:20px;aspect-ratio:16 / 9;}  
+    .sf-video-box iframe{border-radius:20px;}  
+    .sf-before-order{  
+        margin-top:18px;padding:18px;border-radius:18px;  
+    }  
+    .sf-before-order h3{font-size:19px!important;}  
+    .sf-before-order p{font-size:14px!important;line-height:1.65!important;}  
+    .sf-steps{gap:8px;margin-top:15px;}  
+    .sf-step{min-height:100px;padding:10px 4px;border-radius:17px;}  
+    .sf-step-icon{font-size:27px;margin-bottom:9px;}  
+    .sf-step strong{font-size:13px!important;}  
+    .sf-guide-footer{font-size:14px;padding-top:16px;}  
+}  
+@media only screen and (max-width:380px){  
+    .sf-guide-head h3{font-size:19px!important;}  
+    .sf-guide-head p{font-size:12px!important;}  
+}  
+</style>  <style>  
+/* Additional polish: refined typography and button contrast */  
+#main_container .announcement_inner .left_ann h4 {  
+    letter-spacing: -.2px;  
+}  
+#main_container #categoryFIlterWraper .btn_filter {  
+    border-radius: 12px;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem {  
+    background: linear-gradient(135deg, #2878e8, #5b63f6);  
+    color: #fff;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem .filter_txt,  
+#main_container #categoryFIlterWraper .btn_filter.activeItem i {  
+    color: #fff;  
+}  
+#main_container #newOrderTabsWrap #pills-tab .nav-link {  
+    border-radius: 10px;  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"] {  
+    min-height: 44px;  
+    padding-left: 22px;  
+    padding-right: 22px;  
+}  
+#main_container .sf-order-guide .sf-guide-head h3 {  
+    letter-spacing: -.35px;  
+}  
+</style>  <!-- ==========================================================  
+     NEW ORDER PAGE — ADDITIONAL SCOPED DESIGN ENHANCEMENTS  
+     No form structure or existing JavaScript logic changed.  
+========================================================== -->  <style>  
+/* Entrance animation limited to New Order page sections */  
+#main_container .section_49041,  
+#main_container #category_filter,  
+#main_container .def_wraper,  
+#main_container .sf-order-guide{  
+    animation:sfOrderFadeIn .45s ease both;  
+}  
+@keyframes sfOrderFadeIn{  
+    from{opacity:0;transform:translateY(7px);}  
+    to{opacity:1;transform:translateY(0);}  
+}  
+  
+/* Statistic cards */  
+#main_container .user_statistic_wraper .statistic__item{  
+    border:1px solid rgba(61,141,255,.12);  
+    box-shadow:0 4px 14px rgba(34,75,130,.055);  
+    transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;  
+}  
+#main_container .user_statistic_wraper .statistic__item:hover{  
+    transform:translateY(-2px);  
+    border-color:rgba(61,141,255,.38);  
+    box-shadow:0 8px 20px rgba(34,75,130,.10);  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon img{  
+    max-width:100%;  
+    height:auto;  
+    transition:transform .25s ease;  
+}  
+#main_container .user_statistic_wraper .statistic__item:hover .icon img{  
+    transform:scale(1.05);  
+}  
+  
+/* Announcement links and button */  
+#main_container .announcement_inner .left_ann a{  
+    color:#2878e8;  
+    font-weight:700;  
+    text-decoration:none;  
+    transition:color .2s ease;  
+}  
+#main_container .announcement_inner .left_ann a:hover{color:#1558b0;}  
+#main_container .btn_announcement{  
+    border:1px solid rgba(61,141,255,.20);  
+    box-shadow:0 3px 10px rgba(61,141,255,.08);  
+    transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease;  
+}  
+#main_container .btn_announcement:hover{  
+    transform:translateY(-1px);  
+    box-shadow:0 6px 15px rgba(61,141,255,.16);  
+}  
+  
+/* Category filter buttons: original onclick handlers retained */  
+#main_container #categoryFIlterWraper .btn_filter{  
+    transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;  
+    -webkit-tap-highlight-color:transparent;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:hover{  
+    transform:translateY(-2px);  
+    box-shadow:0 5px 14px rgba(61,141,255,.13);  
+}  
+#main_container #categoryFIlterWraper .btn_filter:active{transform:scale(.97);}  
+#main_container #categoryFIlterWraper .btn_filter img,  
+#main_container #categoryFIlterWraper .btn_filter i{  
+    transition:transform .2s ease;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:hover img,  
+#main_container #categoryFIlterWraper .btn_filter:hover i{transform:scale(1.07);}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem{  
+    box-shadow:0 5px 15px rgba(61,141,255,.20);  
+    outline:2px solid rgba(61,141,255,.18);  
+    outline-offset:1px;  
+}  
+  
+/* New Order and Add Funds tabs */  
+#main_container #newOrderTabsWrap #pills-tab .nav-link{  
+    transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;  
+}  
+#main_container #newOrderTabsWrap #pills-tab .nav-link:hover{transform:translateY(-1px);}  
+  
+/* Order form controls, scoped to the New Order form only */  
+#main_container #newOrderTabsWrap .newordersr form .control-label,  
+#main_container #newOrderTabsWrap .newordersr form label{line-height:1.5;}  
+#main_container #newOrderTabsWrap .newordersr form .form-control,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select{  
+    border-radius:10px;  
+    transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease;  
+}  
+#main_container #newOrderTabsWrap .newordersr form .form-control:focus,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select:focus{  
+    border-color:#3d8dff;  
+    box-shadow:0 0 0 3px rgba(61,141,255,.13);  
+    outline:none;  
+}  
+  
+/* Place Order button: submit name/type/behavior untouched */  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]{  
+    border-radius:10px;  
+    font-weight:700;  
+    box-shadow:0 5px 14px rgba(61,141,255,.18);  
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]:hover{  
+    transform:translateY(-1px);  
+    box-shadow:0 8px 18px rgba(61,141,255,.24);  
+    filter:brightness(1.03);  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]:active{  
+    transform:translateY(0) scale(.99);  
+}  
+#main_container #newOrderTabsWrap .description_div .description{  
+    border-radius:10px;  
+    transition:border-color .2s ease,box-shadow .2s ease;  
+}  
+  
+/* Video guide */  
+#main_container .sf-order-guide .sf-guide-icon{  
+    box-shadow:0 7px 18px rgba(66,133,244,.20);  
+    transition:transform .25s ease,box-shadow .25s ease;  
+}  
+#main_container .sf-order-guide .sf-guide-icon:hover{  
+    transform:translateY(-2px) rotate(-2deg);  
+    box-shadow:0 10px 22px rgba(66,133,244,.25);  
+}  
+#main_container .sf-order-guide .sf-before-order,  
+#main_container .sf-order-guide .sf-step{  
+    transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;  
+}  
+#main_container .sf-order-guide .sf-before-order:hover,  
+#main_container .sf-order-guide .sf-step:hover{  
+    transform:translateY(-2px);  
+    box-shadow:0 7px 18px rgba(34,75,130,.08);  
+}  
+#main_container .sf-order-guide .sf-video-box{  
+    box-shadow:0 10px 28px rgba(30,60,100,.14);  
+}  
+  
+/* Dark mode additions */  
+.nightmode #main_container .user_statistic_wraper .statistic__item{  
+    border-color:rgba(130,170,230,.12);  
+    box-shadow:0 4px 14px rgba(0,0,0,.10);  
+}  
+.nightmode #main_container .announcement_inner .left_ann a{color:#8dbaff;}  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .form-control:focus,  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .custom-select:focus{  
+    border-color:#76aaff;  
+    box-shadow:0 0 0 3px rgba(118,170,255,.16);  
+}  
+.nightmode #main_container .sf-order-guide .sf-guide-icon{  
+    box-shadow:0 7px 18px rgba(0,0,0,.18);  
+}  
+  
+/* Respect reduced-motion preferences */  
+@media (prefers-reduced-motion:reduce){  
+    #main_container .section_49041,  
+    #main_container #category_filter,  
+    #main_container .def_wraper,  
+    #main_container .sf-order-guide{animation:none!important;}  
+    #main_container .user_statistic_wraper .statistic__item,  
+    #main_container .user_statistic_wraper .statistic__item .icon img,  
+    #main_container .announcement_inner .left_ann a,  
+    #main_container .btn_announcement,  
+    #main_container #categoryFIlterWraper .btn_filter,  
+    #main_container #categoryFIlterWraper .btn_filter img,  
+    #main_container #categoryFIlterWraper .btn_filter i,  
+    #main_container #newOrderTabsWrap #pills-tab .nav-link,  
+    #main_container #newOrderTabsWrap .newordersr form .form-control,  
+    #main_container #newOrderTabsWrap .newordersr form .custom-select,  
+    #main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"],  
+    #main_container .sf-order-guide .sf-guide-icon,  
+    #main_container .sf-order-guide .sf-before-order,  
+    #main_container .sf-order-guide .sf-step{transition:none!important;}  
+}  
+</style>  <script>  
+function filterStarted(e, filter) {  
+    let btn_filter = document.getElementsByClassName("btn_filter");  
+    if (document.querySelector("#categoryFIlterWraper button.activeItem") !== null) {  
+        document.querySelector("#categoryFIlterWraper button.activeItem").classList.remove("activeItem");  
+    }  
+    e.classList.add("activeItem");  
+    var data_finder = filter.toLowerCase();  
+    var formField = document.getElementById("orderCategory");  
+    var options = formField.options;  
+    var set_selectPicker = 0;  
+    for (a = 0; a < options.length; a++) {  
+        var raw_o = options[a].innerText;  
+        var o = options[a].innerText;  
+        icon = options[a].getAttribute("data-icon");  
+        if (typeof icon.length !== "undefined") {  
+            if (icon.length > 0) { set_selectPicker = 1; }  
+        }  
+    }  
+    if (options.length > 0) {  
+        var matchFound = false;  
+        for (a = 0; a < options.length; a++) {  
+            var o = options[a].innerText.toLowerCase();  
+            if (data_finder === "all") {  
+                options[a].style.display = "block";  
+                matchFound = true;  
+            } else if (o.includes(data_finder)) {  
+                options[a].style.display = "block";  
+                matchFound = true;  
+            } else {  
+                options[a].style.display = "none";  
+            }  
+        }  
+        if (!matchFound) {  
+            options[a].style.display = "block";  
+        } else {  
+            var firstMatch = document.querySelector('#orderCategory option[style="display: block;"]');  
+            if (firstMatch) {  
+                document.getElementById("orderCategory").value = firstMatch.value;  
+            }  
+            if (set_selectPicker == 1) {  
+                try { $("#orderCategory").selectpicker("destroy"); } catch (err) {}  
+                $("#orderCategory").selectpicker();  
+            }  
+            change_cat();  
+        }  
+    }  
+    if ($(".form-group .control-label .custom-select.my-select").hasClass("my-select")) {  
+        $(".my-select").selectpicker("destroy");  
+    } else if ($(".my-select").selectpicker("destroy")) {  
+        $(".form-group .control-label .custom-select").addClass("my-select");  
+        $(".my-select").selectpicker("");  
+    }  
+}  
+</script>  <script>  
+var post_data = "actionType=notifications&apiKey=[user.api_key]";  
+var xhttp = new XMLHttpRequest();  
+xhttp.onreadystatechange = function () {  
+    if (this.readyState == 4 && this.status == 200) {  
+        var response = JSON.parse(this.responseText);  
+        var c = new Date();  
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];  
+        var cc = c.getDate() + " " + months[c.getMonth()];  
+        var content = "";  
+        if (typeof response.data !== "undefined") {  
+            var d = response.data;  
+            if (d.length > 0) {  
+                for (a = 0; a < d.length; a++) {  
+                    var f = d[a];  
+                    var subject = "";  
+                    if (typeof f.subject !== "undefined") { subject = f.subject; }  
+                    var date = "";  
+                    if (typeof f.date !== "undefined") { date = f.date; }  
+                    var c = new Date(date);  
+                    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];  
+                    var date = c.getDate() + " " + months[c.getMonth()] + " " + c.getFullYear();  
+                    var message = "";  
+                    if (typeof f.message !== "undefined") { message = f.message; }  
+                    var id = "";  
+                    if (typeof f.id !== "undefined") { id = f.id; }  
+                    if (message.length > 0) {  
+                        content = content + ' <li class="singleNewsBlock"><div class="type-date"><p class="date"> &nbsp ' + date + ' </p></div><br><div class="news-desc">' + "<p><b>" + subject + "</b></p><p>" + message + "</p></div></li>";  
+                    }  
+                }  
+            }  
+        }  
+        if (content.length == 0) {  
+            content = '<li><h4>Notification<span class="date">' + cc + "</span></h4><p>No Notification Found</p></li>";  
+        }  
+        var newsElement = document.getElementById("news_updates_div");  
+        if (newsElement) { newsElement.innerHTML = content; }  
+    }  
+};  
+xhttp.open("POST", "api", true);  
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
+xhttp.send(post_data);  
+</script>  <script>  
+window.addEventListener("load", function () {  
+    var monthly_spent = "[user.total_spent]";  
+    var available_funds = "[user.available_funds]";  
+    var total_orders = "[panel.last_order_id]";  
+    monthly_spent = monthly_spent.replace(",", ".");  
+    monthly_spent = parseFloat(monthly_spent);  
+    available_funds = available_funds.replace(",", ".");  
+    available_funds = parseFloat(available_funds);  
+    total_orders = total_orders.replace(",", ".");  
+    total_orders = parseFloat(total_orders);  
+    var exchange_rate = "[panel.currency.exchange_rate]";  
+    exchange_rate = exchange_rate.replace(",", ".");  
+    exchange_rate = parseFloat(exchange_rate);  
+    balance_limit = 1000 * exchange_rate;  
+    var pcr_orders = (total_orders / 100000000) * 100;  
+    prc_funds = (available_funds / balance_limit) * 100;  
+    var subscriptions = '[{"name":"NEW","min":"0","max":"49.9999"},{"name":"JUNIOR","min":"50","max":"999.9999"},{"name":"FREQUENT","min":"1000","max":"2499.9999"},{"name":"ELITE","min":"2500","max":"14999.9999"},{"name":"VIP","min":"15000","max":"49999.9999"},{"name":"MASTER","min":"50000","max":"1000000000"}]';  
+    subscriptions = JSON.parse(subscriptions);  
+    if (subscriptions.length > 0) {  
+        var total_subscription = subscriptions.length;  
+        for (index = 0; index < subscriptions.length; index++) {  
+            if (typeof subscriptions[index].min !== "undefined") {  
+                var subs = subscriptions[index];  
+                var min_spent = parseFloat(subs.min) * exchange_rate;  
+                var max_spent = parseFloat(subs.max) * exchange_rate;  
+                if (monthly_spent >= min_spent && monthly_spent <= max_spent) {  
+                    var total_spent_limit = max_spent - min_spent;  
+                    var above_monthly_spent = monthly_spent - min_spent;  
+                    var remaining_spent = max_spent - above_monthly_spent;  
+                    $(".account_status_span").html(subs.name);  
+                }  
+            }  
+        }  
+    }  
+});  
+</script>  </div>  
+</div>
+
+<div class="col-md-12">  
+    <!-- Check Updates Tab -->  
+    <div id="main-page" class="well well-float table-responsive">  
+        [addorder.middle-content]  
+    </div>  
+</div>  
+<div class="col-md-12">  
+    <!-- All Tab -->  
+    <div id="main-page" class="well well-float table-responsive">  
+        [addorder.bottom-content]  
+    </div>  
+</div>  [addorder.javascript-assets]
+
+  </div>  <!-- ==========================================================  
+     REQUESTED ONLY: STATISTIC CARD ANIMATION + CATEGORY LABELS  
+     No HTML structure, form logic, backend placeholders, or other  
+     page styling has been changed in this addition.  
+========================================================== -->  <style>  
+/* My Balance, Total Orders, My Spent, Announcement: subtle animation */  
+#main_container .user_statistic_wraper .statistic__item {  
+    position: relative;  
+    overflow: hidden;  
+    animation: sfStatisticFloat 3.8s ease-in-out infinite;  
+    will-change: transform, box-shadow;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(2) {  
+    animation-delay: .18s;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(3) {  
+    animation-delay: .36s;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(4) {  
+    animation-delay: .54s;  
+}  
+#main_container .user_statistic_wraper .statistic__item::after {  
+    content: "";  
+    position: absolute;  
+    top: 0;  
+    left: -130%;  
+    width: 65%;  
+    height: 100%;  
+    pointer-events: none;  
+    background: linear-gradient(110deg, transparent, rgba(255,255,255,.32), transparent);  
+    transform: skewX(-18deg);  
+    animation: sfStatisticShine 6s ease-in-out infinite;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(2)::after {  
+    animation-delay: .5s;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(3)::after {  
+    animation-delay: 1s;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(4)::after {  
+    animation-delay: 1.5s;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon,  
+#main_container .user_statistic_wraper .statistic__item .user__data {  
+    position: relative;  
+    z-index: 1;  
+}  
+@keyframes sfStatisticFloat {  
+    0%, 100% { transform: translateY(0); }  
+    50% { transform: translateY(-2px); }  
+}  
+@keyframes sfStatisticShine {  
+    0%, 65%, 100% { left: -130%; }  
+    85% { left: 150%; }  
+}  
+#main_container .user_statistic_wraper .statistic__item:hover {  
+    transform: translateY(-4px);  
+    box-shadow: 0 10px 24px rgba(34,75,130,.13);  
+}  
+  
+/* Desktop/tablet: show platform icon AND platform name */  
+@media only screen and (min-width: 551px) {  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: inline !important;  
+        visibility: visible !important;  
+        opacity: 1 !important;  
+    }  
+}  
+  
+/* Mobile: show platform icons only; keep existing button grid and handlers */  
+@media only screen and (max-width: 550px) {  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: none !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        justify-content: center;  
+        align-items: center;  
+    }  
+}  
+  
+/* Respect accessibility settings for reduced motion */  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container .user_statistic_wraper .statistic__item,  
+    #main_container .user_statistic_wraper .statistic__item::after {  
+        animation: none !important;  
+        will-change: auto;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     SAFOLLOW NEW ORDER — PREMIUM VISUAL POLISH  
+     CSS only. Existing HTML, JavaScript, form fields, handlers,  
+     backend placeholders, and page structure remain unchanged.  
+========================================================== -->  <style>  
+/* Premium statistic cards: animated border glow and soft depth */  
+#main_container .user_statistic_wraper .statistic__item {  
+    isolation: isolate;  
+    position: relative;  
+    overflow: hidden;  
+    border: 1px solid rgba(76, 132, 235, .22) !important;  
+    border-radius: 18px !important;  
+    background: linear-gradient(145deg, #ffffff 0%, #f7faff 100%) !important;  
+    box-shadow: 0 8px 22px rgba(35, 75, 135, .075),  
+                inset 0 1px 0 rgba(255,255,255,.95) !important;  
+    animation: sfPremiumCardFloat 5s ease-in-out infinite;  
+    transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(2) { animation-delay: .25s; }  
+#main_container .user_statistic_wraper .statistic__item:nth-child(3) { animation-delay: .5s; }  
+#main_container .user_statistic_wraper .statistic__item:nth-child(4) { animation-delay: .75s; }  
+#main_container .user_statistic_wraper .statistic__item::before {  
+    content: "";  
+    position: absolute;  
+    inset: 0;  
+    border-radius: inherit;  
+    padding: 1px;  
+    background: linear-gradient(125deg, rgba(57,133,245,.52), transparent 38%, rgba(104,88,240,.30));  
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);  
+    -webkit-mask-composite: xor;  
+    mask-composite: exclude;  
+    pointer-events: none;  
+    opacity: .55;  
+}  
+#main_container .user_statistic_wraper .statistic__item::after {  
+    content: "";  
+    position: absolute;  
+    z-index: -1;  
+    top: -40%;  
+    left: -85%;  
+    width: 55%;  
+    height: 180%;  
+    background: linear-gradient(90deg, transparent, rgba(82,150,255,.12), transparent);  
+    transform: rotate(20deg);  
+    animation: sfPremiumCardShine 7s ease-in-out infinite;  
+    pointer-events: none;  
+}  
+#main_container .user_statistic_wraper .statistic__item:nth-child(2)::after { animation-delay: 1s; }  
+#main_container .user_statistic_wraper .statistic__item:nth-child(3)::after { animation-delay: 2s; }  
+#main_container .user_statistic_wraper .statistic__item:nth-child(4)::after { animation-delay: 3s; }  
+#main_container .user_statistic_wraper .statistic__item .icon img {  
+    filter: drop-shadow(0 3px 4px rgba(40,70,120,.12));  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+    color: #758198;  
+    font-weight: 700;  
+    letter-spacing: .35px;  
+    text-transform: uppercase;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+#main_container .user_statistic_wraper .statistic__item .user__data h4 {  
+    color: #1b2940;  
+}  
+#main_container .user_statistic_wraper .statistic__item:hover {  
+    transform: translateY(-4px) scale(1.008);  
+    border-color: rgba(55,125,235,.48) !important;  
+    box-shadow: 0 14px 30px rgba(35, 85, 160, .14),  
+                0 0 0 3px rgba(65,130,235,.055) !important;  
+}  
+  
+/* Announcement: premium panel styling, no content/layout structure changes */  
+#main_container .anouncement_card .card.card_v2 {  
+    border: 1px solid rgba(75,132,230,.18) !important;  
+    border-radius: 22px !important;  
+    overflow: hidden;  
+    background: linear-gradient(135deg, #ffffff 0%, #f4f8ff 60%, #f6f4ff 100%) !important;  
+    box-shadow: 0 12px 30px rgba(40,80,145,.075) !important;  
+}  
+#main_container .anouncement_card .card-body {  
+    padding: 22px !important;  
+}  
+#main_container .announcement_inner .left_ann h4 {  
+    color: #1e2c43;  
+    font-size: 20px;  
+    font-weight: 800;  
+}  
+#main_container .announcement_inner .left_ann p {  
+    color: #6d788b;  
+    line-height: 1.7;  
+}  
+#main_container .announcement_inner .right_ann .btn_announcement {  
+    display: inline-flex;  
+    align-items: center;  
+    justify-content: center;  
+    min-height: 44px;  
+    padding: 11px 18px;  
+    border: 0 !important;  
+    border-radius: 13px !important;  
+    color: #fff !important;  
+    background: linear-gradient(110deg, #2879ed, #5e58e8) !important;  
+    box-shadow: 0 7px 17px rgba(65,103,225,.23) !important;  
+    font-weight: 750;  
+}  
+#main_container .announcement_inner .right_ann .btn_announcement:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 0 11px 23px rgba(65,103,225,.30) !important;  
+}  
+  
+/* Category grid: elegant buttons, original click handlers preserved */  
+#main_container #categoryFIlterWraper .btn_filter {  
+    position: relative;  
+    overflow: hidden;  
+    border: 1px solid rgba(104,126,160,.23) !important;  
+    border-radius: 17px !important;  
+    background: linear-gradient(145deg, #fff, #f8faff) !important;  
+    box-shadow: 0 5px 15px rgba(35,70,125,.055);  
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;  
+}  
+#main_container #categoryFIlterWraper .btn_filter::before {  
+    content: "";  
+    position: absolute;  
+    inset: 0;  
+    background: linear-gradient(125deg, rgba(55,130,245,.075), transparent 55%, rgba(108,85,235,.055));  
+    opacity: 0;  
+    transition: opacity .22s ease;  
+    pointer-events: none;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:hover::before { opacity: 1; }  
+#main_container #categoryFIlterWraper .btn_filter:hover {  
+    transform: translateY(-3px);  
+    border-color: rgba(55,125,235,.45) !important;  
+    box-shadow: 0 10px 22px rgba(45,95,170,.12);  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem {  
+    border-color: transparent !important;  
+    background: linear-gradient(125deg, #2879ed, #6156e8) !important;  
+    color: #fff !important;  
+    box-shadow: 0 8px 20px rgba(58,105,225,.27) !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem .filter_txt,  
+#main_container #categoryFIlterWraper .btn_filter.activeItem i {  
+    color: #fff !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter img,  
+#main_container #categoryFIlterWraper .btn_filter i {  
+    position: relative;  
+    z-index: 1;  
+}  
+#main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+    position: relative;  
+    z-index: 1;  
+    font-weight: 700;  
+}  
+  
+/* Desktop: icon plus label; mobile: icons only */  
+@media only screen and (min-width: 551px) {  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 88px;  
+        gap: 9px;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: inline !important;  
+        visibility: visible !important;  
+        opacity: 1 !important;  
+    }  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 76px;  
+        padding: 10px 5px;  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: none !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img {  
+        width: 38px !important;  
+        max-width: 70%;  
+        height: auto;  
+    }  
+}  
+  
+/* Order form: polished fields and primary action */  
+#main_container #newOrderTabsWrap .newordersr form .form-control,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select {  
+    border: 1px solid #dce5f2;  
+    border-radius: 12px !important;  
+    background-color: #fff;  
+    box-shadow: 0 2px 7px rgba(30,65,120,.025);  
+}  
+#main_container #newOrderTabsWrap .newordersr form .form-control:focus,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select:focus {  
+    border-color: #4387f5 !important;  
+    box-shadow: 0 0 0 4px rgba(67,135,245,.13) !important;  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"] {  
+    min-height: 48px;  
+    border: 0 !important;  
+    border-radius: 13px !important;  
+    background: linear-gradient(110deg, #2879ed, #6056e8) !important;  
+    box-shadow: 0 8px 19px rgba(55,105,225,.23);  
+    font-weight: 800;  
+    transition: transform .2s ease, box-shadow .2s ease;  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 0 12px 24px rgba(55,105,225,.30);  
+}  
+  
+/* Dark mode */  
+.nightmode #main_container .user_statistic_wraper .statistic__item {  
+    background: linear-gradient(145deg, #1a2a43, #142238) !important;  
+    border-color: rgba(125,165,235,.20) !important;  
+    box-shadow: 0 8px 22px rgba(0,0,0,.15) !important;  
+}  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+    color: #a9b8ce;  
+}  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data h4 {  
+    color: #f3f7ff;  
+}  
+.nightmode #main_container .anouncement_card .card.card_v2 {  
+    background: linear-gradient(135deg, #182840, #17243a 65%, #201f3d) !important;  
+    border-color: rgba(125,165,235,.18) !important;  
+}  
+.nightmode #main_container .announcement_inner .left_ann h4 { color: #f3f7ff; }  
+.nightmode #main_container .announcement_inner .left_ann p { color: #c0ccdd; }  
+.nightmode #main_container #categoryFIlterWraper .btn_filter {  
+    background: linear-gradient(145deg, #1b2b43, #17243a) !important;  
+    border-color: rgba(135,160,200,.20) !important;  
+    color: #edf3ff;  
+}  
+.nightmode #main_container #categoryFIlterWraper .btn_filter.activeItem {  
+    background: linear-gradient(125deg, #2879ed, #6156e8) !important;  
+    color: #fff !important;  
+}  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .form-control,  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .custom-select {  
+    background-color: #17243a;  
+    color: #f3f7ff;  
+    border-color: #30425e;  
+}  
+  
+/* Smooth motion without animation when accessibility requests reduced motion */  
+@keyframes sfPremiumCardFloat {  
+    0%, 100% { transform: translateY(0); }  
+    50% { transform: translateY(-2px); }  
+}  
+@keyframes sfPremiumCardShine {  
+    0%, 68%, 100% { left: -85%; }  
+    88% { left: 145%; }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container .user_statistic_wraper .statistic__item,  
+    #main_container .user_statistic_wraper .statistic__item::after,  
+    #main_container #categoryFIlterWraper .btn_filter,  
+    #main_container #categoryFIlterWraper .btn_filter::before,  
+    #main_container .announcement_inner .right_ann .btn_announcement,  
+    #main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"] {  
+        animation: none !important;  
+        transition: none !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     SOCIAL CATEGORY ICON BOXES — REQUESTED CHANGE ONLY  
+     Mobile: icon only. Desktop: icon above platform name.  
+     Other page sections and JavaScript remain unchanged.  
+========================================================== -->  <style>  
+/* Shared social category box */  
+#main_container #categoryFIlterWraper .btn_filter {  
+    position: relative !important;  
+    display: flex !important;  
+    flex-direction: column !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+    gap: 9px !important;  
+    min-width: 0;  
+    min-height: 104px;  
+    padding: 15px 8px !important;  
+    border: 1px solid rgba(102, 132, 180, .22) !important;  
+    border-radius: 18px !important;  
+    background: linear-gradient(145deg, #ffffff 0%, #f5f8ff 100%) !important;  
+    box-shadow: 0 7px 18px rgba(37, 76, 135, .075),  
+                inset 0 1px 0 rgba(255,255,255,.95) !important;  
+    overflow: hidden;  
+    isolation: isolate;  
+    transform: translateZ(0);  
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;  
+    animation: sfSocialBoxFloat 4.8s ease-in-out infinite;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(2) { animation-delay: .12s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(3) { animation-delay: .24s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(4) { animation-delay: .36s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(5) { animation-delay: .48s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(6) { animation-delay: .60s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(7) { animation-delay: .72s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(8) { animation-delay: .84s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(9) { animation-delay: .96s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(10) { animation-delay: 1.08s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(11) { animation-delay: 1.20s; }  
+#main_container #categoryFIlterWraper .btn_filter:nth-child(12) { animation-delay: 1.32s; }  
+  
+/* Soft moving shine within each box */  
+#main_container #categoryFIlterWraper .btn_filter::after {  
+    content: "";  
+    position: absolute;  
+    z-index: -1;  
+    top: -30%;  
+    left: -100%;  
+    width: 58%;  
+    height: 160%;  
+    background: linear-gradient(100deg, transparent, rgba(79, 145, 255, .16), transparent);  
+    transform: rotate(18deg);  
+    pointer-events: none;  
+    animation: sfSocialBoxShine 6.5s ease-in-out infinite;  
+}  
+#main_container #categoryFIlterWraper .btn_filter img,  
+#main_container #categoryFIlterWraper .btn_filter i {  
+    position: relative;  
+    z-index: 1;  
+    display: block;  
+    width: 42px !important;  
+    height: 42px;  
+    object-fit: contain;  
+    flex: 0 0 auto;  
+    filter: drop-shadow(0 3px 5px rgba(31, 55, 95, .12));  
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), filter .3s ease;  
+}  
+#main_container #categoryFIlterWraper .btn_filter i {  
+    width: 42px !important;  
+    line-height: 42px;  
+    font-size: 38px !important;  
+    text-align: center;  
+}  
+#main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+    position: relative;  
+    z-index: 1;  
+    display: block !important;  
+    visibility: visible !important;  
+    opacity: 1 !important;  
+    margin: 0 !important;  
+    color: #4b5870;  
+    font-size: 14px;  
+    line-height: 1.25;  
+    font-weight: 750;  
+    text-align: center;  
+    white-space: normal;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:hover {  
+    transform: translateY(-4px) scale(1.015) !important;  
+    border-color: rgba(55, 125, 235, .45) !important;  
+    box-shadow: 0 13px 25px rgba(45, 95, 170, .15),  
+                0 0 0 3px rgba(65, 130, 235, .045) !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter:hover img,  
+#main_container #categoryFIlterWraper .btn_filter:hover i {  
+    transform: translateY(-2px) scale(1.1) rotate(-3deg);  
+    filter: drop-shadow(0 6px 7px rgba(31, 85, 170, .20));  
+}  
+#main_container #categoryFIlterWraper .btn_filter:active {  
+    transform: scale(.96) !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem {  
+    border-color: rgba(55, 125, 235, .72) !important;  
+    background: linear-gradient(145deg, #eaf3ff 0%, #f1efff 100%) !important;  
+    box-shadow: 0 9px 23px rgba(58, 105, 225, .17),  
+                inset 0 0 0 1px rgba(65, 125, 235, .12) !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem .filter_txt {  
+    color: #2367c8 !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter.activeItem img,  
+#main_container #categoryFIlterWraper .btn_filter.activeItem i {  
+    transform: scale(1.06);  
+}  
+  
+/* Desktop/tablet: icons with platform names underneath */  
+@media only screen and (min-width: 551px) {  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 112px;  
+        padding: 15px 8px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: block !important;  
+    }  
+}  
+  
+/* Mobile: square icon boxes only; hide labels */  
+@media only screen and (max-width: 550px) {  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 78px !important;  
+        height: 78px;  
+        padding: 10px 4px !important;  
+        gap: 0 !important;  
+        border-radius: 16px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: none !important;  
+        visibility: hidden !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img {  
+        width: 40px !important;  
+        height: 40px !important;  
+        max-width: 100%;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 40px !important;  
+        height: 40px;  
+        line-height: 40px;  
+        font-size: 36px !important;  
+    }  
+}  
+  
+/* Dark mode */  
+.nightmode #main_container #categoryFIlterWraper .btn_filter {  
+    background: linear-gradient(145deg, #1b2b43, #142238) !important;  
+    border-color: rgba(137, 169, 220, .22) !important;  
+    box-shadow: 0 7px 18px rgba(0,0,0,.15) !important;  
+}  
+.nightmode #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+    color: #dce7f8;  
+}  
+.nightmode #main_container #categoryFIlterWraper .btn_filter.activeItem {  
+    background: linear-gradient(145deg, #1c3c69, #292653) !important;  
+    border-color: rgba(111, 166, 255, .55) !important;  
+}  
+.nightmode #main_container #categoryFIlterWraper .btn_filter.activeItem .filter_txt {  
+    color: #ffffff !important;  
+}  
+  
+/* Motion accessibility */  
+@keyframes sfSocialBoxFloat {  
+    0%, 100% { margin-top: 0; }  
+    50% { margin-top: -2px; }  
+}  
+@keyframes sfSocialBoxShine {  
+    0%, 68%, 100% { left: -100%; }  
+    88% { left: 150%; }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container #categoryFIlterWraper .btn_filter,  
+    #main_container #categoryFIlterWraper .btn_filter::after {  
+        animation: none !important;  
+        transition: none !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL FIX: KEEP ALL SOCIAL CATEGORY ICONS VISIBLE TOGETHER  
+     Only the category-filter container/grid is adjusted.  
+     All other HTML, styles, animations, labels, and JavaScript  
+     remain unchanged.  
+========================================================== -->  <style>  
+/* One unified grid container: no inner scrolling or clipped icons */  
+#main_container #category_filter .filter_btn_wrap,  
+#main_container #categoryFIlterWraper {  
+    height: auto !important;  
+    max-height: none !important;  
+    overflow: visible !important;  
+}  
+  
+/* Desktop/tablet: all categories stay together in a neat grid */  
+#main_container #category_filter .filter_btn_wrap {  
+    display: grid !important;  
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;  
+    gap: 12px !important;  
+    align-items: stretch;  
+}  
+  
+/* Ensure the icon boxes fit the grid without horizontal overflow */  
+#main_container #categoryFIlterWraper .btn_filter {  
+    width: 100% !important;  
+    min-width: 0 !important;  
+    box-sizing: border-box !important;  
+}  
+  
+/* Mobile: 4 columns × 3 rows for all 12 categories, with no scrolling */  
+@media only screen and (max-width: 550px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        display: grid !important;  
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+        height: auto !important;  
+        max-height: none !important;  
+        overflow: visible !important;  
+        overflow-y: visible !important;  
+        gap: 10px !important;  
+    }  
+  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        width: 100% !important;  
+        min-width: 0 !important;  
+        height: 78px !important;  
+        min-height: 78px !important;  
+    }  
+}  
+  
+/* Compact desktop layouts: preserve all icons without horizontal scrolling */  
+@media only screen and (min-width: 551px) and (max-width: 900px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+        gap: 10px !important;  
+    }  
+}  
+  
+/* Do not animate the grid container itself; existing icon-box animation remains */  
+</style>  <!-- ==========================================================  
+     FINAL REQUESTED ADJUSTMENTS ONLY  
+     1) Keep every social category icon visible in one grid.  
+     2) Make the welcome/Telegram announcement card more compact.  
+     All form functionality, JavaScript, and unrelated styling remain unchanged.  
+========================================================== -->  <style>  
+/* Category icons: one complete grid, without an inner scroll area */  
+#main_container #category_filter .filter_btn_wrap,  
+#main_container #categoryFIlterWraper {  
+    display: grid !important;  
+    height: auto !important;  
+    min-height: 0 !important;  
+    max-height: none !important;  
+    overflow: visible !important;  
+    overflow-x: visible !important;  
+    overflow-y: visible !important;  
+}  
+#main_container #category_filter .filter_btn_wrap {  
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;  
+    gap: 12px !important;  
+    align-items: stretch !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter {  
+    width: 100% !important;  
+    min-width: 0 !important;  
+    box-sizing: border-box !important;  
+}  
+@media only screen and (min-width: 551px) and (max-width: 900px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+        gap: 10px !important;  
+    }  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+        gap: 8px !important;  
+        padding-bottom: 0 !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        width: 100% !important;  
+        height: 78px !important;  
+        min-height: 78px !important;  
+        max-height: none !important;  
+    }  
+}  
+  
+/* Compact welcome / Telegram announcement card only */  
+#main_container .anouncement_card {  
+    margin-top: -18px !important;  
+    margin-bottom: 12px !important;  
+}  
+#main_container .anouncement_card .card.card_v2 {  
+    border-radius: 16px !important;  
+}  
+#main_container .anouncement_card .card-body {  
+    padding: 14px 16px !important;  
+}  
+#main_container .anouncement_card .announcement_inner {  
+    align-items: center !important;  
+    gap: 10px !important;  
+    padding: 0 !important;  
+}  
+#main_container .anouncement_card .announcement_inner .left_ann h4 {  
+    margin: 0 0 4px !important;  
+    font-size: 17px !important;  
+    line-height: 1.35 !important;  
+    letter-spacing: -.15px;  
+}  
+#main_container .anouncement_card .announcement_inner .left_ann p {  
+    margin: 0 !important;  
+    font-size: 13px !important;  
+    line-height: 1.5 !important;  
+}  
+#main_container .anouncement_card .announcement_inner .right_ann .btn_announcement {  
+    min-height: 36px !important;  
+    padding: 8px 13px !important;  
+    border-radius: 10px !important;  
+    font-size: 12px !important;  
+    line-height: 1.25 !important;  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container .anouncement_card {  
+        margin-top: -18px !important;  
+        margin-bottom: 10px !important;  
+    }  
+    #main_container .anouncement_card .card-body {  
+        padding: 12px 14px !important;  
+    }  
+    #main_container .anouncement_card .announcement_inner {  
+        flex-direction: column !important;  
+        align-items: flex-start !important;  
+        gap: 8px !important;  
+    }  
+    #main_container .anouncement_card .announcement_inner .left_ann h4 {  
+        font-size: 16px !important;  
+        line-height: 1.3 !important;  
+        margin-bottom: 3px !important;  
+    }  
+    #main_container .anouncement_card .announcement_inner .left_ann p {  
+        font-size: 12px !important;  
+        line-height: 1.45 !important;  
+    }  
+    #main_container .anouncement_card .announcement_inner .right_ann .btn_announcement {  
+        min-height: 32px !important;  
+        padding: 7px 11px !important;  
+        font-size: 12px !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL MOBILE-FRIENDLY CATEGORY ICON SIZE ADJUSTMENT  
+     Only social icon boxes and icon sizes are reduced.  
+     Desktop keeps icons above platform names; mobile keeps icons only.  
+     All other page content and functionality remain unchanged.  
+========================================================== -->  <style>  
+/* Desktop: slightly more compact boxes, icon above the label */  
+@media only screen and (min-width: 901px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        gap: 10px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 92px !important;  
+        height: 92px !important;  
+        padding: 10px 6px !important;  
+        gap: 6px !important;  
+        border-radius: 14px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img,  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 32px !important;  
+        height: 32px !important;  
+        max-width: 100% !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        line-height: 32px !important;  
+        font-size: 30px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        font-size: 12px !important;  
+        line-height: 1.2 !important;  
+    }  
+}  
+  
+/* Tablet: comfortable, compact category tiles */  
+@media only screen and (min-width: 551px) and (max-width: 900px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        gap: 9px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        min-height: 86px !important;  
+        height: 86px !important;  
+        padding: 9px 5px !important;  
+        gap: 5px !important;  
+        border-radius: 14px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img,  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 30px !important;  
+        height: 30px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        line-height: 30px !important;  
+        font-size: 28px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        font-size: 11px !important;  
+        line-height: 1.2 !important;  
+    }  
+}  
+  
+/* Mobile: smaller icon and box, all 12 icons remain visible in 4 x 3 grid */  
+@media only screen and (max-width: 550px) {  
+    #main_container #category_filter .filter_btn_wrap {  
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+        gap: 7px !important;  
+        height: auto !important;  
+        min-height: 0 !important;  
+        max-height: none !important;  
+        overflow: visible !important;  
+        overflow-x: visible !important;  
+        overflow-y: visible !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        width: 100% !important;  
+        height: 62px !important;  
+        min-height: 62px !important;  
+        max-height: 62px !important;  
+        padding: 6px 3px !important;  
+        gap: 0 !important;  
+        border-radius: 13px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img {  
+        width: 30px !important;  
+        height: 30px !important;  
+        max-width: 100% !important;  
+        object-fit: contain !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 30px !important;  
+        height: 30px !important;  
+        line-height: 30px !important;  
+        font-size: 28px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+        display: none !important;  
+        visibility: hidden !important;  
+    }  
+}  
+  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container #categoryFIlterWraper .btn_filter,  
+    #main_container #categoryFIlterWraper .btn_filter::after {  
+        animation: none !important;  
+        transition: none !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL VISUAL POLISH — CSS ONLY  
+     HTML structure, service-specific description content, form  
+     fields, backend placeholders, and JavaScript are untouched.  
+========================================================== -->  <style>  
+/* Soft premium surface for the existing New Order and guide cards */  
+#main_container .def_wraper .card.card_v2 {  
+    border: 1px solid rgba(91, 132, 195, .16) !important;  
+    border-radius: 20px !important;  
+    box-shadow: 0 10px 28px rgba(37, 72, 125, .065) !important;  
+    overflow: hidden;  
+    transition: box-shadow .25s ease, border-color .25s ease;  
+}  
+#main_container .def_wraper .card.card_v2:hover {  
+    border-color: rgba(61, 141, 255, .28) !important;  
+    box-shadow: 0 14px 32px rgba(37, 72, 125, .095) !important;  
+}  
+#main_container #newOrderTabsWrap .tab_btn_wrap {  
+    gap: 9px;  
+    padding: 7px;  
+    border-radius: 16px;  
+    background: #f1f6ff;  
+}  
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-item {  
+    min-width: 0;  
+}  
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-link {  
+    min-height: 44px;  
+    border: 1px solid rgba(61, 141, 255, .12) !important;  
+    box-shadow: 0 3px 9px rgba(40, 85, 150, .045);  
+    font-weight: 700;  
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;  
+}  
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-link:hover {  
+    transform: translateY(-1px);  
+    box-shadow: 0 6px 13px rgba(40, 85, 150, .10);  
+}  
+#main_container #newOrderTabsWrap .newordersr form .form-group {  
+    margin-bottom: 19px;  
+}  
+#main_container #newOrderTabsWrap .newordersr form label.control-label {  
+    display: inline-block;  
+    margin-bottom: 8px;  
+    color: #26364d;  
+    letter-spacing: -.1px;  
+}  
+#main_container #newOrderTabsWrap .newordersr form .form-control,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select {  
+    min-height: 46px;  
+    border: 1px solid #dce5f2 !important;  
+    border-radius: 13px !important;  
+    box-shadow: 0 3px 10px rgba(30, 65, 120, .025);  
+    transition: border-color .22s ease, box-shadow .22s ease, background-color .22s ease;  
+}  
+#main_container #newOrderTabsWrap .newordersr form .form-control:focus,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select:focus {  
+    border-color: #4387f5 !important;  
+    box-shadow: 0 0 0 4px rgba(67, 135, 245, .12) !important;  
+    outline: none;  
+}  
+  
+/* Service description: content remains dynamic and unchanged; only its appearance animates */  
+#main_container #newOrderTabsWrap #description_style {  
+    margin-top: 5px;  
+}  
+#main_container #newOrderTabsWrap #description_style > label {  
+    margin-bottom: 9px;  
+    font-weight: 800;  
+    letter-spacing: -.15px;  
+}  
+#main_container #newOrderTabsWrap #description {  
+    position: relative;  
+    isolation: isolate;  
+    overflow: hidden;  
+    border: 1px solid rgba(91, 145, 225, .16) !important;  
+    border-radius: 13px !important;  
+    background: linear-gradient(135deg, #edf4ff 0%, #e8f1ff 52%, #f1efff 100%) !important;  
+    color: #243247 !important;  
+    line-height: 1.72 !important;  
+    box-shadow: 0 5px 16px rgba(48, 91, 155, .055), inset 0 1px 0 rgba(255,255,255,.8);  
+    animation: sfDescriptionReveal .48s ease both;  
+    transition: border-color .25s ease, box-shadow .25s ease;  
+}  
+#main_container #newOrderTabsWrap #description::after {  
+    content: "";  
+    position: absolute;  
+    z-index: 0;  
+    pointer-events: none;  
+    top: -30%;  
+    left: -115%;  
+    width: 45%;  
+    height: 160%;  
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.36), transparent);  
+    transform: skewX(-17deg);  
+    animation: sfDescriptionShimmer 7.5s ease-in-out infinite;  
+}  
+/* Keep service text above the decorative light sweep */  
+#main_container #newOrderTabsWrap #description > * {  
+    position: relative;  
+    z-index: 1;  
+    animation: sfDescriptionTextIn .45s ease both;  
+}  
+#main_container #newOrderTabsWrap #description p {  
+    line-height: 1.72;  
+    margin-bottom: 12px;  
+}  
+#main_container #newOrderTabsWrap #description strong,  
+#main_container #newOrderTabsWrap #description b {  
+    color: #1c4f91;  
+    font-weight: 800;  
+}  
+#main_container #newOrderTabsWrap #description a {  
+    color: #246fe0;  
+    font-weight: 700;  
+    text-decoration-thickness: 1px;  
+    text-underline-offset: 3px;  
+}  
+#main_container #newOrderTabsWrap #description_style:hover #description {  
+    border-color: rgba(61, 141, 255, .35) !important;  
+    box-shadow: 0 8px 21px rgba(48, 91, 155, .09), inset 0 1px 0 rgba(255,255,255,.85);  
+}  
+@keyframes sfDescriptionReveal {  
+    from { opacity: .72; transform: translateY(5px); }  
+    to { opacity: 1; transform: translateY(0); }  
+}  
+@keyframes sfDescriptionTextIn {  
+    from { opacity: .8; }  
+    to { opacity: 1; }  
+}  
+@keyframes sfDescriptionShimmer {  
+    0%, 72%, 100% { left: -115%; }  
+    90% { left: 145%; }  
+}  
+  
+/* The submit button receives visual polish only; submit behavior is unchanged */  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"] {  
+    min-height: 49px;  
+    border: 0 !important;  
+    border-radius: 14px !important;  
+    background: linear-gradient(110deg, #2879ed, #6056e8) !important;  
+    box-shadow: 0 8px 19px rgba(55, 105, 225, .21);  
+    font-weight: 800;  
+    letter-spacing: .1px;  
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]:hover {  
+    transform: translateY(-2px);  
+    box-shadow: 0 12px 24px rgba(55, 105, 225, .28);  
+    filter: brightness(1.025);  
+}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]:active {  
+    transform: scale(.99);  
+}  
+  
+/* Dark mode keeps the description readable without touching its text */  
+.nightmode #main_container #newOrderTabsWrap .tab_btn_wrap {  
+    background: #17243a;  
+}  
+.nightmode #main_container #newOrderTabsWrap .newordersr form label.control-label {  
+    color: #e7eef9;  
+}  
+.nightmode #main_container #newOrderTabsWrap #description {  
+    background: linear-gradient(135deg, #1c2d47 0%, #1a2b44 55%, #262541 100%) !important;  
+    color: #e5edf9 !important;  
+    border-color: rgba(125, 165, 235, .22) !important;  
+    box-shadow: 0 5px 16px rgba(0,0,0,.13), inset 0 1px 0 rgba(255,255,255,.025);  
+}  
+.nightmode #main_container #newOrderTabsWrap #description strong,  
+.nightmode #main_container #newOrderTabsWrap #description b {  
+    color: #9bc3ff;  
+}  
+.nightmode #main_container #newOrderTabsWrap #description a {  
+    color: #8dbaff;  
+}  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .form-control,  
+.nightmode #main_container #newOrderTabsWrap .newordersr form .custom-select {  
+    background-color: #17243a;  
+    color: #f3f7ff;  
+    border-color: #30425e !important;  
+}  
+  
+@media only screen and (max-width: 550px) {  
+    #main_container .def_wraper .card.card_v2 {  
+        border-radius: 17px !important;  
+    }  
+    #main_container #newOrderTabsWrap .tab_btn_wrap {  
+        gap: 7px;  
+        padding: 6px;  
+        border-radius: 14px;  
+    }  
+    #main_container #newOrderTabsWrap .tab_btn_wrap .nav-link {  
+        min-height: 42px;  
+        padding: 9px 7px;  
+        font-size: 13px;  
+    }  
+    #main_container #newOrderTabsWrap .newordersr form .form-group {  
+        margin-bottom: 16px;  
+    }  
+    #main_container #newOrderTabsWrap #description {  
+        border-radius: 11px !important;  
+        line-height: 1.68 !important;  
+    }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container #newOrderTabsWrap #description,  
+    #main_container #newOrderTabsWrap #description::after,  
+    #main_container #newOrderTabsWrap #description > *,  
+    #main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"],  
+    #main_container #newOrderTabsWrap .newordersr form .form-control,  
+    #main_container #newOrderTabsWrap .newordersr form .custom-select,  
+    #main_container #newOrderTabsWrap .tab_btn_wrap .nav-link {  
+        animation: none !important;  
+        transition: none !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     SAFOLLOW: ANIMATED CATEGORY/SERVICE DROPDOWNS + DISMISSIBLE  
+     ORDER RESULT POPUP  
+     Add-on only: existing form, backend placeholders, service  
+     selection logic, and order submission behavior are unchanged.  
+========================================================== -->  <style>  
+/* Category/service select controls: clearer dropdown affordance */  
+#main_container #newOrderTabsWrap .newordersr form select#orderCategory,  
+#main_container #newOrderTabsWrap .newordersr form select#OrderService,  
+#main_container #newOrderTabsWrap .newordersr form select.custom-select {  
+    position: relative;  
+    min-height: 48px !important;  
+    padding: 11px 42px 11px 14px !important;  
+    border: 1px solid #d6e2f2 !important;  
+    border-radius: 13px !important;  
+    background-color: #fff !important;  
+    color: #26364d !important;  
+    font-size: 15px;  
+    font-weight: 600;  
+    box-shadow: 0 4px 12px rgba(40, 80, 145, .045) !important;  
+    cursor: pointer;  
+    transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease !important;  
+}  
+#main_container #newOrderTabsWrap .newordersr form select#orderCategory:hover,  
+#main_container #newOrderTabsWrap .newordersr form select#OrderService:hover,  
+#main_container #newOrderTabsWrap .newordersr form select.custom-select:hover {  
+    border-color: #8bb7f5 !important;  
+    box-shadow: 0 6px 16px rgba(40, 105, 210, .09) !important;  
+}  
+#main_container #newOrderTabsWrap .newordersr form select#orderCategory:focus,  
+#main_container #newOrderTabsWrap .newordersr form select#OrderService:focus,  
+#main_container #newOrderTabsWrap .newordersr form select.custom-select:focus {  
+    border-color: #4387f5 !important;  
+    box-shadow: 0 0 0 4px rgba(67, 135, 245, .14) !important;  
+    outline: none !important;  
+}  
+/* Animate enhanced Bootstrap/selectpicker dropdown menus where used */  
+#main_container #newOrderTabsWrap .dropdown-menu,  
+#main_container #newOrderTabsWrap .bootstrap-select .dropdown-menu,  
+#main_container #newOrderTabsWrap .select2-dropdown {  
+    border: 1px solid rgba(76, 132, 220, .18) !important;  
+    border-radius: 13px !important;  
+    box-shadow: 0 14px 32px rgba(27, 59, 105, .15) !important;  
+    overflow: hidden;  
+    transform-origin: top center;  
+    animation: sfDropdownOpen .2s ease both;  
+}  
+#main_container #newOrderTabsWrap .dropdown-menu .dropdown-item,  
+#main_container #newOrderTabsWrap .bootstrap-select .dropdown-menu li a,  
+#main_container #newOrderTabsWrap .select2-results__option {  
+    transition: background-color .16s ease, color .16s ease, padding-left .16s ease;  
+}  
+#main_container #newOrderTabsWrap .dropdown-menu .dropdown-item:hover,  
+#main_container #newOrderTabsWrap .bootstrap-select .dropdown-menu li a:hover,  
+#main_container #newOrderTabsWrap .select2-results__option--highlighted {  
+    background: #edf4ff !important;  
+    color: #2367c8 !important;  
+    padding-left: 18px;  
+}  
+@keyframes sfDropdownOpen {  
+    from { opacity: 0; transform: translateY(-6px) scaleY(.97); }  
+    to { opacity: 1; transform: translateY(0) scaleY(1); }  
+}  
+  
+/* Order response popup: green success look similar to the supplied screenshot */  
+#main_container .newordersr .sf-order-result-popup {  
+    position: relative !important;  
+    display: block !important;  
+    box-sizing: border-box !important;  
+    width: 100%;  
+    margin: 0 0 22px !important;  
+    padding: 25px 26px 24px !important;  
+    border: 1px solid rgba(34, 112, 76, .12) !important;  
+    border-left: 5px solid #259b68 !important;  
+    border-radius: 15px !important;  
+    background: linear-gradient(135deg, #e0f1e9 0%, #d3e9df 100%) !important;  
+    color: #15563d !important;  
+    box-shadow: 0 12px 28px rgba(29, 104, 73, .10) !important;  
+    line-height: 1.6;  
+    overflow-wrap: anywhere;  
+    animation: sfOrderPopupIn .48s cubic-bezier(.2,.8,.2,1) both;  
+}  
+#main_container .newordersr .sf-order-result-popup,  
+#main_container .newordersr .sf-order-result-popup * {  
+    color: #15563d;  
+}  
+#main_container .newordersr .sf-order-result-popup .sf-order-popup-close {  
+    position: absolute;  
+    top: 11px;  
+    right: 12px;  
+    display: inline-flex;  
+    align-items: center;  
+    justify-content: center;  
+    width: 34px;  
+    height: 34px;  
+    padding: 0;  
+    border: 0;  
+    border-radius: 50%;  
+    background: rgba(21, 86, 61, .09);  
+    color: #15563d !important;  
+    font-family: Arial, sans-serif;  
+    font-size: 26px;  
+    font-weight: 700;  
+    line-height: 1;  
+    cursor: pointer;  
+    transition: transform .18s ease, background .18s ease;  
+}  
+#main_container .newordersr .sf-order-result-popup .sf-order-popup-close:hover {  
+    background: rgba(21, 86, 61, .17);  
+    transform: rotate(90deg) scale(1.04);  
+}  
+#main_container .newordersr .sf-order-result-popup .alert-heading,  
+#main_container .newordersr .sf-order-result-popup h1,  
+#main_container .newordersr .sf-order-result-popup h2,  
+#main_container .newordersr .sf-order-result-popup h3,  
+#main_container .newordersr .sf-order-result-popup h4 {  
+    margin: 0 38px 16px 0 !important;  
+    color: #15563d !important;  
+    font-weight: 800 !important;  
+    line-height: 1.25 !important;  
+}  
+#main_container .newordersr .sf-order-result-popup p:last-child { margin-bottom: 0; }  
+#main_container .newordersr .sf-order-result-popup.sf-order-popup-closing {  
+    animation: sfOrderPopupOut .24s ease forwards !important;  
+    pointer-events: none;  
+}  
+@keyframes sfOrderPopupIn {  
+    0% { opacity: 0; transform: translateY(14px) scale(.985); }  
+    65% { opacity: 1; transform: translateY(-2px) scale(1.003); }  
+    100% { opacity: 1; transform: translateY(0) scale(1); }  
+}  
+@keyframes sfOrderPopupOut {  
+    to { opacity: 0; transform: translateY(-8px) scale(.985); }  
+}  
+/* Keep error/neutral server messages readable; only successful results use green */  
+#main_container .newordersr .sf-order-result-popup.alert-danger,  
+#main_container .newordersr .sf-order-result-popup.alert-warning {  
+    background: linear-gradient(135deg, #fff0ed 0%, #ffe6e1 100%) !important;  
+    border-left-color: #e05a48 !important;  
+    color: #842f26 !important;  
+}  
+#main_container .newordersr .sf-order-result-popup.alert-danger *,  
+#main_container .newordersr .sf-order-result-popup.alert-warning * {  
+    color: #842f26 !important;  
+}  
+#main_container .newordersr .sf-order-result-popup.alert-info {  
+    background: linear-gradient(135deg, #eaf3ff 0%, #dceaff 100%) !important;  
+    border-left-color: #4387f5 !important;  
+    color: #204d87 !important;  
+}  
+#main_container .newordersr .sf-order-result-popup.alert-info * { color: #204d87 !important; }  
+.nightmode #main_container .newordersr .sf-order-result-popup {  
+    background: linear-gradient(135deg, #173b30 0%, #1b4537 100%) !important;  
+    border-color: rgba(112, 204, 158, .16) !important;  
+    border-left-color: #45c58a !important;  
+    color: #d9f8e8 !important;  
+}  
+.nightmode #main_container .newordersr .sf-order-result-popup,  
+.nightmode #main_container .newordersr .sf-order-result-popup * { color: #d9f8e8 !important; }  
+.nightmode #main_container .newordersr .sf-order-result-popup .sf-order-popup-close {  
+    background: rgba(217, 248, 232, .10);  
+    color: #d9f8e8 !important;  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container .newordersr .sf-order-result-popup {  
+        padding: 20px 17px 18px !important;  
+        margin-bottom: 18px !important;  
+        border-radius: 13px !important;  
+        font-size: 15px;  
+        line-height: 1.58;  
+    }  
+    #main_container .newordersr .sf-order-result-popup .sf-order-popup-close {  
+        top: 8px;  
+        right: 8px;  
+        width: 31px;  
+        height: 31px;  
+        font-size: 24px;  
+    }  
+    #main_container .newordersr .sf-order-result-popup .alert-heading,  
+    #main_container .newordersr .sf-order-result-popup h1,  
+    #main_container .newordersr .sf-order-result-popup h2,  
+    #main_container .newordersr .sf-order-result-popup h3,  
+    #main_container .newordersr .sf-order-result-popup h4 {  
+        font-size: 25px !important;  
+        margin-right: 27px !important;  
+    }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container #newOrderTabsWrap .dropdown-menu,  
+    #main_container #newOrderTabsWrap .bootstrap-select .dropdown-menu,  
+    #main_container #newOrderTabsWrap .select2-dropdown,  
+    #main_container .newordersr .sf-order-result-popup,  
+    #main_container .newordersr .sf-order-result-popup .sf-order-popup-close {  
+        animation: none !important;  
+        transition: none !important;  
+    }  
+}  
+</style>  <script>  
+/* Make the existing server-rendered [error_message] dismissible.  
+   It does not create or fake order success; it only decorates the  
+   message that the panel backend already returns. */  
+(function () {  
+    function enhanceOrderResultMessages() {  
+        var formArea = document.querySelector('#main_container .newordersr');  
+        if (!formArea) return;  
+  
+        var candidates = formArea.querySelectorAll(  
+            '.alert, .alert-success, .alert-danger, .alert-warning, .alert-info, .alert-dismissible'  
+        );  
+  
+        candidates.forEach(function (message) {  
+            if (message.dataset.sfPopupEnhanced === '1') return;  
+            if (!message.textContent || !message.textContent.trim()) return;  
+  
+            message.dataset.sfPopupEnhanced = '1';  
+            message.classList.add('sf-order-result-popup');  
+            message.setAttribute('role', 'status');  
+            message.setAttribute('aria-live', 'polite');  
+  
+            var closeButton = document.createElement('button');  
+            closeButton.type = 'button';  
+            closeButton.className = 'sf-order-popup-close';  
+            closeButton.setAttribute('aria-label', 'Close order message');  
+            closeButton.setAttribute('title', 'Close');  
+            closeButton.innerHTML = '&times;';  
+            closeButton.addEventListener('click', function () {  
+                message.classList.add('sf-order-popup-closing');  
+                window.setTimeout(function () {  
+                    if (message && message.parentNode) message.parentNode.removeChild(message);  
+                }, 240);  
+            });  
+            message.appendChild(closeButton);  
+        });  
+    }  
+  
+    if (document.readyState === 'loading') {  
+        document.addEventListener('DOMContentLoaded', enhanceOrderResultMessages);  
+    } else {  
+        enhanceOrderResultMessages();  
+    }  
+  
+    /* Some panel themes insert result alerts after page scripts run. */  
+    var root = document.querySelector('#main_container .newordersr');  
+    if (root && window.MutationObserver) {  
+        var observer = new MutationObserver(function () {  
+            enhanceOrderResultMessages();  
+        });  
+        observer.observe(root, { childList: true, subtree: true });  
+    }  
+})();  
+</script>  <!-- ==========================================================  
+     FINAL STABILITY PATCH — CATEGORY FILTER, PAGE SCROLL & SPEED  
+========================================================== -->  <style>  
+#main_container,#main_container .content_area,#main_container .content,  
+#main_container #category_filter,#main_container #category_filter .container-fluid,  
+#main_container #category_filter .row,#main_container #category_filter .col-md-12,  
+#main_container #category_filter .category_filter_wrap,#main_container #category_filter .mt-4,  
+#main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+    height:auto!important;min-height:0!important;max-height:none!important;  
+    overflow:visible!important;overflow-x:visible!important;overflow-y:visible!important;  
+}  
+#main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+    display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;  
+    align-items:stretch!important;gap:10px!important;padding-bottom:2px!important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter{  
+    box-sizing:border-box!important;width:100%!important;min-width:0!important;margin:0!important;cursor:pointer;  
+}  
+@media only screen and (min-width:551px) and (max-width:900px){  
+    #main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+        grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:9px!important;  
+    }  
+}  
+@media only screen and (max-width:550px){  
+    #main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+        grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter{  
+        height:62px!important;min-height:62px!important;max-height:none!important;padding:6px 3px!important;  
+    }  
+}  
+#main_container .user_statistic_wraper .statistic__item,  
+#main_container .user_statistic_wraper .statistic__item::after,  
+#main_container .user_statistic_wraper .statistic__item::before,  
+#main_container #categoryFIlterWraper .btn_filter,  
+#main_container #categoryFIlterWraper .btn_filter::after,  
+#main_container .sf-order-guide .sf-guide-icon,  
+#main_container .section_49041,#main_container #category_filter,  
+#main_container .def_wraper,#main_container .sf-order-guide{  
+    animation:none!important;will-change:auto!important;  
+}  
+#main_container .user_statistic_wraper .statistic__item,  
+#main_container #categoryFIlterWraper .btn_filter{  
+    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important;  
+}  
+#main_container #category_filter,#main_container #category_filter .container-fluid,  
+#main_container #category_filter .row,#main_container #category_filter .col-md-12,  
+#main_container #category_filter .category_filter_wrap,#main_container #category_filter .mt-4,  
+#main_container #categoryFIlterWraper{overflow:visible!important;max-height:none!important;}  
+#main_container .bootstrap-select .dropdown-menu.inner,  
+#main_container .bootstrap-select .dropdown-menu .inner,  
+#main_container .dropdown-menu.inner,  
+#main_container .select2-results__options,  
+#main_container .selectize-dropdown-content,  
+#main_container .choices__list--dropdown .choices__list,  
+#main_container .choices__list[aria-expanded]{  
+    max-height:min(55vh,320px)!important;overflow-y:auto!important;overflow-x:hidden!important;  
+    overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;  
+}  
+#main_container #newOrderTabsWrap select[name="category"],  
+#main_container #newOrderTabsWrap select#orderCategory,  
+#main_container #newOrderTabsWrap select#orderform-category,  
+#main_container #newOrderTabsWrap select[name="service_id"],  
+#main_container #newOrderTabsWrap select#OrderService{max-width:100%;}  
+@media (prefers-reduced-motion:reduce){  
+    #main_container *,#main_container *::before,#main_container *::after{  
+        animation:none!important;scroll-behavior:auto!important;transition-duration:.01ms!important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     SAFOLLOW NEW ORDER — FINAL COMPACT RESPONSIVE OVERRIDE  
+     Only sizing and spacing are adjusted; existing functionality  
+     and backend placeholders remain unchanged.  
+========================================================== -->  <style>  
+#main_container,#main_container *,#main_container *::before,#main_container *::after{box-sizing:border-box;}  
+#main_container .container-fluid{padding-left:12px;padding-right:12px;}  
+#main_container .def_wraper .row{margin-left:-7px;margin-right:-7px;}  
+#main_container .def_wraper .row>[class*="col-"]{padding-left:7px;padding-right:7px;}  
+#main_container .def_wraper .card.card_v2{border-radius:15px!important;}  
+#main_container .def_wraper .card-body{padding:15px!important;}  
+  
+/* Compact statistic cards */  
+#main_container .user_statistic_wraper{gap:8px;margin-bottom:15px;}  
+#main_container .user_statistic_wraper .statistic__item{  
+    min-width:0;min-height:66px;height:66px!important;padding:7px!important;gap:6px;border-radius:13px!important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon{width:32px;min-width:27px;}  
+#main_container .user_statistic_wraper .statistic__item .icon img{display:block;width:100%;max-width:32px;height:auto;}  
+#main_container .user_statistic_wraper .statistic__item .user__data{min-width:0;overflow-wrap:anywhere;}  
+#main_container .user_statistic_wraper .statistic__item .user__data span{font-size:11px!important;line-height:1.3;}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+#main_container .user_statistic_wraper .statistic__item .user__data h4{font-size:13px!important;line-height:1.3;}  
+  
+/* Compact announcement */  
+#main_container .anouncement_card{margin-bottom:11px!important;}  
+#main_container .anouncement_card .card-body{padding:12px 14px!important;}  
+#main_container .anouncement_card .announcement_inner{gap:8px!important;}  
+#main_container .anouncement_card .announcement_inner .left_ann h4{font-size:16px!important;line-height:1.35!important;}  
+#main_container .anouncement_card .announcement_inner .left_ann p{font-size:12px!important;line-height:1.5!important;}  
+#main_container .anouncement_card .btn_announcement{min-height:34px!important;padding:7px 11px!important;font-size:12px!important;}  
+  
+/* Equal category tiles */  
+#main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+    display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:8px!important;  
+    width:100%;height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter{  
+    display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;  
+    width:100%!important;min-width:0!important;height:78px!important;min-height:78px!important;max-height:none!important;  
+    margin:0!important;padding:7px 4px!important;gap:5px!important;border-radius:12px!important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter img,#main_container #categoryFIlterWraper .btn_filter i{  
+    width:30px!important;height:30px!important;max-width:100%;flex:0 0 auto;object-fit:contain;  
+}  
+#main_container #categoryFIlterWraper .btn_filter i{font-size:27px!important;line-height:30px!important;}  
+#main_container #categoryFIlterWraper .btn_filter .filter_txt{font-size:11px!important;line-height:1.2!important;text-align:center;overflow-wrap:anywhere;}  
+  
+/* Order form and tabs */  
+#main_container #newOrderTabsWrap .tab_btn_wrap{gap:6px;padding:5px;}  
+#main_container #newOrderTabsWrap .tab_btn_wrap .nav-link{min-height:40px;padding:8px 9px;font-size:13px;}  
+#main_container #newOrderTabsWrap .newordersr form .form-group{margin-bottom:15px;}  
+#main_container #newOrderTabsWrap .newordersr form label{font-size:13px;line-height:1.5;}  
+#main_container #newOrderTabsWrap .newordersr form .form-control,  
+#main_container #newOrderTabsWrap .newordersr form .custom-select{  
+    min-height:42px!important;padding:9px 11px!important;border-radius:10px!important;font-size:14px;  
+}  
+#main_container #newOrderTabsWrap .newordersr form textarea.form-control{min-height:90px;}  
+#main_container #newOrderTabsWrap .newordersr form button[type="submit"][name="place_order"]{  
+    min-height:43px;padding:10px 16px;font-size:14px;border-radius:11px!important;  
+}  
+  
+/* Compact video guide */  
+#main_container .sf-order-guide{padding:2px 0 6px;}  
+#main_container .sf-guide-head{gap:10px;margin-bottom:14px;}  
+#main_container .sf-guide-icon{width:52px;height:52px;min-width:52px;border-radius:14px;font-size:21px;}  
+#main_container .sf-guide-head h3{font-size:21px!important;line-height:1.3;}  
+#main_container .sf-guide-head p{font-size:13px!important;line-height:1.5;}  
+#main_container .sf-before-order{margin-top:15px;padding:15px;border-radius:14px;}  
+#main_container .sf-before-order h3{margin-bottom:8px!important;font-size:17px!important;}  
+#main_container .sf-before-order p{font-size:13px!important;line-height:1.6!important;}  
+#main_container .sf-steps{gap:8px;margin-top:13px;}  
+#main_container .sf-step{min-width:0;min-height:82px;padding:9px 4px;border-radius:12px;}  
+#main_container .sf-step-icon{font-size:24px;margin-bottom:7px;}  
+#main_container .sf-step strong{font-size:11px!important;line-height:1.3;}  
+#main_container .sf-guide-footer{padding-top:13px;font-size:12px;line-height:1.55;}  
+  
+/* Tablet */  
+@media only screen and (min-width:551px) and (max-width:900px){  
+    #main_container .user_statistic_wraper{grid-template-columns:repeat(2,minmax(0,1fr));}  
+    #main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{grid-template-columns:repeat(4,minmax(0,1fr))!important;}  
+    #main_container .def_wraper .card-body{padding:13px!important;}  
+}  
+  
+/* Responsive phones: same visual rhythm across different screen widths */  
+@media only screen and (max-width:550px){  
+    #main_container .container-fluid{padding-left:10px;padding-right:10px;}  
+    #main_container .user_statistic_wraper{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin-bottom:13px;}  
+    #main_container .user_statistic_wraper .statistic__item{height:62px!important;min-height:62px;padding:6px!important;gap:5px;border-radius:11px!important;}  
+    #main_container .user_statistic_wraper .statistic__item .icon{width:27px;min-width:23px;}  
+    #main_container .user_statistic_wraper .statistic__item .icon img{max-width:27px;}  
+    #main_container .user_statistic_wraper .statistic__item .user__data span{font-size:10px!important;line-height:1.25;}  
+    #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+    #main_container .user_statistic_wraper .statistic__item .user__data h4{font-size:12px!important;overflow-wrap:anywhere;}  
+    #main_container .anouncement_card .announcement_inner{align-items:flex-start!important;}  
+    #main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{  
+        grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter{  
+        height:clamp(48px,14vw,62px)!important;min-height:clamp(48px,14vw,62px)!important;  
+        padding:5px 2px!important;gap:0!important;border-radius:10px!important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img,#main_container #categoryFIlterWraper .btn_filter i{  
+        width:clamp(23px,7vw,29px)!important;height:clamp(23px,7vw,29px)!important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i{  
+        font-size:clamp(21px,6.5vw,26px)!important;line-height:clamp(23px,7vw,29px)!important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter .filter_txt{display:none!important;}  
+    #main_container .def_wraper .row{margin-left:-5px;margin-right:-5px;}  
+    #main_container .def_wraper .row>[class*="col-"]{padding-left:5px;padding-right:5px;}  
+    #main_container .def_wraper .card-body{padding:12px!important;}  
+    #main_container #newOrderTabsWrap .tab_btn_wrap .nav-link{padding:8px 6px;font-size:12px;}  
+    #main_container .sf-guide-head h3{font-size:18px!important;}  
+    #main_container .sf-guide-head p{font-size:12px!important;}  
+    #main_container .sf-video-box,#main_container .sf-video-box iframe{border-radius:12px;}  
+    #main_container .sf-before-order{padding:12px;}  
+    #main_container .sf-step{min-height:72px;padding:8px 2px;}  
+    #main_container .sf-step strong{font-size:10px!important;}  
+}  
+  
+/* Very narrow phones */  
+@media only screen and (max-width:360px){  
+    #main_container .container-fluid{padding-left:8px;padding-right:8px;}  
+    #main_container .user_statistic_wraper{gap:5px!important;}  
+    #main_container .user_statistic_wraper .statistic__item{padding:5px!important;gap:4px;}  
+    #main_container .user_statistic_wraper .statistic__item .icon{width:23px;min-width:21px;}  
+    #main_container .user_statistic_wraper .statistic__item .icon img{max-width:23px;}  
+    #main_container #category_filter .filter_btn_wrap,#main_container #categoryFIlterWraper{gap:5px!important;}  
+    #main_container #newOrderTabsWrap .tab_btn_wrap .nav-link{font-size:11px;padding:7px 4px;}  
+    #main_container .sf-steps{gap:5px;}  
+}  
+  
+/* Dark mode */  
+.nightmode #main_container .user_statistic_wraper .statistic__item{  
+    background:linear-gradient(145deg,#1a2a43,#142238)!important;  
+}  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data span:first-child{color:#a9b8ce!important;}  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+.nightmode #main_container .user_statistic_wraper .statistic__item .user__data h4{color:#f3f7ff!important;}  
+@media (prefers-reduced-motion:reduce){  
+    #main_container .user_statistic_wraper .statistic__item,  
+    #main_container #categoryFIlterWraper .btn_filter,  
+    #main_container .sf-order-guide *,#main_container .anouncement_card *{animation:none!important;transition:none!important;}  
+}  
+</style>  <!-- ==========================================================  
+     FINAL ONLY: EVEN LEFT/RIGHT PAGE GUTTERS ON ALL PHONES  
+     No other sizing, colors, layout, or functionality changed.  
+========================================================== -->  <style>  
+/* Center the existing page content and divide the current empty  
+   side space evenly, while keeping the gap small on every phone. */  
+@media only screen and (max-width: 767px) {  
+    #main_container {  
+        width: calc(100% - 16px) !important;  
+        max-width: calc(100% - 16px) !important;  
+        min-width: 0 !important;  
+        margin-left: auto !important;  
+        margin-right: auto !important;  
+        overflow-x: clip !important;  
+    }  
+    #main_container .content_area,  
+    #main_container .content {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        min-width: 0 !important;  
+        margin-left: 0 !important;  
+        margin-right: 0 !important;  
+    }  
+    #main_container .container-fluid {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        padding-left: 8px !important;  
+        padding-right: 8px !important;  
+    }  
+}  
+@media only screen and (max-width: 360px) {  
+    #main_container {  
+        width: calc(100% - 12px) !important;  
+        max-width: calc(100% - 12px) !important;  
+    }  
+    #main_container .container-fluid {  
+        padding-left: 6px !important;  
+        padding-right: 6px !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL TARGETED FIX: UNWANTED BLUE MARK/TEXT ON LEFT EDGE  
+     Only left-edge decorative pseudo-elements are suppressed.  
+     No form, backend, JavaScript, colors, or layout changed.  
+========================================================== -->  <style>  
+@media only screen {  
+  #main_container::before,  
+  #main_container::after,  
+  #main_container .content_area::before,  
+  #main_container .content_area::after,  
+  #main_container .content::before,  
+  #main_container .content::after {  
+    content: none !important;  
+    display: none !important;  
+    border: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+  }  
+  #main_container {  
+    border-left: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+  }  
+}  
+</style>  <!-- ==========================================================  
+     CORRECTED MOBILE FIX — REMOVE EDGE STRIP + BALANCE GUTTERS  
+     Reverses the previous narrowed #main_container width that exposed  
+     the blue page background. Only mobile wrapper spacing and common  
+     sidebar width are adjusted; order form/backend/JS are untouched.  
+========================================================== -->  <style>  
+@media only screen and (max-width: 767px) {  
+    /* Keep the page wrapper full-width so the blue background cannot  
+       show as a strip along the left edge. */  
+    #main_container {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        min-width: 0 !important;  
+        margin-left: 0 !important;  
+        margin-right: 0 !important;  
+        border-left: 0 !important;  
+        outline: 0 !important;  
+        box-shadow: none !important;  
+    }  
+    #main_container .content_area,  
+    #main_container .content {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        min-width: 0 !important;  
+        margin-left: 0 !important;  
+        margin-right: 0 !important;  
+        border-left: 0 !important;  
+        outline: 0 !important;  
+        box-shadow: none !important;  
+    }  
+    /* Equal, smaller inner gutters on both sides. */  
+    #main_container .container-fluid {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        padding-left: 6px !important;  
+        padding-right: 6px !important;  
+    }  
+    #main_container::before,  
+    #main_container::after,  
+    #main_container .content_area::before,  
+    #main_container .content_area::after,  
+    #main_container .content::before,  
+    #main_container .content::after {  
+        content: none !important;  
+        display: none !important;  
+        border: 0 !important;  
+        outline: 0 !important;  
+        box-shadow: none !important;  
+    }  
+  
+    /* Reduce an overly wide mobile menu when its theme uses one of  
+       these common sidebar wrappers. */  
+    #sidebar,  
+    .sidebar,  
+    .sidebar-wrapper,  
+    .sidebar-menu,  
+    .sidebar_wrap,  
+    .sidebar__wrapper,  
+    .side-menu,  
+    .sidenav,  
+    .mobile-sidebar,  
+    .menu_sidebar,  
+    .navigation-sidebar {  
+        max-width: min(78vw, 320px) !important;  
+    }  
+}  
+@media only screen and (max-width: 360px) {  
+    #main_container .container-fluid {  
+        padding-left: 5px !important;  
+        padding-right: 5px !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL SIDE-GAP + SOFT-SHADOW FIX  
+     Only the outer page edges are adjusted. Existing page structure,  
+     colors, form fields, scripts, backend placeholders, and behavior stay intact.  
+========================================================== -->  <style>  
+/* Keep the page at full width to prevent a colored strip appearing at either edge. */  
+#main_container {  
+    width: 100% !important;  
+    max-width: 100% !important;  
+    margin-left: 0 !important;  
+    margin-right: 0 !important;  
+    padding-left: 5px !important;  
+    padding-right: 5px !important;  
+    border-left: 0 !important;  
+    border-right: 0 !important;  
+    box-shadow: inset 5px 0 9px -9px rgba(25, 45, 75, .32),  
+                inset -5px 0 9px -9px rgba(25, 45, 75, .32) !important;  
+}  
+#main_container .content_area,  
+#main_container .content {  
+    width: 100% !important;  
+    max-width: 100% !important;  
+    min-width: 0 !important;  
+    margin-left: 0 !important;  
+    margin-right: 0 !important;  
+}  
+/* A narrow, neutral shadow along the actual page content edges. */  
+#main_container .content_area {  
+    box-shadow: -3px 0 9px -8px rgba(20, 35, 60, .28),  
+                 3px 0 9px -8px rgba(20, 35, 60, .28);  
+}  
+@media only screen and (max-width: 767px) {  
+    #main_container {  
+        padding-left: 4px !important;  
+        padding-right: 4px !important;  
+    }  
+}  
+@media only screen and (max-width: 360px) {  
+    #main_container {  
+        padding-left: 3px !important;  
+        padding-right: 3px !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL STATISTIC CARD FIX — CONSISTENT TITLE / VALUE ALIGNMENT  
+     Each title stays on one line; its value sits directly below.  
+     Existing HTML, icons, form behavior, and backend placeholders stay intact.  
+========================================================== -->  <style>  
+/* Consistent two-column statistic cards across phone sizes and desktop */  
+#main_container .user_statistic_wraper {  
+    display: grid !important;  
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+    align-items: stretch !important;  
+    gap: 8px !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item {  
+    box-sizing: border-box !important;  
+    min-width: 0 !important;  
+    height: auto !important;  
+    min-height: 94px !important;  
+    padding: 10px 6px !important;  
+    display: flex !important;  
+    flex-direction: column !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+    gap: 5px !important;  
+    text-align: center !important;  
+    overflow: hidden !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon {  
+    width: 25px !important;  
+    min-width: 25px !important;  
+    height: 25px !important;  
+    margin: 0 auto !important;  
+    display: flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon img {  
+    display: block !important;  
+    width: 25px !important;  
+    height: 25px !important;  
+    max-width: 25px !important;  
+    object-fit: contain !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data {  
+    width: 100% !important;  
+    min-width: 0 !important;  
+    display: flex !important;  
+    flex-direction: column !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+    gap: 3px !important;  
+    text-align: center !important;  
+    line-height: 1.25 !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+    display: block !important;  
+    width: 100% !important;  
+    white-space: nowrap !important;  
+    overflow: hidden !important;  
+    text-overflow: ellipsis !important;  
+    font-size: 11px !important;  
+    line-height: 1.25 !important;  
+    font-weight: 700 !important;  
+    text-align: center !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+#main_container .user_statistic_wraper .statistic__item .user__data h4 {  
+    display: block !important;  
+    width: 100% !important;  
+    margin: 0 !important;  
+    white-space: nowrap !important;  
+    overflow: hidden !important;  
+    text-overflow: ellipsis !important;  
+    font-size: 13px !important;  
+    line-height: 1.3 !important;  
+    font-weight: 800 !important;  
+    text-align: center !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data h4 a {  
+    display: inline-block !important;  
+    max-width: 100% !important;  
+    white-space: nowrap !important;  
+}  
+@media only screen and (max-width: 900px) {  
+    #main_container .user_statistic_wraper {  
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  
+        gap: 8px !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item {  
+        min-height: 92px !important;  
+        padding: 9px 5px !important;  
+    }  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container .user_statistic_wraper {  
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  
+        gap: 7px !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item {  
+        min-height: 88px !important;  
+        padding: 8px 4px !important;  
+        gap: 4px !important;  
+        border-radius: 11px !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item .icon,  
+    #main_container .user_statistic_wraper .statistic__item .icon img {  
+        width: 23px !important;  
+        height: 23px !important;  
+        max-width: 23px !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+        font-size: clamp(9px, 2.8vw, 11px) !important;  
+        letter-spacing: 0 !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+    #main_container .user_statistic_wraper .statistic__item .user__data h4,  
+    #main_container .user_statistic_wraper .statistic__item .user__data h4 a {  
+        font-size: clamp(11px, 3.2vw, 13px) !important;  
+    }  
+}  
+@media only screen and (max-width: 340px) {  
+    #main_container .user_statistic_wraper { gap: 5px !important; }  
+    #main_container .user_statistic_wraper .statistic__item { padding-left: 3px !important; padding-right: 3px !important; }  
+    #main_container .user_statistic_wraper .statistic__item .user__data span:first-child { font-size: 9px !important; }  
+    #main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+    #main_container .user_statistic_wraper .statistic__item .user__data h4,  
+    #main_container .user_statistic_wraper .statistic__item .user__data h4 a { font-size: 11px !important; }  
+}  
+@media (prefers-reduced-motion: reduce) {  
+    #main_container .user_statistic_wraper .statistic__item { animation: none !important; transition: none !important; }  
+}  
+</style>  <!-- ==========================================================  
+     ONLY REQUESTED FIXES: REMOVE BLUE SIDE STRIP + REDUCE ICONS  
+     Existing HTML, forms, scripts, backend placeholders, colors,  
+     and unrelated layout/functionality are left unchanged.  
+========================================================== -->  <style>  
+/* Remove side-edge lines/shadows that can reveal the blue page background. */  
+#main_container,  
+#main_container .content_area,  
+#main_container .content {  
+    width: 100% !important;  
+    max-width: 100% !important;  
+    min-width: 0 !important;  
+    margin-left: 0 !important;  
+    margin-right: 0 !important;  
+    border-left: 0 !important;  
+    border-right: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+}  
+#main_container::before,  
+#main_container::after,  
+#main_container .content_area::before,  
+#main_container .content_area::after,  
+#main_container .content::before,  
+#main_container .content::after {  
+    content: none !important;  
+    display: none !important;  
+    border: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+}  
+  
+/* Smaller statistic icons and more compact statistic cards. */  
+#main_container .user_statistic_wraper .statistic__item {  
+    min-height: 76px !important;  
+    padding: 7px 5px !important;  
+    gap: 4px !important;  
+    overflow: hidden !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon,  
+#main_container .user_statistic_wraper .statistic__item .icon img {  
+    width: 19px !important;  
+    min-width: 19px !important;  
+    height: 19px !important;  
+    max-width: 19px !important;  
+    object-fit: contain !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+    font-size: 10px !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+#main_container .user_statistic_wraper .statistic__item .user__data h4,  
+#main_container .user_statistic_wraper .statistic__item .user__data h4 a {  
+    font-size: 12px !important;  
+}  
+  
+/* Smaller social category boxes and icons; retain the existing grid/handlers. */  
+#main_container #categoryFIlterWraper .btn_filter {  
+    min-height: 68px !important;  
+    height: 68px !important;  
+    max-height: 68px !important;  
+    padding: 6px 4px !important;  
+    gap: 4px !important;  
+    border-radius: 12px !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter img,  
+#main_container #categoryFIlterWraper .btn_filter i {  
+    width: 25px !important;  
+    min-width: 25px !important;  
+    height: 25px !important;  
+    max-width: 25px !important;  
+    object-fit: contain !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter i {  
+    font-size: 23px !important;  
+    line-height: 25px !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter .filter_txt {  
+    font-size: 10px !important;  
+    line-height: 1.15 !important;  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container .user_statistic_wraper .statistic__item {  
+        min-height: 72px !important;  
+        height: auto !important;  
+        padding: 6px 4px !important;  
+    }  
+    #main_container .user_statistic_wraper .statistic__item .icon,  
+    #main_container .user_statistic_wraper .statistic__item .icon img {  
+        width: 18px !important;  
+        min-width: 18px !important;  
+        height: 18px !important;  
+        max-width: 18px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        height: 52px !important;  
+        min-height: 52px !important;  
+        max-height: 52px !important;  
+        padding: 4px 2px !important;  
+        gap: 0 !important;  
+        border-radius: 9px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img,  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 23px !important;  
+        min-width: 23px !important;  
+        height: 23px !important;  
+        max-width: 23px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        font-size: 21px !important;  
+        line-height: 23px !important;  
+    }  
+}  
+@media only screen and (max-width: 360px) {  
+    #main_container #categoryFIlterWraper .btn_filter {  
+        height: 48px !important;  
+        min-height: 48px !important;  
+        max-height: 48px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter img,  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        width: 21px !important;  
+        min-width: 21px !important;  
+        height: 21px !important;  
+        max-width: 21px !important;  
+    }  
+    #main_container #categoryFIlterWraper .btn_filter i {  
+        font-size: 19px !important;  
+        line-height: 21px !important;  
+    }  
+}  
+</style>  <style>  
+/* Final safety override: keep the four statistic cards in the intended order.  
+   Two columns on mobile: Balance | Total Orders, then My Spent | Announcement. */  
+#main_container .user_statistic_wraper {  
+    display: grid !important;  
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  
+    gap: 10px !important;  
+}  
+#main_container .user_statistic_wraper > .statistic__item {  
+    min-width: 0 !important;  
+    width: 100% !important;  
+    box-sizing: border-box !important;  
+}  
+/* Remove decorative vertical side lines from this page only. */  
+#main_container,  
+#main_container .content_area,  
+#main_container .content,  
+#main_container .container-fluid,  
+#main_container .row,  
+#main_container [class*="col-"] {  
+    border-left: 0 !important;  
+    border-right: 0 !important;  
+    outline: 0 !important;  
+}  
+#main_container::before,  
+#main_container::after,  
+#main_container .content_area::before,  
+#main_container .content_area::after,  
+#main_container .content::before,  
+#main_container .content::after {  
+    content: none !important;  
+    display: none !important;  
+}  
+@media only screen and (max-width: 550px) {  
+    #main_container .user_statistic_wraper {  
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  
+        gap: 8px !important;  
+    }  
+}  
+</style>  <!-- ==========================================================  
+     FINAL MOBILE FIX — COMPACT STATISTICS, SMALLER SOCIAL TILES,  
+     REMOVE BLUE EDGE STRIP WITHOUT EXTRA SIDE SPACING.  
+     All existing HTML, links, forms, backend placeholders, and JS  
+     remain unchanged. This block only overrides CSS dimensions.  
+========================================================== -->  <style>  
+/* Remove the added side gutters/shadows that can expose the blue body. */  
+html, body {  
+    margin: 0 !important;  
+    padding: 0 !important;  
+    overflow-x: hidden !important;  
+}  
+body:has(#main_container) {  
+    background: #fff !important;  
+}  
+#main_container {  
+    width: 100% !important;  
+    max-width: 100% !important;  
+    min-width: 0 !important;  
+    margin: 0 !important;  
+    padding: 0 !important;  
+    border: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+    overflow-x: clip !important;  
+}  
+#main_container .content_area,  
+#main_container .content {  
+    width: 100% !important;  
+    max-width: 100% !important;  
+    min-width: 0 !important;  
+    margin: 0 !important;  
+    padding-left: 0 !important;  
+    padding-right: 0 !important;  
+    border-left: 0 !important;  
+    border-right: 0 !important;  
+    outline: 0 !important;  
+    box-shadow: none !important;  
+}  
+  
+/* DESKTOP SIDEBAR FIX — keep the outer page wrapper at the viewport's  
+   left edge. Offset only the New Order content region, not #main_container,  
+   so a sidebar nested in the page wrapper is not pushed to the right. */  
+@media only screen and (min-width: 992px) {  
+    #main_container {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        min-width: 0 !important;  
+        margin-left: 0 !important;  
+        margin-right: 0 !important;  
+    }  
+    #main_container .content_area {  
+        width: auto !important;  
+        max-width: none !important;  
+        min-width: 0 !important;  
+        margin-left: 240px !important;  
+        margin-right: 0 !important;  
+    }  
+    #main_container .content {  
+        width: 100% !important;  
+        max-width: 100% !important;  
+        min-width: 0 !important;  
+        margin-left: 0 !important;  
+        margin-right: 0 !important;  
+    }  
+}  
+#main_container::before,  
+#main_container::after,  
+#main_container .content_area::before,  
+#main_container .content_area::after,  
+#main_container .content::before,  
+#main_container .content::after {  
+    content: none !important;  
+    display: none !important;  
+}  
+  
+/* Keep the four statistics in the requested order, compact and readable. */  
+#main_container .user_statistic_wraper {  
+    display: grid !important;  
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;  
+    gap: 7px !important;  
+    margin: 0 0 12px !important;  
+}  
+#main_container .user_statistic_wraper > .statistic__item {  
+    display: flex !important;  
+    flex-direction: row !important;  
+    align-items: center !important;  
+    justify-content: flex-start !important;  
+    gap: 7px !important;  
+    width: 100% !important;  
+    height: 58px !important;  
+    min-height: 58px !important;  
+    max-height: 58px !important;  
+    min-width: 0 !important;  
+    margin: 0 !important;  
+    padding: 6px 7px !important;  
+    border-radius: 11px !important;  
+    text-align: left !important;  
+    box-shadow: 0 2px 7px rgba(35,75,135,.045) !important;  
+    animation: none !important;  
+    overflow: hidden !important;  
+}  
+#main_container .user_statistic_wraper > .statistic__item::before,  
+#main_container .user_statistic_wraper > .statistic__item::after {  
+    display: none !important;  
+    content: none !important;  
+    animation: none !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon {  
+    display: flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+    flex: 0 0 23px !important;  
+    width: 23px !important;  
+    min-width: 23px !important;  
+    height: 23px !important;  
+    margin: 0 !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .icon img {  
+    display: block !important;  
+    width: 23px !important;  
+    min-width: 23px !important;  
+    max-width: 23px !important;  
+    height: 23px !important;  
+    object-fit: contain !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data {  
+    display: flex !important;  
+    flex: 1 1 auto !important;  
+    flex-direction: column !important;  
+    align-items: flex-start !important;  
+    justify-content: center !important;  
+    gap: 3px !important;  
+    width: auto !important;  
+    min-width: 0 !important;  
+    overflow: hidden !important;  
+    text-align: left !important;  
+    line-height: 1.2 !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:first-child {  
+    display: block !important;  
+    width: 100% !important;  
+    margin: 0 !important;  
+    font-size: 9px !important;  
+    line-height: 1.2 !important;  
+    font-weight: 700 !important;  
+    letter-spacing: 0 !important;  
+    white-space: nowrap !important;  
+    text-overflow: ellipsis !important;  
+    overflow: hidden !important;  
+    text-align: left !important;  
+}  
+#main_container .user_statistic_wraper .statistic__item .user__data span:nth-child(2),  
+#main_container .user_statistic_wraper .statistic__item .user__data h4,  
+#main_container .user_statistic_wraper .statistic__item .user__data h4 a {  
+    display: block !important;  
+    width: 100% !important;  
+    margin: 0 !important;  
+    font-size: 11px !important;  
+    line-height: 1.25 !important;  
+    font-weight: 800 !important;  
+    white-space: nowrap !important;  
+    text-overflow: ellipsis !important;  
+    overflow: hidden !important;  
+    text-align: left !important;  
+}  
+  
+/* Social platforms: smaller boxes and icons; preserve the existing 4-column mobile grid. */  
+#main_container #category_filter .filter_btn_wrap,  
+#main_container #categoryFIlterWraper {  
+    display: grid !important;  
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;  
+    gap: 6px !important;  
+    width: 100% !important;  
+    height: auto !important;  
+    min-height: 0 !important;  
+    max-height: none !important;  
+    overflow: visible !important;  
+}  
+#main_container #categoryFIlterWraper .btn_filter {  
+    display: flex !important;  
+    align-items: center !important;  
+    justify-content: center !important;  
+    width: 100% !important;  
+    height: 46px !important;  
+    min-height: 46px !important;  
+    max-height: 46px !important;  
+    min-width: 0 !important;  
+    margin: 0 !important;  
+    padding: 4px 2px !important;  
+    gap: 0 !important;  
+    border-radius: 9px !important;  
+    box-shadow: 0 2px 6px rgba(35,70,125,.04) !important;  
+    animation: none !important
